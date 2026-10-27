@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pico Flows Control · Case study</title>
-<meta name="description" content="Pico Flows Control: analiza poslovanja, financija i prilika za rast.">
+<title>Pico Flow Controls · Case study</title>
+<meta name="description" content="Pico Flow Controls: povijest, djelatnosti, financije i prilike za rast zagrebačke inženjerske tvrtke za plinsku industriju.">
 <link rel="alternate" hreflang="en" href="en.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#8cc63f">
@@ -251,40 +251,56 @@ table.matrix td:nth-child(2){background:var(--soft)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
-/* U izradi */
+/* PFC dodaci */
 .todo{border:1.5px dashed var(--faint);background:transparent;box-shadow:none}
-.todo .ttl::after{content:attr(data-badge);margin-left:8px;font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;background:var(--yellow);color:#16170f;vertical-align:2px}
 .todo p{color:var(--muted);margin:8px 0 0;font-size:13.5px}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;background:var(--yellow);color:#16170f;vertical-align:2px;margin-left:6px}
+.org{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.org .box{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.org .box b{font-size:14px}.org .box span{font-size:12.5px;color:var(--muted)}
+.org .box.main{grid-column:1/-1;background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.org .box.off{opacity:.7}
+.org .lbl{grid-column:1/-1;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:4px}
+table.fin td,table.fin th{min-width:84px}
+table.fin tr.sub td{color:var(--muted);font-size:12.5px}
+table.fin tr.tot td{font-weight:700}
+.q{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px}
+.q li{border-left:3px solid var(--orange);padding:4px 0 4px 12px}
+.miss{margin:12px 0 0;padding-left:20px;font-size:13px;display:grid;gap:6px}
+.miss a{overflow-wrap:anywhere}
+@media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
-    <a class="logo" href="#onama"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 9h7l4 6h7M3 15h7l4-6h7"/></svg></span>PFC<small>Pico Flows Control</small></a>
+    <a class="logo" href="#onama"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 9h7l4 6h7M3 15h7l4-6h7"/></svg></span>PFC<small>Pico Flow Controls</small></a>
     <nav class="nav" aria-label="Stranice">
       <a href="#onama" data-page="onama"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>O nama</a>
       <div class="sub">
-        <a href="#onama" data-jump="pocetak">Početak</a>
         <a href="#onama" data-jump="razvoj">Razvoj kroz godine</a>
-        <a href="#onama" data-jump="tim">Tim i vlasnici</a>
+        <a href="#onama" data-jump="vlasnici">Vlasnici i tvrtke</a>
+        <a href="#onama" data-jump="tim">Ljudi</a>
+        <a href="#onama" data-jump="certifikati">Certifikati</a>
       </div>
       <a href="#djelatnosti" data-page="djelatnosti"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Djelatnosti</a>
       <div class="sub">
-        <a href="#djelatnosti" data-jump="proizvodi">Proizvodi i usluge</a>
-        <a href="#djelatnosti" data-jump="kupci">Kupci i tržišta</a>
-        <a href="#djelatnosti" data-jump="konkurencija">Konkurencija</a>
+        <a href="#djelatnosti" data-jump="proizvodnja">Proizvodnja</a>
+        <a href="#djelatnosti" data-jump="rjesenja">Plinska rješenja</a>
+        <a href="#djelatnosti" data-jump="usluge">Usluge</a>
+        <a href="#djelatnosti" data-jump="it">Softver</a>
+        <a href="#djelatnosti" data-jump="kupci">Kupci i projekti</a>
       </div>
       <a href="#financije" data-page="financije"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Financije</a>
       <div class="sub">
-        <a href="#financije" data-jump="pregled">Pregled po godinama</a>
-        <a href="#financije" data-jump="marze">Marže i troškovi</a>
-        <a href="#financije" data-jump="pokazatelji">Pokazatelji</a>
+        <a href="#financije" data-jump="pregled">Prihod i dobit</a>
+        <a href="#financije" data-jump="marze">Pokazatelji 2025.</a>
+        <a href="#financije" data-jump="pokazatelji">Pripojene tvrtke</a>
       </div>
       <a href="#rast" data-page="rast"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Rast</a>
       <div class="sub">
-        <a href="#rast" data-jump="prilike">Prilike</a>
+        <a href="#rast" data-jump="prilike">Prvi zaključci</a>
         <a href="#rast" data-jump="prijedlozi">Prijedlozi</a>
-        <a href="#rast" data-jump="plan">Plan po fazama</a>
       </div>
     </nav>
     <div class="hr"></div>
@@ -293,75 +309,295 @@ table.matrix td:nth-child(2){background:var(--soft)}
     </nav>
     <div class="pro">
       <span class="bolt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 9h7l4 6h7M3 15h7l4-6h7"/></svg></span>
-      <h4>Analiza u izradi</h4>
-      <p>Podaci se prikupljaju iz javnih izvora. Svaka brojka imat će izvor.</p>
+      <h4>Spajanje 2024.</h4>
+      <p>Feromihin i Macel plin pripojeni su PFC-u krajem 2024.</p>
+      <a class="btn-ink" href="https://pfc.hr/" target="_blank" rel="noopener">pfc.hr ↗</a>
     </div>
   </aside>
 
   <main class="main">
     <header class="top">
-      <div class="crumb">Pico Flows Control <span>/</span> <b id="crumb">O nama</b></div>
+      <div class="crumb">Pico Flow Controls <span>/</span> <b id="crumb">O nama</b></div>
       <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#djelatnosti" data-page="djelatnosti">Djelatnosti</a><a href="#financije" data-page="financije">Financije</a><a href="#rast" data-page="rast">Rast</a></nav>
       <span class="sp"></span>
       <a class="pill" id="lang" href="en.html" hreflang="en" lang="en" title="English version">EN</a>
+      <a class="pill" href="https://pfc.hr/" target="_blank" rel="noopener">pfc.hr ↗</a>
     </header>
 
     <div class="grid" id="p-onama">
-      <section class="card s12" id="pocetak">
-        <div class="hero"><div><div class="eyebrow">Case study</div><h1>Pico Flows Control</h1><p class="lead">Povijest tvrtke, ljudi i ključne prekretnice, uz izvor za svaku tvrdnju.</p></div>
-          <div class="art" aria-hidden="true" id="art-onama"></div></div>
+      <section class="card s12" id="onama-top">
+        <div class="hero"><div><div class="eyebrow">Case study</div><h1>Pico Flow Controls</h1><p class="lead">Zagrebačka inženjerska i proizvodna tvrtka za plinsku i naftnu industriju. Nastala je spajanjem triju tvrtki: Feromihina (osnovan 1992.), Macel plina (2002.) i PFC-a (2014.). U 2025., prvoj godini kao jedna tvrtka, ostvarila je 39,4 mil. € prihoda.<sup><a href="#s1">1</a></sup><sup><a href="#s20">20</a></sup><sup><a href="#s16">16</a></sup></p></div>
+          <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s3 kpi"><div class="cap">Osnovano</div><div class="big num">…</div><div class="up">U izradi</div></section>
-      <section class="card s3 kpi"><div class="cap">Zaposlenih</div><div class="big num">…</div><div class="up">U izradi</div></section>
-      <section class="card s3 kpi"><div class="cap">Prihod</div><div class="big num">…</div><div class="up">U izradi</div></section>
-      <section class="card s3 kpi"><div class="cap">Dobit</div><div class="big num">…</div><div class="up">U izradi</div></section>
-      <section class="card s12 todo" id="razvoj"><h2 class="ttl" data-badge="U izradi">Razvoj kroz godine</h2><p>Vremenska crta osnivanja, ključnih ugovora, ulaganja i promjena vlasništva.</p></section>
-      <section class="card s12 todo" id="tim"><h2 class="ttl" data-badge="U izradi">Tim i vlasnici</h2><p>Osnivači, uprava i vlasnička struktura prema sudskom registru.</p></section>
+      <section class="card s3 kpi"><div class="cap">Korijeni</div><div class="big num">1992.</div><div class="up">Feromihin; PFC osnovan 2014.<sup><a href="#s6">6</a></sup><sup><a href="#s2">2</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Zaposlenih (2025.)</div><div class="big num">116</div><div class="up">103 prema satima rada<sup><a href="#s1">1</a></sup><sup><a href="#s3">3</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Prihod (2025.)</div><div class="big num">€39,4 mil.</div><div class="up">135. u prerađivačkoj industriji<sup><a href="#s3">3</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Bonitet (2026.)</div><div class="big num">AA+</div><div class="up">nije blokirana<sup><a href="#s1">1</a></sup></div></section>
+      <section class="card s7" id="razvoj">
+        <h2 class="ttl">Razvoj kroz godine</h2>
+        <p class="cap">Od tri zasebne tvrtke do jedne</p>
+        <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Prekretnica</span><span><i class="sw" style="background:var(--yellow)"></i>Pripajanje</span></div>
+        <ol class="tl">
+          <li class="k"><span class="yr">1992.</span><span class="dot"></span><div><h3>Osnovan Feromihin</h3><p>Na obiteljskom imanju Martinac u Obedišću, 19. veljače 1992. Kasnije se seli u Novoselec.<sup><a href="#s6">6</a></sup><sup><a href="#s49">49</a></sup><sup><a href="#s52">52</a></sup></p></div></li>
+          <li class=""><span class="yr">2002.</span><span class="dot"></span><div><h3>Osnovan Macel plin</h3><p>20. prosinca 2002. u Zagrebu, za održavanje i ugradnju plinskih instalacija. Od 2010. vlasnici su Miroslav Dombrovski i Pavle Grđan.<sup><a href="#s9">9</a></sup><sup><a href="#s10">10</a></sup></p></div></li>
+          <li class="k"><span class="yr">2014.</span><span class="dot"></span><div><h3>Osnovan PICO FLOW CONTROLS</h3><p>17. listopada 2014. Osnivači: Pavle Grđan, Miroslav Dombrovski i Dubravko Kamenečki.<sup><a href="#s2">2</a></sup></p></div></li>
+          <li class=""><span class="yr">2015.</span><span class="dot"></span><div><h3>PFC preuzima Macel plin</h3><p>Od 2. siječnja 2015. PFC je jedini vlasnik Macel plina. Kamenečki postaje direktor PFC-a 30. siječnja 2015.<sup><a href="#s10">10</a></sup><sup><a href="#s2">2</a></sup></p></div></li>
+          <li class="k"><span class="yr">2016.</span><span class="dot"></span><div><h3>PFC kupuje Feromihin</h3><p>Dotadašnji vlasnik Stjepan Martinac izlazi iz posla, a PFC je vlasnik od 1. kolovoza 2016.<sup><a href="#s7">7</a></sup><sup><a href="#s49">49</a></sup></p></div></li>
+          <li class=""><span class="yr">2020.</span><span class="dot"></span><div><h3>MRS Magadenovac za Plinacro</h3><p>Završno puštanje u rad mjerno-redukcijske stanice; investitor Plinacro.<sup><a href="#s42">42</a></sup></p></div></li>
+          <li class=""><span class="yr">2021.</span><span class="dot"></span><div><h3>AYMO, prva samoposlužna CNG stanica, MEGC</h3><p>Softver za cjevovode dobiva ime AYMO. Macel plin gradi prvu samoposlužnu CNG stanicu u Hrvatskoj (Slavonski Brod) i isporučuje prve kontejnere za plin Rafineriji nafte Brod.<sup><a href="#s50">50</a></sup><sup><a href="#s40">40</a></sup><sup><a href="#s38">38</a></sup></p></div></li>
+          <li class=""><span class="yr">2022.</span><span class="dot"></span><div><h3>EU projekt i izvoz</h3><p>Projekt komercijalizacije Feromihinovih inovacija vrijedan 1,29 mil. €, s 0,36 mil. € EU potpore. Feromihin ima 40 zaposlenih i izvozi u osam zemalja.<sup><a href="#s19">19</a></sup><sup><a href="#s49">49</a></sup></p></div></li>
+          <li class=""><span class="yr">2023.</span><span class="dot"></span><div><h3>Feromihin udvostručuje prihod</h3><p>Prihod raste s 6,25 na 13,75 mil. €, a broj zaposlenih s 40 na 54.<sup><a href="#s8">8</a></sup><sup><a href="#s6">6</a></sup></p></div></li>
+          <li class="m"><span class="yr">2024.</span><span class="dot"></span><div><h3>Pripajanje</h3><p>Krajem 2024. Macel plin i Feromihin formalno su pripojeni PFC-u. U registru su izbrisani 11. ožujka 2025.<sup><a href="#s20">20</a></sup><sup><a href="#s6">6</a></sup><sup><a href="#s9">9</a></sup></p></div></li>
+          <li class="k"><span class="yr">2025.</span><span class="dot"></span><div><h3>Prva godina kao jedna tvrtka</h3><p>Prihod 39,37 mil. €, neto dobit 11,30 mil. € i 116 zaposlenih.<sup><a href="#s1">1</a></sup><sup><a href="#s3">3</a></sup></p></div></li>
+          <li class=""><span class="yr">2026.</span><span class="dot"></span><div><h3>KPPP, ptc Berlin, uspješna žalba</h3><p>PFC predstavlja mobilni kompresor KPPP na HSUP-u i HUNIG-u, a s turskim partnerom dobiva žalbu protiv Plinacrove odluke o nabavi.<sup><a href="#s45">45</a></sup><sup><a href="#s46">46</a></sup><sup><a href="#s54">54</a></sup></p></div></li>
+        </ol>
+      </section>
+      <div class="s5 colstack">
+        <section class="card" id="vlasnici">
+          <h2 class="ttl">Vlasnici i povezane tvrtke</h2>
+          <p class="cap">Prema sudskom registru, stanje listopad 2026.</p>
+          <div class="org">
+            <div class="lbl">Vlasnici (udjeli nisu javni)</div>
+            <div class="box"><b>KALIDOR TECHNO</b><span>Dubravko Kamenečki, od 2019.<sup><a href="#s13">13</a></sup></span></div>
+            <div class="box"><b>MDM USLUGE 1991</b><span>obitelj Dombrovski i PICO FLOW CONTROLS S.R.L. (Italija), od 2017.<sup><a href="#s12">12</a></sup></span></div>
+            <div class="box"><b>Florex</b><span>od 17. 9. 2026.; ranije MACEL d.o.o. (2017.–2026.)<sup><a href="#s2">2</a></sup><sup><a href="#s14">14</a></sup></span></div>
+            <div class="box main"><b>PICO FLOW CONTROLS d.o.o.</b><span>OIB 80909868681 · Samoborska cesta 15, Zagreb · temeljni kapital €3.960<sup><a href="#s3">3</a></sup></span></div>
+            <div class="lbl">Tvrtke u vlasništvu PFC-a</div>
+            <div class="box"><b>Feromihin</b><span>pripojen, izbrisan 3/2025<sup><a href="#s6">6</a></sup></span></div>
+            <div class="box"><b>Macel plin</b><span>pripojen, izbrisan 3/2025<sup><a href="#s9">9</a></sup></span></div>
+            <div class="box off"><b>Zemis · Vranci · Async</b><span>ne posluju od 2021. i 2024.<sup><a href="#s5">5</a></sup></span></div>
+          </div>
+          <p class="note">Florex i MACEL d.o.o. imaju istu djelatnost u nazivu (zračni prijevoz), a Florex isti telefon kao Macel plin. Da je riječ o istoj, preimenovanoj tvrtki, moja je pretpostavka.<sup><a href="#s14">14</a></sup></p>
+        </section>
+        <section class="card" id="tim">
+          <h2 class="ttl">Ljudi</h2>
+          <p class="cap">Prema sudskom registru i javnim objavama</p>
+          <div class="people" style="margin-top:12px">
+          <div class="person"><span class="av" style="background:var(--green)">DK</span><div><b>Dubravko Kamenečki</b><span>Direktor PFC-a od 2015. i suosnivač. Vlasnik i direktor KALIDOR TECHNO d.o.o., suvlasnika PFC-a. Direktor Feromihina 2020.–2023. „Više od 30 godina iskustva u nafti i plinu”.<sup><a href="#s2">2</a></sup><sup><a href="#s13">13</a></sup><sup><a href="#s7">7</a></sup><sup><a href="#s53">53</a></sup><sup><a href="#s51">51</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--yellow)">MD</span><div><b>Miroslav Dombrovski</b><span>Suosnivač i direktor PFC-a 2014.–2020., suvlasnik Macel plina od 2010. Danas s Michele Dombrovski i talijanskim PICO FLOW CONTROLS S.R.L. (Modena) vlasnik MDM USLUGE 1991 d.o.o., suvlasnika PFC-a.<sup><a href="#s2">2</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s12">12</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--orange)">PG</span><div><b>Pavle Grđan</b><span>Suosnivač PFC-a, direktor Macel plina 2002.–2004. i PFC-a 2015.–2019. Izašao iz vlasništva PFC-a 2017.<sup><a href="#s2">2</a></sup><sup><a href="#s10">10</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--green)">DJ</span><div><b>Damir Jeličić</b><span>Tehnički direktor PFC-a. Ranije voditelj projekata i direktor tehničkih usluga u Macel plinu.<sup><a href="#s45">45</a></sup><sup><a href="#s41">41</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Mario Matanić</b><span>Direktor Feromihina od 2013. do pripajanja 2025.<sup><a href="#s7">7</a></sup><sup><a href="#s49">49</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--orange)">JN</span><div><b>Jadranka Novotni</b><span>Direktorica Macel plina 2017.–2025.<sup><a href="#s10">10</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--green)">IL</span><div><b>Iva Ljubičić · Vedran Prica</b><span>Komercijalna direktorica i voditelj komercijalnih operacija Feromihina (2024.).<sup><a href="#s56">56</a></sup></span></div></div>
+          </div>
+        </section>
+      </div>
+      <section class="card s6" id="lokacije">
+        <h2 class="ttl">Lokacije</h2>
+        <ul class="ul">
+          <li><span><b>Zagreb</b>, Samoborska cesta 15: sjedište, ranije i sjedište Macel plina<sup><a href="#s17">17</a></sup><sup><a href="#s9">9</a></sup></span></li>
+          <li><span><b>Novoselec</b>, Moslavačka 22: bivše sjedište Feromihina<sup><a href="#s17">17</a></sup><sup><a href="#s6">6</a></sup></span></li>
+          <li><span><b>Sv. Križ Začretje</b>, Pustodol Začretski 19B i 19K: radno mjesto za razvoj elektronike (oglas za posao)<sup><a href="#s17">17</a></sup><sup><a href="#s47">47</a></sup></span></li>
+        </ul>
+        <p class="note">Web stranica ne navodi što se radi na kojoj lokaciji, osim navedenog.</p>
+      </section>
+      <section class="card s6" id="certifikati">
+        <h2 class="ttl">Certifikati i akreditacije</h2>
+        <div class="chips"><span class="chip">ISO 9001</span><span class="chip">ISO 14001</span><span class="chip">ISO 45001</span><span class="chip">ISO 29001</span><span class="chip">ISO 27001</span><span class="chip">ISO/IEC 17020</span><span class="chip">ISO 3834-2</span><span class="chip">EN 1090-2</span><span class="chip">SCCp</span><span class="chip">IEC 60079-14/17/19 (Ex)</span><span class="chip">A-IV</span><span class="chip">PED 2014/68/EU</span></div>
+        <p class="note">ISO 29001 je norma za naftnu i plinsku industriju. Akreditacija po ISO/IEC 17020 (HAA) znači da PFC smije kao inspekcijsko tijelo tipa C ispitivati sigurnosne ventile.<sup><a href="#s18">18</a></sup><sup><a href="#s35">35</a></sup></p>
+      </section>
     </div>
+
     <div class="grid" id="p-djelatnosti" hidden>
-      <section class="card s12" id="h-djelatnosti">
-        <div class="hero"><div><div class="eyebrow">Djelatnosti</div><h1>Što tvrtka radi i za koga</h1><p class="lead">Proizvodi i usluge, kupci, tržišta i konkurencija.</p></div>
-          <div class="art" aria-hidden="true" id="art-djelatnosti"></div></div>
+      <section class="card s12" id="djel-top">
+        <div class="hero"><div><div class="eyebrow">Djelatnosti · četiri područja</div><h1>Sve za plinovod, od uređaja do softvera</h1><p class="lead">PFC proizvodi vlastite uređaje i opremu, gradi plinska postrojenja po mjeri, održava i ispituje plinovode te razvija softver za njihovo upravljanje. Glavni kupci su hrvatske energetske tvrtke.<sup><a href="#s15">15</a></sup><sup><a href="#s57">57</a></sup></p></div>
+          <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s12 todo" id="proizvodi"><h2 class="ttl" data-badge="U izradi">Proizvodi i usluge</h2><p>Glavne linije proizvoda i usluga, s primjerima iz stvarnog poslovanja.</p></section>
-      <section class="card s12 todo" id="kupci"><h2 class="ttl" data-badge="U izradi">Kupci i tržišta</h2><p>Ključni kupci, izvoz i struktura prodaje po tržištima.</p></section>
-      <section class="card s12 todo" id="konkurencija"><h2 class="ttl" data-badge="U izradi">Konkurencija</h2><p>Domaći i europski konkurenti i usporedba ponude.</p></section>
+      <section class="card s3 kpi"><div class="cap">eLBC instalirano</div><div class="big num">1.000</div><div class="up">vlastiti proizvod<sup><a href="#s21">21</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Mjerno-redukcijskih stanica</div><div class="big num">30</div><div class="up">do 250 bar<sup><a href="#s30">30</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Kontejnera za plin (MEGC)</div><div class="big num">14</div><div class="up">virtualni plinovod<sup><a href="#s29">29</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Tržišta izvoza (2022.)</div><div class="big num">8</div><div class="up">od Slovenije do Nigerije<sup><a href="#s49">49</a></sup></div></section>
+      <section class="card s6" id="proizvodnja">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l5 3V9l5 3V5h4v16"/></svg></span><div><h2 class="ttl">1. Proizvodnja</h2><div class="cap">Vlastiti uređaji i oprema za plinovode</div></div></div>
+        <ul class="ul"><li><span><b>eLBC</b>: elektronički uređaj koji zatvara ventil kad pukne plinovod, i u solarnoj izvedbi. „1000 eLBC instalirano”.<sup><a href="#s21">21</a></sup><sup><a href="#s49">49</a></sup></span></li><li><span><b>RIKI</b>: uređaj za kalibraciju LBC uređaja.<sup><a href="#s22">22</a></sup></span></li><li><span><b>Tiskane pločice</b>: dvije SMT linije, ukupno 71.600 komponenti na sat; radi i za druge naručitelje.<sup><a href="#s23">23</a></sup></span></li><li><span><b>Tlačna oprema</b>: filteri, separatori, posude i izmjenjivači topline (ASME VIII, EN 13445, PED).<sup><a href="#s25">25</a></sup></span></li><li><span><b>AEGIS</b>: plastične mreže za zaštitu cijevi, geomreže i ograde, potpuno proizvedene u Hrvatskoj; izložene na sajmu K 2025.<sup><a href="#s24">24</a></sup><sup><a href="#s60">60</a></sup></span></li><li><span><b>Cijevni segmenti i čelične konstrukcije</b> (EN 13480, EN 1090-2), CNC obrada i ormari za upravljanje (DCS/ESD).<sup><a href="#s59">59</a></sup></span></li></ul>
+      </section>
+      <section class="card s6" id="rjesenja">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><path d="M4 12h4l3-7 4 14 3-7h2"/></svg></span><div><h2 class="ttl">2. Plinska rješenja</h2><div class="cap">Postrojenja po mjeri, od projekta do puštanja u rad</div></div></div>
+        <ul class="ul"><li><span><b>KPPP</b>: mobilna rekompresijska jedinica koja plin iz dionice plinovoda prepumpava umjesto da se ispusti; ulaz do 250 bar, do 9.000 Sm³/h, motor 400 kW.<sup><a href="#s28">28</a></sup></span></li><li><span><b>Virtualni plinovod</b>: kontejneri za stlačeni plin (MEGC) na poluprikolicama, 5.700 Nm³ po kontejneru; 14 isporučenih.<sup><a href="#s29">29</a></sup></span></li><li><span><b>Mjerno-redukcijske stanice</b>: 30 stanica, do 250 bar.<sup><a href="#s30">30</a></sup></span></li><li><span><b>CNG, LPG, LNG i H2</b>: šest CNG stanica i jedna samoposlužna.<sup><a href="#s31">31</a></sup></span></li><li><span><b>GRIZO</b> stanice sintetskog plina, dehidracija plina (5.000–100.000 Sm³/h), odorizacija i analizatori (15 kromatografa).<sup><a href="#s58">58</a></sup><sup><a href="#s33">33</a></sup><sup><a href="#s32">32</a></sup></span></li></ul>
+      </section>
+      <section class="card s6" id="usluge">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"/></svg></span><div><h2 class="ttl">3. Usluge na terenu</h2><div class="cap">Ispitivanje, popravci i održavanje plinovoda</div></div></div>
+        <ul class="ul"><li><span><b>Ispitivanje ventila</b> do 650 bar (API 6A, 6D, 598) i <b>sigurnosnih ventila</b> do 400 bar kao akreditirano inspekcijsko tijelo.<sup><a href="#s34">34</a></sup><sup><a href="#s35">35</a></sup></span></li><li><span><b>Ballooning i hot tapping</b>: rad na plinovodu bez prekida opskrbe, DN 80–200.<sup><a href="#s37">37</a></sup></span></li><li><span><b>Zaštita od korozije</b>: ekskluzivni distributer Stopaqa za Hrvatsku, BiH, Sloveniju, Srbiju, Crnu Goru i Kosovo.<sup><a href="#s36">36</a></sup></span></li><li><span>Pregledi cjevovoda (ILI i NON-ILI), elektroradovi, procesna instrumentacija i građevinski radovi.<sup><a href="#s57">57</a></sup></span></li></ul>
+      </section>
+      <section class="card s6" id="it">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><div><h2 class="ttl">4. Softver</h2><div class="cap">Digitalni proizvodi za upravljanje cjevovodima</div></div></div>
+        <ul class="ul"><li><span><b>AYMO</b>: sustav za upravljanje integritetom cjevovoda, sedam modula. Razvijen s Async Labsom, predstavljen u Kazahstanu, UAE, Saudijskoj Arabiji, Brazilu i Berlinu.<sup><a href="#s26">26</a></sup><sup><a href="#s50">50</a></sup><sup><a href="#s48">48</a></sup></span></li><li><span><b>AMS</b>: sustav za upravljanje imovinom; 46.013 unesenih sredstava i 3.857 zadataka, koristi ga i LNG terminal.<sup><a href="#s27">27</a></sup></span></li></ul>
+      </section>
+      <section class="card s12" id="kupci">
+        <h2 class="ttl">Kupci i projekti</h2>
+        <p class="cap">Projekti koje je tvrtka javno objavila</p>
+        <div class="partners" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))"><div class="partner"><span class="yr">2020.</span><b>Plinacro</b><span>MRS Magadenovac, puštanje u rad<sup><a href="#s42">42</a></sup></span></div><div class="partner"><span class="yr">2021.</span><b>NRG (Slovenija)</b><span>CNG stanica za slovenskog partnera<sup><a href="#s43">43</a></sup></span></div><div class="partner"><span class="yr">2021.</span><b>Brod-plin</b><span>prva samoposlužna CNG stanica u Hrvatskoj, 3,7 mil. kn<sup><a href="#s40">40</a></sup></span></div><div class="partner"><span class="yr">2021.–2022.</span><b>Rafinerija nafte Brod (BiH)</b><span>6 kontejnera za plin na poluprikolicama<sup><a href="#s38">38</a></sup><sup><a href="#s39">39</a></sup></span></div><div class="partner"><span class="yr">2024.</span><b>Vetropack Straža</b><span>stanica prirodnog i sintetskog plina, 18 kontejnera, prekid opskrbe 38 h umjesto 48 h<sup><a href="#s41">41</a></sup></span></div><div class="partner"><span class="yr">2026.</span><b>plinovod DN150</b><span>popravak visokotlačnog plinovoda, MRS Zaprešić – PMRS TAPI S. Marof<sup><a href="#s44">44</a></sup></span></div></div>
+        <p class="note">Poslovni partneri na web stranici (logotipi, bez navedenih ugovora): INA · Plinacro · HEP · LNG Hrvatska · Plinara Zagreb · Petrokemija · ZET · Petrol (Crodux) · Vetropack · Monter SM · Montmontaža · Monting · Optima grupa · Zarubezhneft.<sup><a href="#s57">57</a></sup></p>
+      </section>
+      <section class="card s6" id="trzista">
+        <h2 class="ttl">Tržišta</h2>
+        <ul class="ul">
+          <li><span>Najvažnije tržište je Hrvatska. Feromihin je 2022. izvozio u Sloveniju, BiH, Srbiju, Tursku, Kazahstan, UAE, Alžir i Nigeriju.<sup><a href="#s49">49</a></sup></span></li>
+          <li><span>Sajmovi i konferencije: ptc Berlin (2021.–2026.), ADIPEC Abu Dhabi i KIOGE Kazahstan (2021.), Rio Oil &amp; Gas i SPICONX Saudijska Arabija (2022.), Namibija i Kenija (2024.), K Düsseldorf (2025.).<sup><a href="#s48">48</a></sup><sup><a href="#s55">55</a></sup><sup><a href="#s56">56</a></sup><sup><a href="#s53">53</a></sup></span></li>
+          <li><span>Feromihin je bio ovlašteni distributer za Seal for Life (Stopaq), 3X Engineering, Bernard Controls i Quam.<sup><a href="#s49">49</a></sup></span></li>
+        </ul>
+      </section>
+      <section class="card s6" id="nabava">
+        <h2 class="ttl">Javna nabava</h2>
+        <p>U kolovozu 2026. Državna komisija prihvatila je žalbu zajednice ponuditelja PFC-a i turskog proizvođača Kurvalf Vana na Plinacrov odabir dobavljača slavina i zaklopki. Odluka je poništena jer certifikati odabranih ponuditelja nisu glasili na njih.<sup><a href="#s54">54</a></sup></p>
+        <p class="note">Pokazuje da PFC nudi i opremu stranih proizvođača na natječajima Plinacra. Vrijednost nabave nije navedena.</p>
+      </section>
+      <section class="card s12 todo" id="konkurencija">
+        <h2 class="ttl">Konkurencija<span class="tag">U izradi</span></h2>
+        <p>Usporedba s domaćim i europskim konkurentima slijedi u idućem koraku.</p>
+      </section>
     </div>
+
     <div class="grid" id="p-financije" hidden>
-      <section class="card s12" id="h-financije">
-        <div class="hero"><div><div class="eyebrow">Financije</div><h1>Brojke iz službenih izvještaja</h1><p class="lead">Prihodi, dobit, marže, troškovi i pokazatelji kroz godine, iz godišnjih izvještaja predanih FINA-i.</p></div>
-          <div class="art" aria-hidden="true" id="art-financije"></div></div>
+      <section class="card s12" id="fin-top">
+        <div class="hero"><div><div class="eyebrow">Financije</div><h1>Iz tri male tvrtke u jednu od najprofitabilnijih</h1><p class="lead">Nakon pripajanja PFC je 2025. ostvario 39,4 mil. € prihoda i 11,3 mil. € neto dobiti. Po dobiti je 27. od 16.932 tvrtke u prerađivačkoj industriji.<sup><a href="#s3">3</a></sup><sup><a href="#s4">4</a></sup></p></div>
+          <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s12 todo" id="pregled"><h2 class="ttl" data-badge="U izradi">Pregled po godinama</h2><p>Prihod, dobit ili gubitak, kapital i broj zaposlenih iz službenih izvještaja (FINA).</p></section>
-      <section class="card s12 todo" id="marze"><h2 class="ttl" data-badge="U izradi">Marže i troškovi</h2><p>Bruto marža, EBITDA i neto marža, struktura troškova i trošak rada po zaposlenom.</p></section>
-      <section class="card s12 todo" id="pokazatelji"><h2 class="ttl" data-badge="U izradi">Pokazatelji</h2><p>Likvidnost, zaduženost, obrtni kapital i prijedlog KPI dashboarda.</p></section>
+      <section class="card s3 kpi"><div class="cap">Ukupni prihod 2025.</div><div class="big num">€39,37 mil.</div><div class="up">+805 % na 2024.<sup><a href="#s3">3</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">EBITDA 2025.</div><div class="big num">€15,16 mil.</div><div class="up">marža 38,5 %<sup><a href="#s3">3</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Neto dobit 2025.</div><div class="big num">€11,30 mil.</div><div class="up">marža 28,7 %<sup><a href="#s4">4</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Novac (kraj 2025.)</div><div class="big num">€10,11 mil.</div><div class="up">bez dugoročnog duga<sup><a href="#s4">4</a></sup></div></section>
+      <div class="s7 colstack">
+      <section class="card" id="pregled">
+        <h2 class="ttl">Prihod grupe kroz godine</h2>
+        <p class="cap">Milijuni eura, poslovni prihodi</p>
+        <div class="legend" style="margin-top:10px"><span><i class="sw est"></i>Zbroj Feromihina i Macel plina</span><span><i class="sw" style="background:var(--green)"></i>PFC nakon pripajanja</span></div>
+        <svg class="chart lg" id="ch-rev" viewBox="0 0 520 260" role="img" aria-label="Poslovni prihodi u milijunima eura: 2020. 11,2, 2021. 13,0, 2022. 12,8, 2023. 21,7, 2024. 19,1, 2025. 39,4"></svg>
+        <p class="note">Do 2024. prikazujem zbroj poslovnih prihoda dviju operativnih tvrtki iz njihovih izvještaja. To nije konsolidirani prihod: međusobna prodaja nije isključena, a PFC kao matica 2024. ima još 1,96 mil. € poslovnih prihoda. Zato su ti stupci isprekidani.<sup><a href="#s8">8</a></sup><sup><a href="#s11">11</a></sup><sup><a href="#s4">4</a></sup></p>
+      </section>
+      <section class="card">
+        <h2 class="ttl">PICO FLOW CONTROLS d.o.o.</h2>
+        <p class="cap">Milijuni eura, službeni godišnji izvještaji (FINA)</p>
+        <div class="tw" style="margin-top:10px"><table class="fin"><thead><tr><th></th><th>2023.</th><th>2024.</th><th>2025.</th></tr></thead><tbody><tr class=""><td>Poslovni prihodi</td><td>0,14</td><td>1,96</td><td>39,36</td></tr><tr class="sub"><td>Financijski prihodi</td><td>0,00</td><td>2,39</td><td>0,00</td></tr><tr class="tot"><td>Ukupni prihodi</td><td>0,14</td><td>4,35</td><td>39,37</td></tr><tr class=""><td>Poslovni rashodi</td><td>0,14</td><td>0,74</td><td>25,56</td></tr><tr class=""><td>Dobit prije poreza</td><td>0,01</td><td>3,47</td><td>13,78</td></tr><tr class="tot"><td>Neto dobit</td><td>0,005</td><td>3,27</td><td>11,30</td></tr><tr class=""><td>Ukupna imovina</td><td>3,21</td><td>20,19</td><td>26,25</td></tr><tr class="sub"><td>od toga novac</td><td>0,11</td><td>3,66</td><td>10,11</td></tr><tr class=""><td>Kapital i rezerve</td><td>2,69</td><td>16,48</td><td>19,73</td></tr><tr class=""><td>Kratkoročne obveze</td><td>0,40</td><td>2,11</td><td>3,55</td></tr><tr class=""><td>Zaposleni</td><td>0</td><td>25</td><td>116</td></tr><tr class=""><td>Prosječna neto plaća (€)</td><td>—</td><td>293</td><td>1.527</td></tr></tbody></table></div>
+        <p class="note">Do 2024. PFC je bio matica bez većeg vlastitog poslovanja; 2,39 mil. € financijskih prihoda u 2024. vjerojatno su dividende iz Feromihina i Macel plina (moj zaključak). Ukupnu imovinu za 2025. CroBIZ navodi kao 26,25 mil. €, a CompanyWall kao 23,40 mil. €.<sup><a href="#s4">4</a></sup><sup><a href="#s1">1</a></sup></p>
+      </section>
+      <section class="card" id="pokazatelji">
+        <h2 class="ttl">Pripojene tvrtke prije spajanja</h2>
+        <p class="cap">Milijuni eura, poslovni prihodi, neto dobit i zaposleni</p>
+        <div class="tw" style="margin-top:10px"><table class="fin"><thead><tr><th></th><th>2020.</th><th>2021.</th><th>2022.</th><th>2023.</th><th>2024.</th></tr></thead><tbody><tr class="tot"><td>Feromihin</td><td>5,42</td><td>7,45</td><td>6,23</td><td>13,71</td><td>11,22</td></tr><tr class="sub"><td>neto dobit</td><td>1,10</td><td>1,96</td><td>0,66</td><td>2,96</td><td>1,65</td></tr><tr class="sub"><td>zaposleni</td><td>—</td><td>30</td><td>40</td><td>54</td><td>99</td></tr><tr class="tot"><td>Macel plin</td><td>5,74</td><td>5,59</td><td>6,57</td><td>7,96</td><td>7,85</td></tr><tr class="sub"><td>neto dobit</td><td>1,11</td><td>1,06</td><td>0,89</td><td>1,94</td><td>1,13</td></tr><tr class="sub"><td>zaposleni</td><td>—</td><td>27</td><td>31</td><td>34</td><td>35</td></tr></tbody></table></div>
+        <p class="note">Neto marža 2023.: Feromihin 21,5 %, Macel plin 24,3 %; 2024.: oko 14,5 % obje. Feromihin je 2023. imao 10,1 mil. € kratkoročnih potraživanja, što upućuje na velik projekt pred kraj godine. Lider za 2021. navodi Feromihinov prihod od prodaje od 49,97 mil. kn (6,63 mil. €).<sup><a href="#s8">8</a></sup><sup><a href="#s11">11</a></sup><sup><a href="#s49">49</a></sup></p>
+      </section>
+      </div>
+      <div class="s5 colstack">
+      <section class="card">
+        <h2 class="ttl">Neto dobit grupe</h2>
+        <p class="cap">Milijuni eura</p>
+        <svg class="chart" id="ch-profit" viewBox="0 0 400 220" role="img" aria-label="Neto dobit u milijunima eura: 2020. 2,2, 2021. 3,0, 2022. 1,6, 2023. 4,9, 2024. 2,8, 2025. 11,3"></svg>
+        <p class="note">Do 2024. zbroj dobiti Feromihina i Macel plina, bez PFC-a, čija je dobit uglavnom dividenda od te dvije tvrtke.<sup><a href="#s8">8</a></sup><sup><a href="#s11">11</a></sup></p>
+      </section>
+      <section class="card" id="marze">
+        <h2 class="ttl">Pokazatelji za 2025.</h2>
+        <p class="cap">Moj izračun iz službenih podataka</p>
+        <div class="tw" style="margin-top:10px"><table class="revt"><tbody><tr><td>EBITDA marža<small>EBITDA 15,16 mil. € / prihod<sup><a href="#s3">3</a></sup></small></td><td>38,5 %</td></tr><tr><td>EBIT marža<small>EBIT 13,80 mil. €<sup><a href="#s3">3</a></sup></small></td><td>35,1 %</td></tr><tr><td>Neto marža<small>neto dobit / ukupni prihod<sup><a href="#s4">4</a></sup></small></td><td>28,7 %</td></tr><tr><td>Poslovni rashodi / prihod<small>25,56 / 39,36 mil. €<sup><a href="#s4">4</a></sup></small></td><td>64,9 %</td></tr><tr><td>Prihod po zaposlenom<small>116 zaposlenih<sup><a href="#s1">1</a></sup></small></td><td>€339 tis.</td></tr><tr><td>Neto dobit po zaposlenom<small>116 zaposlenih<sup><a href="#s1">1</a></sup></small></td><td>€97 tis.</td></tr><tr><td>Bruto plaće / prihod<small>~3,57 mil. €: 116 × 2.566 € × 12; procjena<sup><a href="#s1">1</a></sup></small></td><td>~9 %</td></tr><tr><td>Tekuća likvidnost<small>kratkotrajna imovina / kratkoročne obveze<sup><a href="#s4">4</a></sup><sup><a href="#s1">1</a></sup></small></td><td>5,1</td></tr><tr><td>Novac / kratkoročne obveze<small>10,11 / 3,55 mil. €<sup><a href="#s4">4</a></sup><sup><a href="#s1">1</a></sup></small></td><td>2,8</td></tr><tr><td>Udio kapitala u imovini<small>ovisno o izvoru za imovinu<sup><a href="#s4">4</a></sup><sup><a href="#s1">1</a></sup></small></td><td>75–84 %</td></tr><tr><td>Dani naplate potraživanja<small>potraživanja / prihod × 365<sup><a href="#s4">4</a></sup><sup><a href="#s1">1</a></sup></small></td><td>36–45</td></tr><tr><td>Efektivna stopa poreza<small>2,49 / 13,78 mil. €<sup><a href="#s4">4</a></sup></small></td><td>18,0 %</td></tr></tbody></table></div>
+      </section>
+      <section class="card">
+        <h2 class="ttl">Pitanja za daljnju analizu</h2>
+        <p class="cap">Odgovore traže detaljni izvještaji iz RGFI-ja</p>
+        <ul class="q"><li>Zašto je prihod 2025. (39,4 mil. €) gotovo dvostruko veći od zbroja Feromihina, Macel plina i PFC-a u 2024. (~21 mil. €)? Je li riječ o jednom velikom projektu, novom kupcu ili drukčijem knjiženju nakon pripajanja?</li><li>Tri tvrtke imale su 2024. zajedno oko 159 zaposlenih, a PFC u 2025. ima 116. Gdje je razlika: odlasci, vanjski suradnici ili drukčije brojanje?</li><li>Marža EBITDA od 38,5 % vrlo je visoka za inženjersku tvrtku. Koliko je od toga jednokratno?</li><li>Vlasnici KALIDOR TECHNO i MDM USLUGE 1991 imali su 2025. dobit 4,85 i 1,65 mil. € bez zaposlenih. To upućuje na dividende iz PFC-a, ali to je moja pretpostavka.</li></ul>
+      </section>
+      </div>
     </div>
+
     <div class="grid" id="p-rast" hidden>
-      <section class="card s12" id="h-rast">
-        <div class="hero"><div><div class="eyebrow">Rast</div><h1>Gdje tvrtka može rasti</h1><p class="lead">Prilike i prijedlozi s procjenom prihoda, troškova i ulaganja. Procjene su jasno označene.</p></div>
-          <div class="art" aria-hidden="true" id="art-rast"></div></div>
+      <section class="card s12" id="rast-top">
+        <div class="hero"><div><div class="eyebrow">Rast</div><h1>Gdje PFC može rasti</h1><p class="lead">Prvi pregled snaga, prilika i rizika iz prikupljenih podataka. Razrađeni prijedlozi s procjenom prihoda, troškova i ulaganja dolaze u idućoj fazi projekta.</p></div>
+          <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s12 todo" id="prilike"><h2 class="ttl" data-badge="U izradi">Prilike</h2><p>Tržišne prilike, poredane po omjeru učinka i truda.</p></section>
-      <section class="card s12 todo" id="prijedlozi"><h2 class="ttl" data-badge="U izradi">Prijedlozi</h2><p>Prijedlozi rasta s procjenom godišnjeg prihoda i troškova te jednokratnog ulaganja.</p></section>
-      <section class="card s12 todo" id="plan"><h2 class="ttl" data-badge="U izradi">Plan po fazama</h2><p>Redoslijed provedbe: 0–6, 6–12 i 12–24 mjeseca.</p></section>
+      <section class="card s12" id="prilike">
+        <h2 class="ttl">Prvi zaključci</h2>
+        <p class="cap">Moja procjena na temelju istraživanja, ne plan tvrtke</p>
+        <div class="deals" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))"><div class="deal hi"><div class="deal-h"><h3>Vlastiti proizvodi i znanje</h3><span class="fit">Snaga</span></div><p>eLBC, KPPP, MEGC, AYMO i AMS su vlastiti proizvodi, a ne preprodaja. To objašnjava visoke marže: 21–24 % neto već prije pripajanja.<sup><a href="#s8">8</a></sup><sup><a href="#s11">11</a></sup></p></div><div class="deal hi"><div class="deal-h"><h3>EU uredba o metanu</h3><span class="fit">Prilika</span></div><p>Uredba (EU) 2024/1787 ograničava ispuštanje metana. KPPP omogućuje da se plin iz dionice plinovoda prepumpa umjesto ispusti, a PFC to ističe u nastupima 2026.<sup><a href="#s46">46</a></sup></p></div><div class="deal mid"><div class="deal-h"><h3>Izvoz softvera i uređaja</h3><span class="fit">Prilika</span></div><p>AYMO je predstavljen na sajmovima od Kazahstana do Brazila, a Feromihin je izvozio u 8 zemalja. Iz izvještaja se ne vidi koliki je udio izvoza danas.<sup><a href="#s49">49</a></sup><sup><a href="#s50">50</a></sup></p></div><div class="deal lo"><div class="deal-h"><h3>Ovisnost o malom broju kupaca</h3><span class="fit">Rizik</span></div><p>Partneri na stranici su uglavnom hrvatske državne energetske tvrtke (Plinacro, INA, HEP, LNG Hrvatska). Udio pojedinog kupca nije javan.<sup><a href="#s57">57</a></sup></p></div></div>
+      </section>
+      <section class="card s6 todo" id="prijedlozi">
+        <h2 class="ttl">Prijedlozi<span class="tag">Iduća faza</span></h2>
+        <p>Prijedlozi rasta s klizačima za pretpostavke, godišnjim iznosom prihoda i troškova te jednokratnim ulaganjem.</p>
+      </section>
+      <section class="card s6 todo" id="plan">
+        <h2 class="ttl">Plan po fazama<span class="tag">Iduća faza</span></h2>
+        <p>Redoslijed provedbe: 0–6, 6–12 i 12–24 mjeseca.</p>
+      </section>
     </div>
 
     <section class="card" id="izvori">
       <h2 class="ttl">Izvori</h2>
-      <p class="note">Popis izvora puni se kako se prikupljaju podaci. Svaka brojka na stranici bit će označena brojem izvora.</p>
-      <ol class="src"></ol>
+      <p class="note">Brojke u tekstu označene su brojem izvora. Prikupljeno 27. listopada 2026. Financijski podaci su u eurima; iznosi prije 2023. preračunati su u eure u izvorima.</p>
+      <ol class="src">
+        <li id="s1"><a href="https://www.companywall.hr/tvrtka/pico-flow-controls-doo/MM1US40C" target="_blank" rel="noopener">CompanyWall: PICO FLOW CONTROLS d.o.o., osnovni i financijski podaci (izvor FINA)</a></li>
+        <li id="s2"><a href="https://www.companywall.hr/tvrtka/pico-flow-controls-doo/MM1US40C/osobe" target="_blank" rel="noopener">CompanyWall: PFC, osobe i vlasništvo s datumima</a></li>
+        <li id="s3"><a href="https://infobiz.fina.hr/tvrtka/pico-flow-controls-d-o-o/OIB-80909868681" target="_blank" rel="noopener">FINA Info.BIZ: PFC, prihod, dobit, EBITDA i rang 2025.</a></li>
+        <li id="s4"><a href="https://crobiz.net/info/pico-flow-controls-zagreb/n5x9LNVD" target="_blank" rel="noopener">CroBIZ: PFC, godišnji financijski izvještaji 2021.–2025.</a></li>
+        <li id="s5"><a href="https://crobiz.net/osoba/pico-flow-controls/PO0kYJxE" target="_blank" rel="noopener">CroBIZ: tvrtke povezane s PFC-om</a></li>
+        <li id="s6"><a href="https://www.companywall.hr/tvrtka/feromihin-doo/MMxd5wlq" target="_blank" rel="noopener">CompanyWall: FEROMIHIN d.o.o.</a></li>
+        <li id="s7"><a href="https://www.companywall.hr/tvrtka/feromihin-doo/MMxd5wlq/osobe" target="_blank" rel="noopener">CompanyWall: Feromihin, osobe i vlasništvo</a></li>
+        <li id="s8"><a href="https://crobiz.net/info/feromihin-novoselec/DQ5PW4BD" target="_blank" rel="noopener">CroBIZ: Feromihin, financijski izvještaji 2020.–2024.</a></li>
+        <li id="s9"><a href="https://www.companywall.hr/tvrtka/macel-plin-doo/MMskOJY" target="_blank" rel="noopener">CompanyWall: MACEL PLIN d.o.o.</a></li>
+        <li id="s10"><a href="https://www.companywall.hr/tvrtka/macel-plin-doo/MMskOJY/osobe" target="_blank" rel="noopener">CompanyWall: Macel plin, osobe i vlasništvo</a></li>
+        <li id="s11"><a href="https://crobiz.net/info/macel-plin-zagreb/PA1LO55r" target="_blank" rel="noopener">CroBIZ: Macel plin, financijski izvještaji 2020.–2024.</a></li>
+        <li id="s12"><a href="https://www.companywall.hr/tvrtka/mdm-usluge-1991-doo/MMHT2DvY" target="_blank" rel="noopener">CompanyWall: MDM USLUGE 1991 d.o.o.</a></li>
+        <li id="s13"><a href="https://www.companywall.hr/tvrtka/kalidor-techno-doo/MMHqBQbC" target="_blank" rel="noopener">CompanyWall: KALIDOR TECHNO d.o.o.</a></li>
+        <li id="s14"><a href="https://crobiz.net/osoba/florex/pJKMoO7e" target="_blank" rel="noopener">CroBIZ: Florex d.o.o.</a></li>
+        <li id="s15"><a href="https://pfc.hr/about-our-company/" target="_blank" rel="noopener">PFC: About our company</a></li>
+        <li id="s16"><a href="https://pfc.hr/hr/o-nasoj-kompaniji/" target="_blank" rel="noopener">PFC: O našoj kompaniji</a></li>
+        <li id="s17"><a href="https://pfc.hr/contact/" target="_blank" rel="noopener">PFC: kontakt i lokacije</a></li>
+        <li id="s18"><a href="https://pfc.hr/certificates/" target="_blank" rel="noopener">PFC: certifikati</a></li>
+        <li id="s19"><a href="https://pfc.hr/eu-projects/" target="_blank" rel="noopener">PFC: EU projekti</a></li>
+        <li id="s20"><a href="https://pfc.hr/hr/pripajanje-drustava-macel-plin-d-o-o-i-feromihin-d-o-o-drustvu-pico-flow-controls-d-o-o/" target="_blank" rel="noopener">PFC: pripajanje Macel plina i Feromihina (4. 4. 2025.)</a></li>
+        <li id="s21"><a href="https://pfc.hr/elbc-electronic-line-break-control/" target="_blank" rel="noopener">PFC: eLBC</a></li>
+        <li id="s22"><a href="https://pfc.hr/riki-calibration-device-for-lbc/" target="_blank" rel="noopener">PFC: RIKI kalibracijski uređaj</a></li>
+        <li id="s23"><a href="https://pfc.hr/assembly-of-components-on-printed-circuit-boards/" target="_blank" rel="noopener">PFC: montaža tiskanih pločica</a></li>
+        <li id="s24"><a href="https://pfc.hr/aegis-production-of-plastic-mesh/" target="_blank" rel="noopener">PFC: AEGIS plastične mreže</a></li>
+        <li id="s25"><a href="https://pfc.hr/pressure-equipment/" target="_blank" rel="noopener">PFC: tlačna oprema</a></li>
+        <li id="s26"><a href="https://pfc.hr/aymo-pipeline-integrity-management-software/" target="_blank" rel="noopener">PFC: AYMO</a></li>
+        <li id="s27"><a href="https://pfc.hr/ams-asset-management-software/" target="_blank" rel="noopener">PFC: AMS</a></li>
+        <li id="s28"><a href="https://pfc.hr/kppp-recompression-unit-for-gas-pipeline-evacuation/" target="_blank" rel="noopener">PFC: KPPP rekompresijska jedinica</a></li>
+        <li id="s29"><a href="https://pfc.hr/virtual-pipeline-transport-of-cng-with-megc/" target="_blank" rel="noopener">PFC: virtualni plinovod (MEGC)</a></li>
+        <li id="s30"><a href="https://pfc.hr/mrs-measuring-and-reducing-station/" target="_blank" rel="noopener">PFC: mjerno-redukcijske stanice</a></li>
+        <li id="s31"><a href="https://pfc.hr/cng-lpg-lng-h2-solutions/" target="_blank" rel="noopener">PFC: CNG, LPG, LNG i H2 rješenja</a></li>
+        <li id="s32"><a href="https://pfc.hr/analyzers-for-gases-and-liquids/" target="_blank" rel="noopener">PFC: analizatori plinova i tekućina</a></li>
+        <li id="s33"><a href="https://pfc.hr/dehydration-hydrocarbon-solutions/" target="_blank" rel="noopener">PFC: dehidracija plina</a></li>
+        <li id="s34"><a href="https://pfc.hr/pressure-testing-and-inspection-of-all-types-of-valves-up-to-600-bar/" target="_blank" rel="noopener">PFC: ispitivanje ventila</a></li>
+        <li id="s35"><a href="https://pfc.hr/inspection-of-safety-valves-up-to-400-bar/" target="_blank" rel="noopener">PFC: ispitivanje sigurnosnih ventila</a></li>
+        <li id="s36"><a href="https://pfc.hr/innovative-corrosion-protection/" target="_blank" rel="noopener">PFC: zaštita od korozije (Stopaq)</a></li>
+        <li id="s37"><a href="https://pfc.hr/ballooning-hot-tapping/" target="_blank" rel="noopener">PFC: ballooning i hot tapping</a></li>
+        <li id="s38"><a href="https://pfc.hr/first-successful-delivery-of-multi-element-gas-containers-megc-with-semi-trailer/" target="_blank" rel="noopener">PFC: prva isporuka MEGC-a Rafineriji nafte Brod (12/2021)</a></li>
+        <li id="s39"><a href="https://pfc.hr/strong-production-completion-and-delivery-of-the-megc/" target="_blank" rel="noopener">PFC: isporuka 6 MEGC-a (3/2022)</a></li>
+        <li id="s40"><a href="https://pfc.hr/grand-opening-of-the-first-self-service-cng-filling-station-in-croatia/" target="_blank" rel="noopener">PFC: prva samoposlužna CNG stanica u Hrvatskoj (26. 10. 2021.)</a></li>
+        <li id="s41"><a href="https://pfc.hr/construction-of-natural-and-synthetic-gas-supply-station/" target="_blank" rel="noopener">PFC: plinska stanica za Vetropack Straža (7/2024)</a></li>
+        <li id="s42"><a href="https://pfc.hr/final-commissioning-of-mrs-magadenovac-successfully-held-at-site/" target="_blank" rel="noopener">PFC: MRS Magadenovac za Plinacro (10/2020)</a></li>
+        <li id="s43"><a href="https://pfc.hr/successful-completion-of-cng-station-for-the-slovenian-partner/" target="_blank" rel="noopener">PFC: CNG stanica za slovenskog partnera (3/2021)</a></li>
+        <li id="s44"><a href="https://pfc.hr/successful-completion-of-dn150-high-pressure-gas-pipeline-repair-on-the-mrs-zapresic-pmrs-tapi-s-marof/" target="_blank" rel="noopener">PFC: popravak plinovoda DN150, MRS Zaprešić (8/2026)</a></li>
+        <li id="s45"><a href="https://pfc.hr/pico-flow-controls-d-o-o-presented-kppp-a-mobile-compressor-unit-for-natural-gas-transfer-at-hsup-2026/" target="_blank" rel="noopener">PFC: KPPP na HSUP 2026</a></li>
+        <li id="s46"><a href="https://pfc.hr/mobilni-sustav-za-upravljanje-kompresiju-i-transport-prirodnog-plina-pod-tlakom/" target="_blank" rel="noopener">PFC: mobilni sustav za plin, HUNIG 2026</a></li>
+        <li id="s47"><a href="https://pfc.hr/careers/senior-embedded-software-engineer-m-f/" target="_blank" rel="noopener">PFC: oglas za posao (Sv. Križ Začretje / Zagreb)</a></li>
+        <li id="s48"><a href="https://pfc.hr/news/" target="_blank" rel="noopener">PFC: vijesti 2020.–2026. (6 stranica)</a></li>
+        <li id="s49"><a href="https://en.lider.media/?p=37116" target="_blank" rel="noopener">Lider: Feromihin iz Novoselca (2022.)</a></li>
+        <li id="s50"><a href="https://en.lider.media/?p=41000" target="_blank" rel="noopener">Lider: AYMO, Feromihin i Async Labs (13. 12. 2021.)</a></li>
+        <li id="s51"><a href="https://caspianoilgas.az/en/news/modern-approach-to-pipelines-monitoring-2292" target="_blank" rel="noopener">Caspian Oil & Gas: Feromihin (10. 5. 2022.)</a></li>
+        <li id="s52"><a href="https://www.pipeline-journal.net/company-directory/feromihin" target="_blank" rel="noopener">Pipeline Technology Journal: profil Feromihina</a></li>
+        <li id="s53"><a href="https://www.namibiaoilandgasconf.com/speakers-list/dubravko-kamenecki" target="_blank" rel="noopener">Namibia Oil & Gas Conference: Dubravko Kamenečki</a></li>
+        <li id="s54"><a href="https://pdf.dkom.hr/dokumentit/202608251258329962.pdf" target="_blank" rel="noopener">DKOM: rješenje UP/II-034-02/26-01/437 (13. 8. 2026.)</a></li>
+        <li id="s55"><a href="https://www.pipeline-conference.com/companies/pico-flow-controls" target="_blank" rel="noopener">ptc Berlin: profil izlagača PFC</a></li>
+        <li id="s56"><a href="https://hr.linkedin.com/in/vedran-prica" target="_blank" rel="noopener">LinkedIn: Vedran Prica (objave Feromihina 2024.–2025.)</a></li>
+        <li id="s57"><a href="https://pfc.hr/" target="_blank" rel="noopener">PFC: početna stranica, poslovni partneri</a></li>
+        <li id="s58"><a href="https://pfc.hr/grizo-synthetic-gas-supply-station/" target="_blank" rel="noopener">PFC: GRIZO stanica sintetskog plina</a></li>
+        <li id="s59"><a href="https://pfc.hr/integration-of-distributed-control-system-dcs-and-safety-system-esd-cabinets/" target="_blank" rel="noopener">PFC: integracija DCS i ESD ormara</a></li>
+        <li id="s60"><a href="https://pfc.hr/aegis-products-at-k-2025-fair-in-dusseldorf/" target="_blank" rel="noopener">PFC: AEGIS na sajmu K 2025, Düsseldorf</a></li>
+      </ol>
     </section>
   </main>
 </div>
 <script>
 (() => {
-  const pages = { onama: "O nama", djelatnosti: "Djelatnosti", financije: "Financije", rast: "Rast" };
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+  const pages = {"onama": "O nama", "djelatnosti": "Djelatnosti", "financije": "Financije", "rast": "Rast"};
   function show(id, jump) {
     if (!pages[id]) id = "onama";
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
     document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
     document.getElementById("crumb").textContent = pages[id];
-    document.title = pages[id] + " · Pico Flows Control case study";
+    document.title = pages[id] + " · Pico Flow Controls case study";
     document.getElementById("lang").href = document.getElementById("lang").getAttribute("href").split("#")[0] + "#" + id;
     if (jump) document.getElementById(jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
     else scrollTo({ top: 0 });
@@ -384,6 +620,21 @@ table.matrix td:nth-child(2){background:var(--soft)}
   // Dekorativni blokovi kao u dizajnu
   const B = "e e e e y e e e e l y y e e l g g l e l g g g o l g g g g g".split(" ");
   document.querySelectorAll(".hero .art").forEach(n => n.innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
+  // Stupčasti graf: isprekidano = zbroj tvrtki, zeleno = PFC nakon pripajanja
+  function ybars(id, d, { max, ticks, W, H, bw }) {
+    const svg = document.getElementById(id), X0 = 34, X1 = W - 4, Y0 = 28, Y1 = H - 32;
+    const y = v => Y1 - v / max * (Y1 - Y0);
+    ticks.forEach(v => { el("line", { x1: X0, x2: X1, y1: y(v), y2: y(v), class: "gl" }, svg); el("text", { x: 0, y: y(v) + 5 }, svg).textContent = v; });
+    const slot = (X1 - X0) / d.length;
+    d.forEach(([lab, v, txt, off], i) => {
+      const cx = X0 + slot * i + slot / 2, h = Math.max(Y1 - y(v), 2);
+      el("rect", off ? { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 5, style: "fill:var(--green)" } : { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 5, class: "est", style: "fill:var(--bar)" }, svg);
+      el("text", { x: cx, y: Y1 - h - 7, "text-anchor": "middle", class: "v" }, svg).textContent = txt;
+      el("text", { x: cx, y: H - 10, "text-anchor": "middle" }, svg).textContent = lab;
+    });
+  }
+  ybars("ch-rev", [["2020.", 11.16, "11,2"], ["2021.", 13.03, "13,0"], ["2022.", 12.80, "12,8"], ["2023.", 21.67, "21,7"], ["2024.", 19.06, "19,1"], ["2025.", 39.36, "39,4", 1]], { max: 40, ticks: [0, 10, 20, 30, 40], W: 520, H: 260, bw: 46 });
+  ybars("ch-profit", [["2020.", 2.21, "2,2"], ["2021.", 3.02, "3,0"], ["2022.", 1.55, "1,6"], ["2023.", 4.90, "4,9"], ["2024.", 2.78, "2,8"], ["2025.", 11.30, "11,3", 1]], { max: 12, ticks: [0, 4, 8, 12], W: 400, H: 220, bw: 34 });
 })();
 </script>
 </body>
