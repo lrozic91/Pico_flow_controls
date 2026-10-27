@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pico Flows Control · Case study</title>
+<meta name="description" content="Pico Flows Control: analiza poslovanja, financija i prilika za rast.">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#8cc63f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: app shell iz dizajna — bočni izbornik + gornja traka + mreža kartica; dvije stranice (O nama, Djelatnosti) prebacuju se bez ponovnog učitavanja */
+:root{
+  --bg:#ececea; --shell:#f6f6f4; --card:#ffffff; --line:#e8e8e4; --soft:#f1f1ee;
+  --fg:#16170f; --muted:#6f7068; --faint:#b7b8ae;
+  --green:#8cc63f; --green-d:#4f8a12; --yellow:#f2e63a; --orange:#f6a94a;
+  --bar:#e9e9e5; --ink-btn:#16170f; --ink-btn-fg:#fff;
+  --shadow:0 1px 2px rgba(20,22,10,.04),0 8px 24px rgba(20,22,10,.04);
+  --f-ui:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0e0b; --shell:#141511; --card:#1b1c17; --line:#2a2b24; --soft:#23241e;
+  --fg:#f1f2ea; --muted:#a2a397; --faint:#5c5d54;
+  --green:#9bd54c; --green-d:#a9dd62; --yellow:#efe34a; --orange:#f5ae55;
+  --bar:#2a2b25; --ink-btn:#f1f2ea; --ink-btn-fg:#16170f; --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0e0b; --shell:#141511; --card:#1b1c17; --line:#2a2b24; --soft:#23241e;
+  --fg:#f1f2ea; --muted:#a2a397; --faint:#5c5d54;
+  --green:#9bd54c; --green-d:#a9dd62; --yellow:#efe34a; --orange:#f5ae55;
+  --bar:#2a2b25; --ink-btn:#f1f2ea; --ink-btn-fg:#16170f; --shadow:none; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:14px;line-height:1.5;padding-block:24px;padding-inline:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+a{color:inherit}
+.num{font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+
+.app{max-width:1440px;margin:0 auto;background:var(--shell);border-radius:24px;display:grid;grid-template-columns:232px minmax(0,1fr);box-shadow:var(--shadow)}
+
+/* Bočni izbornik */
+.side{padding:24px 16px;display:flex;flex-direction:column;gap:22px;border-right:1px solid var(--line);position:sticky;top:0;align-self:start;min-height:calc(100vh - 48px)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;padding:0 8px;text-decoration:none}
+.logo .mark{width:28px;height:28px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#16170f}
+.logo small{font-weight:500;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;font-weight:500;text-decoration:none}
+.nav a:hover{background:var(--soft)}
+.nav a.on{background:var(--card);box-shadow:var(--shadow);position:relative}
+.nav a.on::before{content:"";position:absolute;left:-16px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--fg)}
+.nav svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav .sub{display:flex;flex-direction:column;margin:2px 0 6px 21px;padding-left:18px;border-left:1px solid var(--line)}
+.nav .sub a{padding:5px 10px;font-size:13px;color:var(--muted)}
+.hr{height:1px;background:var(--line);margin:0 8px}
+.pro{margin-top:auto;background:var(--card);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.pro .bolt{width:32px;height:32px;border-radius:50%;background:var(--fg);color:var(--card);display:grid;place-items:center}
+.pro h4{margin:4px 0 0;font-size:15px}
+.pro p{margin:0;color:var(--muted);font-size:12.5px}
+.btn-ink{background:var(--ink-btn);color:var(--ink-btn-fg);border:0;border-radius:10px;padding:10px 14px;font-weight:600;text-decoration:none;text-align:center;display:inline-block}
+
+/* Glavni dio */
+.main{padding:20px 24px 28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.crumb{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+.crumb b{color:var(--fg);font-weight:600}
+.top .sp{flex:1}
+.tabs{display:none;gap:6px}
+.tabs a{background:var(--card);border-radius:10px;padding:8px 12px;font-weight:600;font-size:13px;text-decoration:none}
+.tabs a.on{background:var(--ink-btn);color:var(--ink-btn-fg)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-weight:600;font-size:13px;text-decoration:none}
+
+.grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start}
+.card{background:var(--card);border-radius:var(--r);padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+.colstack{display:flex;flex-direction:column;gap:16px;min-width:0}.colstack>:last-child{flex:1}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
+.hd{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ttl{font-weight:600;font-size:16px;margin:0;text-wrap:balance}
+.cap{color:var(--muted);font-size:12.5px}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:clamp(28px,3.4vw,42px);line-height:1.08;letter-spacing:-.025em;margin:8px 0 12px;font-weight:700;text-wrap:balance;max-width:20ch}
+.lead{font-size:15.5px;color:var(--muted);max-width:62ch;margin:0}
+p{max-width:68ch}
+sup a{font-size:10px;color:var(--green-d);text-decoration:none;font-weight:700;margin-left:1px}
+sup a:hover{text-decoration:underline}
+sup+sup::before{content:",";font-size:10px;color:var(--muted)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:end}
+.hero .art{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;align-self:stretch;align-content:end;max-width:260px;justify-self:end;width:100%}
+.hero .art i{aspect-ratio:1;border-radius:5px;background:var(--green);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 2px,transparent 2px 6px)}
+.hero .art i.y{background-color:var(--yellow)}.hero .art i.o{background-color:var(--orange)}.hero .art i.l{opacity:.35}.hero .art i.e{background:transparent}
+
+.kpi .big{font-size:30px;font-weight:600;letter-spacing:-.02em;margin:6px 0 2px;line-height:1.1}
+.kpi .up{color:var(--green-d);font-size:12px;font-weight:600}
+
+/* Grafovi */
+.chart{width:100%;height:auto;display:block}
+.chart text{font-size:11px;fill:var(--muted);font-family:var(--f-ui)}
+.chart text.v{fill:var(--fg);font-weight:600;font-size:12px}
+.chart .gl{stroke:var(--line);stroke-dasharray:3 4}
+.mix{display:grid;gap:12px;margin-top:12px}
+.mix .row b{display:block;font-size:12.5px;margin-bottom:5px}
+.mix .row b small{font-weight:500;color:var(--muted)}
+.stack{display:flex;height:30px;border-radius:8px;overflow:hidden;gap:2px}
+.mix .est .stack{outline:1.5px dashed var(--muted);outline-offset:2px}
+.stack i{display:flex;min-width:0;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#16170f;white-space:nowrap;overflow:hidden}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+.note{font-size:12px;color:var(--muted);margin:10px 0 0}
+.sw.est{background:var(--bar);outline:1.5px dashed var(--muted);outline-offset:-1.5px}
+.chart .est{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4}
+table.revt td:first-child{white-space:normal;font-weight:600}
+table.revt td small{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+table.revt td small.pos{color:var(--green-d)}
+table.revt td{vertical-align:top}
+.chart.lg text{font-size:14px}
+.chart.lg text.v{font-size:17px;font-weight:700}
+.chart.lg.many text{font-size:12.5px}
+.chart.lg.many text.v{font-size:14px;letter-spacing:-.02em}
+
+/* Vremenska crta */
+.tl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:64px 18px minmax(0,1fr);gap:12px;padding-bottom:18px;position:relative}
+.tl .yr{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.tl .dot{width:12px;height:12px;border-radius:4px;background:var(--bar);margin-top:5px;position:relative;z-index:1}
+.tl li.k .dot{background:var(--green)}
+.tl li.m .dot{background:var(--yellow)}
+.tl li::after{content:"";position:absolute;left:calc(64px + 12px + 5px);top:20px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl h3{font-size:14px;margin:0 0 2px;font-weight:600}
+.tl p{margin:0;color:var(--muted);font-size:13px}
+
+/* Ljudi */
+.people{display:grid;gap:12px}
+.person{display:flex;gap:12px;align-items:flex-start}
+.av{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px;color:#16170f;flex:none}
+.person b{display:block;font-size:14px}
+.person span{color:var(--muted);font-size:12.5px}
+
+/* Video */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px}
+.video{display:flex;flex-direction:column;gap:8px;text-decoration:none;border-radius:12px}
+.video .th{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:var(--soft)}
+.video .th img{width:100%;height:100%;object-fit:cover;display:block}
+.video .th::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(22,23,15,.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='%23fff'/%3E%3C/svg%3E") center/22px no-repeat}
+.video:hover .th::after{background-color:var(--green)}
+.video b{font-size:13.5px;font-weight:600;line-height:1.35}
+.video span{font-size:12px;color:var(--muted)}
+blockquote{margin:14px 0 0;padding:14px 16px;border-radius:12px;background:var(--soft);font-size:14px;max-width:none}
+blockquote cite{display:block;font-style:normal;color:var(--muted);font-size:12px;margin-top:6px}
+
+/* Tablica */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted);font-size:12px}
+.neg{color:var(--orange)}.pos{color:var(--green-d)}
+
+dl.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:14px 0 0;font-size:13px}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+
+/* Djelatnosti */
+.svc-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.svc-ico svg{width:20px;height:20px;stroke:#16170f;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc-h{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+ol.mica{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+ol.mica li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px}
+ol.mica .k{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+ol.mica b{font-size:12px;font-weight:700}
+ol.mica li.y{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+ol.mica li.y b{color:var(--green-d)}
+ol.mica li.n{color:var(--muted)}
+ol.mica li.n b{color:var(--faint);font-weight:600}
+.ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:13.5px}
+.ul li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px}
+.ul li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--green);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:12px;font-weight:600;font-family:var(--f-mono);background:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.step{background:var(--soft);border-radius:12px;padding:12px}
+.step b{font-family:var(--f-mono);font-size:11px;color:var(--muted);display:block}
+.step span{font-size:13px;font-weight:500}
+.partners{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:14px}
+.partner{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.partner b{font-size:14px}
+.partner .yr{font-family:var(--f-mono);font-size:11px;color:var(--green-d)}
+.partner span{font-size:12.5px;color:var(--muted)}
+.meter{height:12px;border-radius:4px;background:var(--soft);overflow:hidden;margin-top:6px}
+.meter i{display:block;height:100%;background:var(--green);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.25) 0 2px,transparent 2px 6px)}
+.eea{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.eea span{font-family:var(--f-mono);font-size:11px;padding:3px 6px;border-radius:5px;background:var(--green);color:#16170f}
+
+/* Izvori */
+.src{columns:2 320px;column-gap:28px;margin:12px 0 0;padding-left:22px;font-size:12.5px;color:var(--muted)}
+.src li{break-inside:avoid;margin-bottom:6px}
+.src a{color:var(--fg);text-decoration-color:var(--faint)}
+.src li.hl{background:var(--soft);border-radius:4px}
+
+/* Rast */
+table.vasp td:nth-child(3){font-family:var(--f-mono);font-size:12px}
+.st{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.st.ok{background:var(--green);color:#16170f}.st.no{background:var(--bar);color:var(--muted)}
+table.vasp td:last-child{white-space:normal;min-width:220px;color:var(--muted)}
+.deals{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:14px}
+.deal{border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.deal h3{margin:0;font-size:15px}
+.deal p{margin:0;font-size:13px}
+.deal .why{background:var(--soft);border-radius:10px;padding:8px 10px}
+.deal-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fit{font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;white-space:nowrap;flex:none}
+.deal.hi .fit{background:var(--green);color:#16170f}.deal.mid .fit{background:var(--yellow);color:#16170f}.deal.lo .fit{background:var(--orange);color:#16170f}
+table.matrix td,table.matrix th{text-align:left;white-space:normal;min-width:96px}
+table.matrix th small{color:var(--faint);font-weight:500}
+table.matrix td:first-child{min-width:180px;font-weight:500}
+table.matrix td.y{color:var(--green-d);font-weight:600}
+table.matrix td.n{color:var(--faint)}
+table.matrix td.q{color:var(--orange);font-weight:700}
+table.matrix td.p{color:var(--muted);font-style:italic}
+table.matrix td:nth-child(2){background:var(--soft)}
+.ideas{margin:14px 0 0;padding-left:20px;display:grid;gap:10px;font-size:13.5px}
+.ideas li::marker{font-weight:700;color:var(--green-d)}
+
+@media (max-width:1100px){
+  .s8,.s7,.s6,.s5,.s4{grid-column:span 12}
+  .s3{grid-column:span 6}
+}
+@media (max-width:900px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .tabs{display:flex}
+  .main{padding:16px}
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero .art{display:none}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  body{padding-inline:8px;padding-block:8px}
+  .s3{grid-column:span 12}
+  .crumb{display:none}
+  .card{padding:16px}
+  .tl li{grid-template-columns:48px 14px minmax(0,1fr);gap:10px}
+  .tl li::after{left:calc(48px + 10px + 5px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* U izradi */
+.todo{border:1.5px dashed var(--faint);background:transparent;box-shadow:none}
+.todo .ttl::after{content:attr(data-badge);margin-left:8px;font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;background:var(--yellow);color:#16170f;vertical-align:2px}
+.todo p{color:var(--muted);margin:8px 0 0;font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="#onama"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 9h7l4 6h7M3 15h7l4-6h7"/></svg></span>PFC<small>Pico Flows Control</small></a>
+    <nav class="nav" aria-label="Stranice">
+      <a href="#onama" data-page="onama"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>O nama</a>
+      <div class="sub">
+        <a href="#onama" data-jump="pocetak">Početak</a>
+        <a href="#onama" data-jump="razvoj">Razvoj kroz godine</a>
+        <a href="#onama" data-jump="tim">Tim i vlasnici</a>
+      </div>
+      <a href="#djelatnosti" data-page="djelatnosti"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Djelatnosti</a>
+      <div class="sub">
+        <a href="#djelatnosti" data-jump="proizvodi">Proizvodi i usluge</a>
+        <a href="#djelatnosti" data-jump="kupci">Kupci i tržišta</a>
+        <a href="#djelatnosti" data-jump="konkurencija">Konkurencija</a>
+      </div>
+      <a href="#financije" data-page="financije"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Financije</a>
+      <div class="sub">
+        <a href="#financije" data-jump="pregled">Pregled po godinama</a>
+        <a href="#financije" data-jump="marze">Marže i troškovi</a>
+        <a href="#financije" data-jump="pokazatelji">Pokazatelji</a>
+      </div>
+      <a href="#rast" data-page="rast"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Rast</a>
+      <div class="sub">
+        <a href="#rast" data-jump="prilike">Prilike</a>
+        <a href="#rast" data-jump="prijedlozi">Prijedlozi</a>
+        <a href="#rast" data-jump="plan">Plan po fazama</a>
+      </div>
+    </nav>
+    <div class="hr"></div>
+    <nav class="nav" aria-label="Ostalo">
+      <a href="#izvori"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Izvori</a>
+    </nav>
+    <div class="pro">
+      <span class="bolt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 9h7l4 6h7M3 15h7l4-6h7"/></svg></span>
+      <h4>Analiza u izradi</h4>
+      <p>Podaci se prikupljaju iz javnih izvora. Svaka brojka imat će izvor.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div class="crumb">Pico Flows Control <span>/</span> <b id="crumb">O nama</b></div>
+      <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#djelatnosti" data-page="djelatnosti">Djelatnosti</a><a href="#financije" data-page="financije">Financije</a><a href="#rast" data-page="rast">Rast</a></nav>
+      <span class="sp"></span>
+      <a class="pill" id="lang" href="en.html" hreflang="en" lang="en" title="English version">EN</a>
+    </header>
+
+    <div class="grid" id="p-onama">
+      <section class="card s12" id="pocetak">
+        <div class="hero"><div><div class="eyebrow">Case study</div><h1>Pico Flows Control</h1><p class="lead">Povijest tvrtke, ljudi i ključne prekretnice, uz izvor za svaku tvrdnju.</p></div>
+          <div class="art" aria-hidden="true" id="art-onama"></div></div>
+      </section>
+      <section class="card s3 kpi"><div class="cap">Osnovano</div><div class="big num">…</div><div class="up">U izradi</div></section>
+      <section class="card s3 kpi"><div class="cap">Zaposlenih</div><div class="big num">…</div><div class="up">U izradi</div></section>
+      <section class="card s3 kpi"><div class="cap">Prihod</div><div class="big num">…</div><div class="up">U izradi</div></section>
+      <section class="card s3 kpi"><div class="cap">Dobit</div><div class="big num">…</div><div class="up">U izradi</div></section>
+      <section class="card s12 todo" id="razvoj"><h2 class="ttl" data-badge="U izradi">Razvoj kroz godine</h2><p>Vremenska crta osnivanja, ključnih ugovora, ulaganja i promjena vlasništva.</p></section>
+      <section class="card s12 todo" id="tim"><h2 class="ttl" data-badge="U izradi">Tim i vlasnici</h2><p>Osnivači, uprava i vlasnička struktura prema sudskom registru.</p></section>
+    </div>
+    <div class="grid" id="p-djelatnosti" hidden>
+      <section class="card s12" id="h-djelatnosti">
+        <div class="hero"><div><div class="eyebrow">Djelatnosti</div><h1>Što tvrtka radi i za koga</h1><p class="lead">Proizvodi i usluge, kupci, tržišta i konkurencija.</p></div>
+          <div class="art" aria-hidden="true" id="art-djelatnosti"></div></div>
+      </section>
+      <section class="card s12 todo" id="proizvodi"><h2 class="ttl" data-badge="U izradi">Proizvodi i usluge</h2><p>Glavne linije proizvoda i usluga, s primjerima iz stvarnog poslovanja.</p></section>
+      <section class="card s12 todo" id="kupci"><h2 class="ttl" data-badge="U izradi">Kupci i tržišta</h2><p>Ključni kupci, izvoz i struktura prodaje po tržištima.</p></section>
+      <section class="card s12 todo" id="konkurencija"><h2 class="ttl" data-badge="U izradi">Konkurencija</h2><p>Domaći i europski konkurenti i usporedba ponude.</p></section>
+    </div>
+    <div class="grid" id="p-financije" hidden>
+      <section class="card s12" id="h-financije">
+        <div class="hero"><div><div class="eyebrow">Financije</div><h1>Brojke iz službenih izvještaja</h1><p class="lead">Prihodi, dobit, marže, troškovi i pokazatelji kroz godine, iz godišnjih izvještaja predanih FINA-i.</p></div>
+          <div class="art" aria-hidden="true" id="art-financije"></div></div>
+      </section>
+      <section class="card s12 todo" id="pregled"><h2 class="ttl" data-badge="U izradi">Pregled po godinama</h2><p>Prihod, dobit ili gubitak, kapital i broj zaposlenih iz službenih izvještaja (FINA).</p></section>
+      <section class="card s12 todo" id="marze"><h2 class="ttl" data-badge="U izradi">Marže i troškovi</h2><p>Bruto marža, EBITDA i neto marža, struktura troškova i trošak rada po zaposlenom.</p></section>
+      <section class="card s12 todo" id="pokazatelji"><h2 class="ttl" data-badge="U izradi">Pokazatelji</h2><p>Likvidnost, zaduženost, obrtni kapital i prijedlog KPI dashboarda.</p></section>
+    </div>
+    <div class="grid" id="p-rast" hidden>
+      <section class="card s12" id="h-rast">
+        <div class="hero"><div><div class="eyebrow">Rast</div><h1>Gdje tvrtka može rasti</h1><p class="lead">Prilike i prijedlozi s procjenom prihoda, troškova i ulaganja. Procjene su jasno označene.</p></div>
+          <div class="art" aria-hidden="true" id="art-rast"></div></div>
+      </section>
+      <section class="card s12 todo" id="prilike"><h2 class="ttl" data-badge="U izradi">Prilike</h2><p>Tržišne prilike, poredane po omjeru učinka i truda.</p></section>
+      <section class="card s12 todo" id="prijedlozi"><h2 class="ttl" data-badge="U izradi">Prijedlozi</h2><p>Prijedlozi rasta s procjenom godišnjeg prihoda i troškova te jednokratnog ulaganja.</p></section>
+      <section class="card s12 todo" id="plan"><h2 class="ttl" data-badge="U izradi">Plan po fazama</h2><p>Redoslijed provedbe: 0–6, 6–12 i 12–24 mjeseca.</p></section>
+    </div>
+
+    <section class="card" id="izvori">
+      <h2 class="ttl">Izvori</h2>
+      <p class="note">Popis izvora puni se kako se prikupljaju podaci. Svaka brojka na stranici bit će označena brojem izvora.</p>
+      <ol class="src"></ol>
+    </section>
+  </main>
+</div>
+<script>
+(() => {
+  const pages = { onama: "O nama", djelatnosti: "Djelatnosti", financije: "Financije", rast: "Rast" };
+  function show(id, jump) {
+    if (!pages[id]) id = "onama";
+    for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
+    document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
+    document.getElementById("crumb").textContent = pages[id];
+    document.title = pages[id] + " · Pico Flows Control case study";
+    document.getElementById("lang").href = document.getElementById("lang").getAttribute("href").split("#")[0] + "#" + id;
+    if (jump) document.getElementById(jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    else scrollTo({ top: 0 });
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href^='#']");
+    if (!a) return;
+    const h = a.getAttribute("href").slice(1);
+    if (/^s\d+$/.test(h) || h === "izvori") {
+      e.preventDefault();
+      const t = document.getElementById(h);
+      t.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.querySelectorAll(".src li.hl").forEach(x => x.classList.remove("hl"));
+      if (t.tagName === "LI") t.classList.add("hl");
+      return;
+    }
+    if (pages[h]) { e.preventDefault(); history.replaceState(null, "", "#" + h); show(h, a.dataset.jump); }
+  });
+  show(location.hash.slice(1));
+  // Dekorativni blokovi kao u dizajnu
+  const B = "e e e e y e e e e l y y e e l g g l e l g g g o l g g g g g".split(" ");
+  document.querySelectorAll(".hero .art").forEach(n => n.innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
+})();
+</script>
+</body>
+</html>
