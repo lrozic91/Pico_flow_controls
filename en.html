@@ -271,6 +271,34 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
 .miss{margin:12px 0 0;padding-left:20px;font-size:13px;display:grid;gap:6px}
 .miss a{overflow-wrap:anywhere}
 @media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}}
+
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:14px}
+.flow .fb{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.flow .fb b{font-size:14px}.flow .fb span{font-size:12.5px;color:var(--muted)}
+.flow .fb small{font-family:var(--f-mono);font-size:10.5px;color:var(--green-d);text-transform:uppercase;letter-spacing:.06em}
+.flow .fb:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow .fb.on{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;font-size:13px}
+.roles div{background:var(--soft);border-radius:10px;padding:10px 12px}.roles b{display:block;font-size:13.5px}
+#ugovor{display:flex;flex-direction:column}#ugovor pre{flex:1}
+pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow-x:auto;font-family:var(--f-mono);font-size:12px;line-height:1.55;margin:12px 0 0}
+.demo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
+.demo form{display:grid;gap:10px;align-content:start}
+.demo label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
+.demo select,.demo input{font:inherit;font-size:14px;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:0}
+.demo .btns{display:flex;flex-wrap:wrap;gap:8px}
+.demo button{font:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 14px;border:1px solid var(--line);background:var(--card);color:inherit;cursor:pointer}
+.demo button.go{background:var(--green);border-color:var(--green);color:#16170f}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;padding:6px 12px;background:transparent}.seg button.on{background:var(--ink-btn);color:var(--ink-btn-fg)}
+.ledger{display:grid;gap:8px;margin-top:10px;max-height:420px;overflow-y:auto}
+.blk{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;display:grid;gap:3px}
+.blk .h{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.blk code{font-family:var(--f-mono);font-size:11px;overflow-wrap:anywhere;color:var(--green-d)}
+.blk.hid{opacity:.55}.blk.bad{border-color:var(--orange);background:color-mix(in srgb,var(--orange) 12%,transparent)}
+.blk .ok{color:var(--green-d);font-weight:700}.blk .no{color:var(--orange);font-weight:700}
+.demo .msg{font-size:12.5px;color:var(--muted);margin:0}
+@media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.roles,.demo{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -304,6 +332,13 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
         <a href="#rast" data-jump="prilike">First conclusions</a>
         <a href="#rast" data-jump="prijedlozi">Proposals</a>
       </div>
+      <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
+      <div class="sub">
+        <a href="#blockchain" data-jump="prividium">Prividium</a>
+        <a href="#blockchain" data-jump="ideja">Pilot idea</a>
+        <a href="#blockchain" data-jump="demo">Demo</a>
+        <a href="#blockchain" data-jump="plan-pilota">Pilot plan</a>
+      </div>
     </nav>
     <div class="hr"></div>
     <nav class="nav" aria-label="More">
@@ -320,7 +355,7 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
   <main class="main">
     <header class="top">
       <div class="crumb">Pico Flow Controls <span>/</span> <b id="crumb">About</b></div>
-      <nav class="tabs" aria-label="Pages"><a href="#onama" data-page="onama">About</a><a href="#djelatnosti" data-page="djelatnosti">Business</a><a href="#financije" data-page="financije">Financials</a><a href="#rast" data-page="rast">Growth</a></nav>
+      <nav class="tabs" aria-label="Pages"><a href="#onama" data-page="onama">About</a><a href="#djelatnosti" data-page="djelatnosti">Business</a><a href="#financije" data-page="financije">Financials</a><a href="#rast" data-page="rast">Growth</a><a href="#blockchain" data-page="blockchain">Blockchain</a></nav>
       <span class="sp"></span>
       <a class="pill" id="lang" href="index.html" hreflang="hr" lang="hr" title="Hrvatska verzija">HR</a>
       <a class="pill" href="https://pfc.hr/" target="_blank" rel="noopener">pfc.hr ↗</a>
@@ -534,6 +569,84 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
       </section>
     </div>
 
+    <div class="grid" id="p-blockchain" hidden>
+      <section class="card s12" id="blockchain-top">
+        <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot: a service log on a private chain</h1><p class="lead">How PFC could use ZKsync Prividium to give customers a verifiable record of services and alarms at gas stations while the data stays private. The pilot proposal is my conclusion, not the company's plan.</p></div>
+          <div class="art" aria-hidden="true"></div></div>
+      </section>
+      <section class="card s7" id="prividium">
+        <h2 class="ttl">What ZKsync Prividium is</h2>
+        <ul class="ul"><li><span>A private blockchain that ZKsync launched on 27 May 2025. The first partner was Memento, a chain built with Deutsche Bank.<sup><a href="#s69">69</a></sup></span></li><li><span>Transactions, counterparties and balances stay private, inside the company's infrastructure. Only ZK proofs that everything is correct go to Ethereum.<sup><a href="#s68">68</a></sup></span></li><li><span>The company decides who may see and call what, down to individual smart contract functions. An auditor or regulator can get read-only access.<sup><a href="#s72">72</a></sup><sup><a href="#s71">71</a></sup></span></li><li><span>Smart contracts are written in Solidity with the usual tools (Hardhat, Foundry, Viem).<sup><a href="#s73">73</a></sup></span></li><li><span>The company can run it itself or have Matter Labs run it as a service. Pricing is not published.<sup><a href="#s68">68</a></sup></span></li></ul>
+      </section>
+      <section class="card s5" id="korisnici">
+        <h2 class="ttl">Who uses it</h2>
+        <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: a private L2 for issuing and servicing tokenised funds. It grew out of Project DAMA under Singapore's MAS Project Guardian.<sup><a href="#s69">69</a></sup><sup><a href="#s70">70</a></sup></span></li><li><span>Launching a fund went from 2–3 months to 2–3 weeks.<sup><a href="#s70">70</a></sup></span></li><li><span>ZKsync also lists other banks and funds, but these are its own claims.<sup><a href="#s68">68</a></sup></span></li><li><span>I found no industrial company using Prividium. PFC would be among the first outside finance (my conclusion).</span></li></ul>
+      </section>
+      <section class="card s12" id="ideja">
+        <h2 class="ttl">The pilot idea</h2>
+        <p class="cap">Every service, calibration or alarm gets a fingerprint on the chain. The customer and the regulator can check that nobody changed the record.</p>
+        <div class="flow"><div class="fb"><small>1</small><b>Field</b><span>Service, calibration or an eLBC alarm at a station</span></div><div class="fb"><small>2</small><b>PFC software</b><span>The record goes into AMS or AYMO, as today</span></div><div class="fb on"><small>3</small><b>Private chain</b><span>The record's fingerprint (hash), time and author are written to a smart contract</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>A proof that the chain is valid; the data stays with PFC</span></div></div>
+        <div class="roles"><div><b>PFC</b>Sees every record and adds new ones</div><div><b>Customer 1</b>Sees only its own stations' records</div><div><b>Regulator / auditor</b>Sees only fingerprints and times, can verify</div></div>
+      </section>
+      <section class="card s12" id="demo">
+        <h2 class="ttl">Demo</h2>
+        <p class="cap">A simulation in the browser, not connected to a real chain. Add a record, switch role, or quietly change a database record and then verify it.</p>
+        <div class="demo" id="bc-demo">
+          <form>
+            <label>Station<select id="d-st"></select></label>
+            <label>Record type<select id="d-ty"></select></label>
+            <label>Finding<input id="d-res" list="d-res-l" placeholder="OK"><datalist id="d-res-l"></datalist></label>
+            <label>Entered by<input id="d-tech" placeholder="Technician 1"></label>
+            <div class="btns"><button class="go" type="submit">Write to chain</button><button type="button" id="d-tamper">Change a database record</button><button type="button" id="d-check">Verify</button></div>
+            <p class="msg" id="d-msg" aria-live="polite"></p>
+          </form>
+          <div>
+            <div class="seg" role="group" aria-label="Role"><button type="button" data-role="pfc" class="on">PFC</button><button type="button" data-role="kupac">Customer 1</button><button type="button" data-role="reg">Regulator / auditor</button></div>
+            <div class="ledger" id="d-ledger"></div>
+          </div>
+        </div>
+      </section>
+      <section class="card s7" id="ugovor">
+        <h2 class="ttl">Smart contract</h2>
+        <p class="cap">A draft in Solidity; write rights come from a Prividium role, not the code<sup><a href="#s72">72</a></sup></p>
+        <pre class="code"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+/// Service log: only the record's fingerprint goes on chain, the data stays in PFC's database
+contract StationLog {
+    struct Entry { bytes32 digest; uint64 time; address author; }
+
+    mapping(bytes32 =&gt; Entry[]) public log;   // station id =&gt; entries
+    event Logged(bytes32 indexed station, bytes32 digest, address author);
+
+    // Who may call: role "Technician" in the Prividium admin panel
+    function record(bytes32 station, bytes32 digest) external {
+        log[station].push(Entry(digest, uint64(block.timestamp), msg.sender));
+        emit Logged(station, digest, msg.sender);
+    }
+
+    function count(bytes32 station) external view returns (uint256) {
+        return log[station].length;
+    }
+}</code></pre>
+      </section>
+      <div class="s5 colstack">
+      <section class="card" id="zasto">
+        <h2 class="ttl">Why PFC</h2>
+        <ul class="ul"><li><span>PFC already has the data: AMS tracks 46,013 assets and the LNG terminal uses it too, and about 1,000 eLBC units are installed.<sup><a href="#s28">28</a></sup><sup><a href="#s22">22</a></sup></span></li><li><span>It has its own IT and software (AYMO, AMS), so the pilot does not depend on an outside agency.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span>The customer gets a record PFC cannot change afterwards without it showing. That is an extra argument in tenders (my conclusion).</span></li><li><span>The same chain can later carry equipment records and certificates (my conclusion).</span></li></ul>
+      </section>
+      <section class="card" id="rizici">
+        <h2 class="ttl">Risks and open questions</h2>
+        <ul class="ul"><li><span>Production needs a commercial agreement with Matter Labs. Local development needs access to their private Docker registry.<sup><a href="#s71">71</a></sup><sup><a href="#s74">74</a></sup></span></li><li><span>For now a single sequencer runs the chain; decentralisation is only on the roadmap.<sup><a href="#s68">68</a></sup></span></li><li><span>Customers are mostly state energy companies. The pilot only makes sense if at least one customer wants to read the records (my conclusion).</span></li><li><span>A first demo can also run on the public ZKsync testnet, with no licence. Then only fingerprints may go on chain, because the testnet is public.<sup><a href="#s75">75</a></sup></span></li></ul>
+      </section>
+      </div>
+      <section class="card s12" id="plan-pilota">
+        <h2 class="ttl">Pilot plan</h2>
+        <p class="cap">Durations are my estimate, about 4–5 months in total</p>
+        <div class="steps"><div class="step"><b>0 · 2 weeks</b><span>Pick 1–3 stations and one customer, list the AMS data, request access from Matter Labs</span></div><div class="step"><b>1 · 3–4 weeks</b><span>Local Prividium in Docker, StationLog contract, roles PFC / customer / auditor<sup><a href="#s74">74</a></sup></span></div><div class="step"><b>2 · 2–3 months</b><span>Field pilot: services and alarms of the chosen stations go on the chain, the customer reads them</span></div><div class="step"><b>3 · 2 weeks</b><span>Review: benefits, cost, decision on production and licence</span></div></div>
+      </section>
+    </div>
+
     <section class="card" id="izvori">
       <h2 class="ttl">Sources</h2>
       <p class="note">Figures in the text carry a source number. Collected 27 October 2026. Financial figures are in euros; amounts before 2023 were converted to euros by the sources.</p>
@@ -605,6 +718,14 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
         <li id="s65"><a href="https://pfc.hr/grizo-synthetic-gas-supply-station/" target="_blank" rel="noopener">PFC: GRIZO synthetic gas station</a></li>
         <li id="s66"><a href="https://pfc.hr/integration-of-distributed-control-system-dcs-and-safety-system-esd-cabinets/" target="_blank" rel="noopener">PFC: DCS and ESD cabinet integration</a></li>
         <li id="s67"><a href="https://pfc.hr/aegis-products-at-k-2025-fair-in-dusseldorf/" target="_blank" rel="noopener">PFC: AEGIS at K 2025, Düsseldorf</a></li>
+        <li id="s68"><a href="https://www.zksync.io/prividium" target="_blank" rel="noopener">ZKsync: Prividium product page</a></li>
+        <li id="s69"><a href="https://paragraph.com/@zksync/introducing-zksync-prividium-private-blockchain-infra-built-for-institutions" target="_blank" rel="noopener">ZKsync: Prividium announcement (27 May 2025)</a></li>
+        <li id="s70"><a href="https://cryptobriefing.com/deutsche-bank-zksync-settlement-infrastructure/" target="_blank" rel="noopener">Crypto Briefing: Deutsche Bank and zkSync</a></li>
+        <li id="s71"><a href="https://docs.zksync.io/zk-stack/prividium/overview" target="_blank" rel="noopener">ZKsync docs: Prividium overview</a></li>
+        <li id="s72"><a href="https://docs.zksync.io/zk-stack/prividium/permissions-overview" target="_blank" rel="noopener">ZKsync docs: Prividium permissions</a></li>
+        <li id="s73"><a href="https://docs.zksync.io/zk-stack/prividium/developer-considerations" target="_blank" rel="noopener">ZKsync docs: Prividium developer considerations</a></li>
+        <li id="s74"><a href="https://github.com/matter-labs/local-prividium" target="_blank" rel="noopener">GitHub: matter-labs/local-prividium</a></li>
+        <li id="s75"><a href="https://docs.zksync.io/zksync-network/quick-start" target="_blank" rel="noopener">ZKsync docs: public testnet (quick start)</a></li>
       </ol>
     </section>
   </main>
@@ -613,7 +734,7 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
 (() => {
   const NS = "http://www.w3.org/2000/svg";
   const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
-  const pages = {"onama": "About", "djelatnosti": "Business", "financije": "Financials", "rast": "Growth"};
+  const pages = {"onama": "About", "djelatnosti": "Business", "financije": "Financials", "rast": "Growth", "blockchain": "Blockchain"};
   function show(id, jump) {
     if (!pages[id]) id = "onama";
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
@@ -657,6 +778,67 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
   }
   ybars("ch-rev", [["2020.", 11.16, "11,2"], ["2021.", 13.03, "13,0"], ["2022.", 12.80, "12,8"], ["2023.", 21.67, "21,7"], ["2024.", 19.06, "19,1"], ["2025.", 39.36, "39,4", 1]], { max: 40, ticks: [0, 10, 20, 30, 40], W: 520, H: 260, bw: 46 });
   ybars("ch-profit", [["2020.", 2.21, "2,2"], ["2021.", 3.02, "3,0"], ["2022.", 1.55, "1,6"], ["2023.", 4.90, "4,9"], ["2024.", 2.78, "2,8"], ["2025.", 11.30, "11,3", 1]], { max: 12, ticks: [0, 4, 8, 12], W: 400, H: 220, bw: 34 });
+  const BC_TXT = {"st": ["Station A, customer 1", "Station B, customer 1", "Station C, customer 2"], "ty": ["Service", "LBC calibration", "eLBC alarm", "Part replaced"], "res": ["OK", "OK, seal replaced", "Valve closed, pressure drop", "Calibrated within tolerance"], "block": "Block", "by": "Entered by", "hidden": "Hidden: this station is not your customer's", "only": "The regulator sees only the fingerprint and time", "ok": "Fingerprint matches", "bad": "Fingerprint does NOT match: the database record was changed", "added": "Recorded. The fingerprint was computed in your browser (SHA-256).", "tamper": "The record in PFC's database was quietly changed. Click “Verify”.", "checked": "Verified: every record compared with its fingerprint on the chain.", "tech": "Technician"};
+
+  // Demo: servisni karton na privatnom lancu (simulacija u pregledniku)
+  (() => {
+    const root = document.getElementById("bc-demo"); if (!root) return;
+    const T = BC_TXT, $ = s => root.querySelector(s);
+    const hex = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
+    async function digest(str) {
+      if (crypto?.subtle) return "0x" + hex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)));
+      let h = 2166136261; for (const c of str) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+      return "0x" + h.toString(16).padStart(8, "0").repeat(8);
+    }
+    const db = [], chain = []; let role = "pfc", n = 1040211;
+    const canon = r => JSON.stringify([r.st, r.ty, r.res, r.tech, r.time]);
+    T.st.forEach((s, i) => $("#d-st").add(new Option(s, i)));
+    T.ty.forEach((s, i) => $("#d-ty").add(new Option(s, i)));
+    T.res.forEach(s => { const o = document.createElement("option"); o.value = s; $("#d-res-l").appendChild(o); });
+    function render(status) {
+      const list = $("#d-ledger"); list.innerHTML = "";
+      [...db].reverse().forEach(r => {
+        const c = chain[r.i], d = document.createElement("div");
+        const see = role === "pfc" || (role === "kupac" && r.st < 2);
+        d.className = "blk" + (role === "kupac" && !see ? " hid" : "") + (status && status[r.i] === false ? " bad" : "");
+        let body = "";
+        if (role === "reg") body = `<span>${T.only}</span>`;
+        else if (!see) body = `<span>${T.hidden}</span>`;
+        else body = `<b>${T.st[r.st]} · ${T.ty[r.ty]}</b><span>${r.res}</span><span style="color:var(--muted);font-size:12px">${T.by}: ${r.tech}</span>`;
+        const chk = status ? (status[r.i] ? `<span class="ok">✓ ${T.ok}</span>` : `<span class="no">✗ ${T.bad}</span>`) : "";
+        d.innerHTML = `<div class="h"><span>${T.block} #${c.block}</span><span>${new Date(c.time).toLocaleString(document.documentElement.lang)}</span></div>${body}<code>${c.digest}</code>${chk}`;
+        list.appendChild(d);
+      });
+    }
+    async function add(st, ty, res, tech, time) {
+      const r = { i: db.length, st, ty, res, tech, time };
+      db.push(r); chain.push({ digest: await digest(canon(r)), time, block: n += 1 + (db.length * 7) % 5 });
+    }
+    root.querySelector("form").addEventListener("submit", async e => {
+      e.preventDefault();
+      await add(+$("#d-st").value, +$("#d-ty").value, $("#d-res").value || T.res[0], $("#d-tech").value || T.tech + " 1", Date.now());
+      $("#d-msg").textContent = T.added; render();
+    });
+    $("#d-tamper").addEventListener("click", () => {
+      const t = db[db.length - 1]; if (!t) return;
+      t.res = t.res === T.res[0] ? T.res[2] : T.res[0];
+      $("#d-msg").textContent = T.tamper; render();
+    });
+    $("#d-check").addEventListener("click", async () => {
+      const s = {}; for (const r of db) s[r.i] = (await digest(canon(r))) === chain[r.i].digest;
+      $("#d-msg").textContent = T.checked; render(s);
+    });
+    root.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+      role = b.dataset.role; root.querySelectorAll(".seg button").forEach(x => x.classList.toggle("on", x === b)); render();
+    }));
+    (async () => {
+      const t0 = Date.UTC(2026, 9, 20, 7, 30);
+      await add(0, 0, T.res[1], T.tech + " 2", t0);
+      await add(2, 2, T.res[2], "eLBC", t0 + 86400000 * 2 + 3600000 * 5);
+      await add(1, 1, T.res[3], T.tech + " 1", t0 + 86400000 * 5);
+      render();
+    })();
+  })();
 })();
 </script>
 </body>
