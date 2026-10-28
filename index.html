@@ -275,30 +275,74 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:14px}
 .flow .fb{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
 .flow .fb b{font-size:14px}.flow .fb span{font-size:12.5px;color:var(--muted)}
-.flow .fb small{font-family:var(--f-mono);font-size:10.5px;color:var(--green-d);text-transform:uppercase;letter-spacing:.06em}
+.flow .fb small,.kick{font-family:var(--f-mono);font-size:10.5px;color:var(--green-d);text-transform:uppercase;letter-spacing:.06em}
 .flow .fb:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
-.flow .fb.on{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
-.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;font-size:13px}
-.roles div{background:var(--soft);border-radius:10px;padding:10px 12px}.roles b{display:block;font-size:13.5px}
+.flow .fb.on,.ben .now b.y{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.ben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.ben>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.ben h3{margin:0;font-size:15px}
+.ben p{margin:0;font-size:13px}.ben p.was{color:var(--muted)}.ben p.was b,.ben p.is b{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;margin-right:6px}
+.ben p.is b{color:var(--green-d)}
+table.vis td,table.vis th{text-align:center}table.vis td:first-child,table.vis th:first-child{text-align:left}
+.vi{display:inline-block;min-width:64px;font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 8px}
+.vi.f{background:var(--green);color:#16170f}.vi.h{background:var(--yellow);color:#16170f}.vi.n{background:var(--bar);color:var(--muted)}
 #ugovor{display:flex;flex-direction:column}#ugovor pre{flex:1}
-pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow-x:auto;font-family:var(--f-mono);font-size:12px;line-height:1.55;margin:12px 0 0}
-.demo{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
-.demo form{display:grid;gap:10px;align-content:start}
-.demo label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
-.demo select,.demo input{font:inherit;font-size:14px;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:0}
-.demo .btns{display:flex;flex-wrap:wrap;gap:8px}
-.demo button{font:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 14px;border:1px solid var(--line);background:var(--card);color:inherit;cursor:pointer}
-.demo button.go{background:var(--green);border-color:var(--green);color:#16170f}
+pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;font-family:var(--f-mono);font-size:12px;line-height:1.55;margin:12px 0 0;max-height:520px}
+.bc button{font:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:8px 14px;border:1px solid var(--line);background:var(--card);color:inherit;cursor:pointer}
+.bc button:disabled{opacity:.4;cursor:default}
+.bc button.go{background:var(--green);border-color:var(--green);color:#16170f}
+.bc button.warn{background:var(--orange);border-color:var(--orange);color:#16170f}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;gap:2px;flex-wrap:wrap}
 .seg button{border:0;padding:6px 12px;background:transparent}.seg button.on{background:var(--ink-btn);color:var(--ink-btn-fg)}
-.ledger{display:grid;gap:8px;margin-top:10px;max-height:420px;overflow-y:auto}
-.blk{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;display:grid;gap:3px}
+.stepper{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.stepper button{display:flex;align-items:center;gap:6px;padding:6px 12px 6px 6px}
+.stepper button i{font-style:normal;width:22px;height:22px;border-radius:99px;display:grid;place-items:center;background:var(--bar);font-family:var(--f-mono);font-size:11px}
+.stepper button.done i{background:var(--green);color:#16170f}.stepper button.cur{border-color:var(--green);box-shadow:0 0 0 2px color-mix(in srgb,var(--green) 35%,transparent)}
+.demo2{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
+.story{display:flex;flex-direction:column;gap:12px}
+.who{display:flex;align-items:center;gap:10px}
+.who .av2{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:700;background:var(--green);color:#16170f;flex:none}
+.who .av2.c{background:var(--yellow)}.who .av2.d{background:var(--orange)}.who .av2.a{background:var(--ink-btn);color:var(--ink-btn-fg)}
+.who b{display:block;font-size:16px}.who span{font-size:12.5px;color:var(--muted)}
+.story p.txt{margin:0;font-size:14px}
+.doc{border:1px dashed var(--faint);border-radius:12px;padding:10px 12px;font-size:13px;display:grid;gap:4px}
+.doc .r{display:flex;justify-content:space-between;gap:10px}.doc .r span{color:var(--muted)}.doc .r b{text-align:right}
+.doc .r.fake b{color:var(--orange);text-decoration:underline wavy}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip2{font-family:var(--f-mono);font-size:11px;border-radius:99px;padding:3px 9px;background:color-mix(in srgb,var(--green) 18%,transparent)}
+.story .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.lens{display:flex;flex-direction:column;gap:6px}
+.lens p{margin:0;font-size:12.5px;color:var(--muted);min-height:36px}
+.chain{display:flex;flex-direction:column;gap:0;margin-top:10px;max-height:560px;overflow-y:auto;padding-right:2px}
+.blk{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;display:grid;gap:4px;background:var(--card)}
+.link{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);padding:3px 0 3px 18px;border-left:2px solid var(--line);margin-left:18px}
 .blk .h{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
-.blk code{font-family:var(--f-mono);font-size:11px;overflow-wrap:anywhere;color:var(--green-d)}
-.blk.hid{opacity:.55}.blk.bad{border-color:var(--orange);background:color-mix(in srgb,var(--orange) 12%,transparent)}
-.blk .ok{color:var(--green-d);font-weight:700}.blk .no{color:var(--orange);font-weight:700}
-.demo .msg{font-size:12.5px;color:var(--muted);margin:0}
-@media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.roles,.demo{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
+.blk code{font-family:var(--f-mono);font-size:10.5px;overflow-wrap:anywhere;color:var(--green-d)}
+.blk .lock{color:var(--muted);font-size:12.5px}
+.blk.nope{opacity:.5}.blk.new{animation:pop .5s ease}
+.blk.ok{border-color:var(--green)}.blk.bad{border-color:var(--orange);background:color-mix(in srgb,var(--orange) 12%,var(--card))}
+.blk .res{font-weight:700;font-size:12.5px}.blk.ok .res{color:var(--green-d)}.blk.bad .res{color:var(--orange)}
+.blk .kv{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;font-size:12.5px}.blk .kv span{color:var(--muted)}
+.empty{border:1.5px dashed var(--faint);border-radius:12px;padding:18px;text-align:center;color:var(--muted);font-size:13px}
+.fraud{border:1px solid var(--orange);border-radius:12px;padding:12px;display:grid;gap:8px;background:color-mix(in srgb,var(--orange) 8%,transparent)}
+.fraud b{font-size:13.5px}.fraud .opts{display:grid;gap:6px}.fraud .opts button{text-align:left;border-radius:10px}
+.stat{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin-top:10px}.stat b{color:inherit;font-family:var(--f-mono)}
+@keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.calc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
+.calc label{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13px;margin-bottom:10px}
+.calc label output{font-family:var(--f-mono);font-weight:700}
+.calc label input{grid-column:1/-1;width:100%;accent-color:var(--green)}
+.calc label small{grid-column:1/-1;color:var(--muted);font-size:11.5px}
+.res2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.res2>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start}
+.res2 h3{margin:0;font-size:14.5px}.res2 .r{display:flex;justify-content:space-between;font-size:13px}.res2 .r span{color:var(--muted)}
+.res2 .r b{font-family:var(--f-mono)}.res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
+.res2 .net b.pos{color:var(--green-d)}.res2 .net b.neg{color:var(--orange)}
+.live{display:grid;gap:6px;max-height:360px;overflow-y:auto;margin-top:10px}
+.live a{color:inherit}
+.tn{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
+ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
+@media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.demo2,.ben,.calc,.res2,.tn{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -334,9 +378,10 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow-x:auto;
       </div>
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
-        <a href="#blockchain" data-jump="prividium">Prividium</a>
-        <a href="#blockchain" data-jump="ideja">Ideja pilota</a>
+        <a href="#blockchain" data-jump="prednosti">Prednosti</a>
         <a href="#blockchain" data-jump="demo">Demo</a>
+        <a href="#blockchain" data-jump="testnet">Testnet</a>
+        <a href="#blockchain" data-jump="troskovi">Troškovi</a>
         <a href="#blockchain" data-jump="plan-pilota">Plan pilota</a>
       </div>
     </nav>
@@ -571,64 +616,186 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow-x:auto;
 
     <div class="grid" id="p-blockchain" hidden>
       <section class="card s12" id="blockchain-top">
-        <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot: servisni karton na privatnom lancu</h1><p class="lead">Kako bi PFC mogao koristiti ZKsync Prividium da kupcima da provjerljiv zapis servisa i alarma na plinskim stanicama, a da podaci ostanu privatni. Prijedlog pilota je moj zaključak, ne plan tvrtke.</p></div>
+        <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot: PFC-ovo poslovanje na privatnom lancu</h1><p class="lead">Narudžbe, servisi, alarmi, računi i plaćanja dobivaju zapis koji nitko ne može naknadno promijeniti. Svaka strana vidi samo ono što smije, a podaci ostaju kod PFC-a. Prijedlog je moj zaključak, ne plan tvrtke.</p></div>
           <div class="art" aria-hidden="true"></div></div>
+      </section>
+      <section class="card s12" id="prednosti">
+        <h2 class="ttl">Zašto blockchain: danas i s lancem</h2>
+        <p class="cap">Prednosti za PFC i njegove kupce; procjena je moj zaključak</p>
+        <div class="ben"><div><h3>Jedan izvor istine</h3><p class="was"><b>Danas</b>zapisnici u AMS-u, PDF-ovi e-mailom, Excel kod kupca, svatko ima svoju verziju.</p><p class="is"><b>S lancem</b>PFC, kupac i revizor čitaju isti zapis, s istim vremenom i otiskom.</p></div><div><h3>Dokaz umjesto rasprave</h3><p class="was"><b>Danas</b>spor oko toga je li servis obavljen, kad je alarm bio i koji je iznos dogovoren.</p><p class="is"><b>S lancem</b>vrijeme i otisak upisani su jednom i ne mogu se naknadno promijeniti; svaka izmjena se odmah vidi.</p></div><div><h3>Transparentno, ali privatno</h3><p class="was"><b>Danas</b>ili dijelite cijeli dokument ili ništa.</p><p class="is"><b>S lancem</b>svaka uloga vidi točno svoje: kupac svoje stanice, regulator alarme, revizor iznose, konkurencija ništa.<sup><a href="#s72">72</a></sup><sup><a href="#s68">68</a></sup></p></div><div><h3>Brža revizija i kontrola</h3><p class="was"><b>Danas</b>revizor ručno uzorkuje dio dokumenata, a controlling slaže izvještaje iz više sustava.</p><p class="is"><b>S lancem</b>provjera svih zapisa traje sekunde; controlling vidi stanje svakog posla od narudžbe do plaćanja.</p></div><div><h3>Pravila u kodu</h3><p class="was"><b>Danas</b>pravila („račun tek nakon servisa”) postoje na papiru i ovise o ljudima.</p><p class="is"><b>S lancem</b>pametni ugovor ih provodi sam: račun se ne može izdati prije potvrđenog servisa, a plaćanje potvrđuje samo kupac.</p></div><div><h3>Prednost na tržištu</h3><p class="was"><b>Danas</b>ponuda se natječe cijenom i referencama.</p><p class="is"><b>S lancem</b>PFC nudi provjerljiv digitalni karton svake stanice i uređaja; banka može brže financirati potvrđene račune (moj zaključak).</p></div></div>
+      </section>
+      <section class="card s12" id="uvid">
+        <h2 class="ttl">Tko što vidi</h2>
+        <p class="cap">Transparentno za one koji imaju pravo uvida, privatno za sve ostale. Prava se dodjeljuju ulogama u Prividiumu.<sup><a href="#s72">72</a></sup></p>
+        <div class="tw" style="margin-top:10px"><table class="vis"><thead><tr><th></th><th>PFC</th><th>Kupac (svoje stanice)</th><th>Regulator</th><th>Revizor</th><th>Javnost</th></tr></thead><tbody><tr><td>Narudžba</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Servisni zapisnik</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Alarm eLBC</td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Račun i iznos</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Plaćanje</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr></tbody></table></div>
+      </section>
+      <section class="card s12" id="demo">
+        <h2 class="ttl">Demo: jedan posao od narudžbe do revizije</h2>
+        <p class="cap">Prođite korake, promijenite ulogu da vidite tko što vidi, pa pokušajte krivotvoriti dokument i provjerite lanac. Otisci se stvarno računaju u pregledniku (SHA-256); lanac je simulacija.</p>
+        <div class="bc" id="bc-demo">
+          <div class="stepper"><button type="button"><i>1</i>Narudžba servisa</button><button type="button"><i>2</i>Servis na terenu</button><button type="button"><i>3</i>Alarm s uređaja</button><button type="button"><i>4</i>Račun</button><button type="button"><i>5</i>Plaćanje</button><button type="button"><i>6</i>Revizija</button></div>
+          <div class="demo2">
+            <div class="story">
+              <div class="who"><span class="av2" id="d-av"></span><div><b id="d-who"></b><span id="d-wsub"></span></div></div>
+              <h3 id="d-title" style="margin:0;font-size:18px"></h3>
+              <p class="txt" id="d-txt"></p>
+              <span class="kick" id="d-offh">Dokument ostaje u PFC-ovom sustavu:</span>
+              <div class="doc" id="d-doc"></div>
+              <span class="kick" id="d-onh">Na lanac ide:</span>
+              <div class="chips" id="d-chips"></div>
+              <div class="btns">
+                <button type="button" id="d-back">← Natrag</button>
+                <button type="button" class="go" id="d-next">Upiši na lanac →</button>
+                <button type="button" class="go" id="d-check" hidden>Provjeri lanac</button>
+                <button type="button" class="warn" id="d-fraud">Pokušaj prevare</button>
+                <button type="button" id="d-reset">Ispočetka</button>
+              </div>
+              <div class="fraud" id="d-fbox" hidden><b>Što želite krivotvoriti u bazi?</b><div class="opts" id="d-fopts"></div><p class="note" style="margin:0">Mijenja se samo dokument u bazi. Zapis na lancu se ne može promijeniti, jer bi trebalo prepisati sve iduće blokove i dokaz već objavljen na Ethereumu.</p></div>
+              <p class="note" id="d-msg" aria-live="polite" style="margin:0;font-weight:600"></p>
+            </div>
+            <div>
+              <div class="lens"><span class="kick">Gledate kao:</span><div class="seg" role="group"><button type="button" data-role="pfc" class="on">PFC</button><button type="button" data-role="kupac">Kupac 1</button><button type="button" data-role="reg">Regulator</button><button type="button" data-role="rev">Revizor</button><button type="button" data-role="pub">Javnost</button></div><p id="d-lens"></p></div>
+              <div class="chain" id="d-chain" aria-live="polite"></div>
+              <div class="stat"><span>Blokova na lancu: <b id="d-n">0</b></span><span>Provjera trajala: <b id="d-ms">–</b></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="card s12" id="testnet">
+        <h2 class="ttl">Pravi ugovor na ZKsync testnetu</h2>
+        <p class="cap"><span class="tag">Čeka objavu</span> Ugovor je napisan i testiran na lokalnom lancu (18 transakcija za 4 posla). Na javni testnet ide kad dobijemo testni ETH.</p>
+        <div class="tn">
+          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Na faucetu (Alchemy, Chainstack, GetBlock…) pošalješ besplatni testni ETH na tu adresu; captchu rješavaš ti.<sup><a href="#s79">79</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Sepolia (chain ID 300) i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s76">76</a></sup></span></li><li><span>Adresu ugovora upišem na stranicu, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">Običan Solidity radi na Eri preko EVM interpretera, pa ide i Remix s MetaMaskom; transakcije su tada 1,5–4 puta skuplje nego s ZKsyncovim kompajlerom.<sup><a href="#s78">78</a></sup> ZKsync preporučuje i noviji ZKsync OS testnet (chain ID 8022833), na koji se ETH prenosi preko portala.<sup><a href="#s77">77</a></sup><sup><a href="#s75">75</a></sup></p></div>
+          <div><div class="live" id="bc-live"><div class="empty">Ovdje će se uživo prikazivati zapisi s testneta, izravno iz preglednika, s poveznicama na block explorer.</div></div></div>
+        </div>
+      </section>
+      <section class="card s12" id="troskovi">
+        <h2 class="ttl">Troškovi i koristi: kalkulator</h2>
+        <p class="cap">Sve brojke su pretpostavke koje mijenjate klizačima, ne podaci tvrtke</p>
+        <form class="calc" id="bc-calc" onsubmit="return false">
+          <div>
+            <label>Stanica i uređaja<output for="c-st"></output><input type="range" id="c-st" min="50" max="3000" step="50" value="1000"><small>Oko 1000 eLBC uređaja je instalirano.<sup><a href="#s22">22</a></sup></small></label>
+            <label>Zapisa po stanici godišnje<output for="c-per"></output><input type="range" id="c-per" min="1" max="50" step="1" value="8"><small>Servisi, kalibracije, alarmi, računi</small></label>
+            <label>Naknada po zapisu na javnom L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Pretpostavka; stvarnu izmjerimo na testnetu</small></label>
+            <label>Privatni lanac godišnje (licenca, hosting, održavanje)<output for="c-fix"></output><input type="range" id="c-fix" min="0" max="150000" step="5000" value="40000"><small>Pretpostavka; cijena Prividiuma nije javna<sup><a href="#s68">68</a></sup></small></label>
+            <label>Ušteđeni sati godišnje<output for="c-hrs"></output><input type="range" id="c-hrs" min="0" max="3000" step="50" value="800"><small>Usklađivanje s kupcima, revizija, sporovi, izvještaji</small></label>
+            <label>Trošak sata rada<output for="c-rate"></output><input type="range" id="c-rate" min="15" max="80" step="1" value="30"></label>
+          </div>
+          <div class="res2">
+            <div><h3>Javni L2, samo otisci</h3>
+              <div class="r"><span>Zapisa godišnje</span><b id="o-rec"></b></div>
+              <div class="r"><span>Trošak lanca</span><b id="o-pub"></b></div>
+              <div class="r"><span>Korist (ušteđeni rad)</span><b id="o-gain"></b></div>
+              <div class="r net"><span>Neto godišnje</span><b id="o-npub"></b></div>
+              <p class="note" style="margin:0">Najjeftinije, ali na javni lanac smiju samo otisci, a ne podaci.</p></div>
+            <div><h3>Privatni lanac (Prividium)</h3>
+              <div class="r"><span>Zapisa godišnje</span><b id="o-rec2"></b></div>
+              <div class="r"><span>Trošak platforme</span><b id="o-priv"></b></div>
+              <div class="r"><span>Korist (ušteđeni rad)</span><b id="o-gain2"></b></div>
+              <div class="r net"><span>Neto godišnje</span><b id="o-npriv"></b></div>
+              <p class="note" style="margin:0">Podaci i uloge na lancu; skuplje, ali bez otkrivanja podataka.</p></div>
+          </div>
+        </form>
       </section>
       <section class="card s7" id="prividium">
         <h2 class="ttl">Što je ZKsync Prividium</h2>
-        <ul class="ul"><li><span>Privatni blockchain koji ZKsync je pokrenuo 27. svibnja 2025. Prvi partner bio je Memento, lanac razvijen s Deutsche Bankom.<sup><a href="#s69">69</a></sup></span></li><li><span>Transakcije, strane i salda ostaju privatni, unutar infrastrukture tvrtke. Na Ethereum idu samo ZK dokazi da je sve ispravno.<sup><a href="#s68">68</a></sup></span></li><li><span>Tvrtka sama određuje tko smije što vidjeti i pozivati, sve do pojedine funkcije pametnog ugovora. Revizor ili regulator može dobiti pristup samo za čitanje.<sup><a href="#s72">72</a></sup><sup><a href="#s71">71</a></sup></span></li><li><span>Pametni ugovori pišu se u Solidityju, s uobičajenim alatima (Hardhat, Foundry, Viem).<sup><a href="#s73">73</a></sup></span></li><li><span>Može ga vrtjeti sama tvrtka ili Matter Labs kao uslugu. Cijena nije objavljena.<sup><a href="#s68">68</a></sup></span></li></ul>
+        <ul class="ul"><li><span>Privatni blockchain koji je ZKsync pokrenuo 27. svibnja 2025. Prvi partner bio je Memento, lanac razvijen s Deutsche Bankom.<sup><a href="#s69">69</a></sup></span></li><li><span>Transakcije, strane i salda ostaju privatni, unutar infrastrukture tvrtke. Na Ethereum idu samo ZK dokazi da je sve ispravno.<sup><a href="#s68">68</a></sup></span></li><li><span>Tvrtka sama određuje tko smije što vidjeti i pozivati, sve do pojedine funkcije pametnog ugovora. Revizor ili regulator može dobiti pristup samo za čitanje.<sup><a href="#s72">72</a></sup><sup><a href="#s71">71</a></sup></span></li><li><span>Pametni ugovori pišu se u Solidityju, s uobičajenim alatima (Hardhat, Foundry, Viem).<sup><a href="#s73">73</a></sup></span></li><li><span>Može ga vrtjeti sama tvrtka ili Matter Labs kao uslugu. Cijena nije objavljena.<sup><a href="#s68">68</a></sup></span></li></ul>
       </section>
       <section class="card s5" id="korisnici">
         <h2 class="ttl">Tko ga koristi</h2>
         <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: privatni L2 za izdavanje i vođenje tokeniziranih fondova. Nastao je iz projekta DAMA u singapurskom programu MAS Project Guardian.<sup><a href="#s69">69</a></sup><sup><a href="#s70">70</a></sup></span></li><li><span>Uvođenje fonda skratilo se s 2–3 mjeseca na 2–3 tjedna.<sup><a href="#s70">70</a></sup></span></li><li><span>ZKsync navodi i druge banke i fondove, ali to su njegove vlastite tvrdnje.<sup><a href="#s68">68</a></sup></span></li><li><span>Industrijsku tvrtku koja koristi Prividium nisam našao. PFC bi bio među prvima izvan financija (moj zaključak).</span></li></ul>
       </section>
       <section class="card s12" id="ideja">
-        <h2 class="ttl">Ideja pilota</h2>
-        <p class="cap">Svaki servis, kalibracija ili alarm dobiva otisak na lancu. Kupac i regulator mogu provjeriti da zapis nitko nije mijenjao.</p>
-        <div class="flow"><div class="fb"><small>1</small><b>Teren</b><span>Servis, kalibracija ili alarm eLBC-a na stanici</span></div><div class="fb"><small>2</small><b>PFC-ov softver</b><span>Zapis ide u AMS ili AYMO, kao i danas</span></div><div class="fb on"><small>3</small><b>Privatni lanac</b><span>Otisak zapisa (hash), vrijeme i autor upisuju se u pametni ugovor</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>Dokaz da je lanac ispravan; podaci ostaju kod PFC-a</span></div></div>
-        <div class="roles"><div><b>PFC</b>Vidi sve zapise i upisuje nove</div><div><b>Kupac 1</b>Vidi samo zapise svojih stanica</div><div><b>Regulator / revizor</b>Vidi samo otiske i vrijeme, može provjeriti</div></div>
-      </section>
-      <section class="card s12" id="demo">
-        <h2 class="ttl">Demo</h2>
-        <p class="cap">Simulacija u pregledniku, nije spojena na pravi lanac. Upišite zapis, promijenite ulogu ili potajno promijenite zapis u bazi pa ga provjerite.</p>
-        <div class="demo" id="bc-demo">
-          <form>
-            <label>Stanica<select id="d-st"></select></label>
-            <label>Vrsta zapisa<select id="d-ty"></select></label>
-            <label>Nalaz<input id="d-res" list="d-res-l" placeholder="Ispravno"><datalist id="d-res-l"></datalist></label>
-            <label>Upisao<input id="d-tech" placeholder="Tehničar 1"></label>
-            <div class="btns"><button class="go" type="submit">Zapiši na lanac</button><button type="button" id="d-tamper">Promijeni zapis u bazi</button><button type="button" id="d-check">Provjeri</button></div>
-            <p class="msg" id="d-msg" aria-live="polite"></p>
-          </form>
-          <div>
-            <div class="seg" role="group" aria-label="Uloga"><button type="button" data-role="pfc" class="on">PFC</button><button type="button" data-role="kupac">Kupac 1</button><button type="button" data-role="reg">Regulator / revizor</button></div>
-            <div class="ledger" id="d-ledger"></div>
-          </div>
-        </div>
+        <h2 class="ttl">Kako bi radilo u PFC-u</h2>
+        <p class="cap">Dokumenti ostaju u postojećim sustavima, na lanac idu otisci, status i pravila</p>
+        <div class="flow"><div class="fb"><small>1</small><b>Teren i kupci</b><span>Narudžba, servis, alarm eLBC-a, račun, plaćanje</span></div><div class="fb"><small>2</small><b>PFC-ov softver</b><span>Dokumenti ostaju u AMS-u, AYMO-u i ERP-u, kao i danas</span></div><div class="fb on"><small>3</small><b>Privatni lanac</b><span>Otisak, vrijeme, autor i status posla upisuju se u pametni ugovor</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>Dokaz da je lanac ispravan; podaci ostaju kod PFC-a</span></div></div>
       </section>
       <section class="card s7" id="ugovor">
-        <h2 class="ttl">Pametni ugovor</h2>
-        <p class="cap">Nacrt u Solidityju; pravo upisa daje se ulogom u Prividiumu, ne u kodu<sup><a href="#s72">72</a></sup></p>
+        <h2 class="ttl">Pametni ugovor PFCLedger</h2>
+        <p class="cap">Cijeli kod koji ide na testnet; <a href="testnet/PFCLedger.sol" target="_blank">preuzmi .sol</a></p>
         <pre class="code"><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-/// Servisni karton: na lanac ide samo otisak zapisa, podaci ostaju u PFC-ovoj bazi
-contract StationLog {
-    struct Entry { bytes32 digest; uint64 time; address author; }
+/// @title PFC Ledger (demo)
+/// @notice Simulates Pico Flow Controls' service business on a public ZKsync testnet:
+///         order -&gt; service on site -&gt; eLBC alarm -&gt; invoice -&gt; payment.
+///         Only ids, amounts and document fingerprints (hashes) go on chain;
+///         the documents themselves stay in the company's systems.
+/// @dev Demo only. On a private Prividium chain, access to these functions would
+///      come from Prividium roles instead of the `roles` mapping.
+contract PFCLedger {
+    enum Role { None, PFC, Technician, Customer, Auditor }
+    enum Status { None, Ordered, Serviced, Invoiced, Paid }
 
-    mapping(bytes32 =&gt; Entry[]) public log;   // id stanice =&gt; zapisi
-    event Logged(bytes32 indexed station, bytes32 digest, address author);
-
-    // Tko smije zvati: uloga "Tehničar" u Prividium admin panelu
-    function record(bytes32 station, bytes32 digest) external {
-        log[station].push(Entry(digest, uint64(block.timestamp), msg.sender));
-        emit Logged(station, digest, msg.sender);
+    struct Order {
+        bytes32 station;
+        address customer;
+        uint64 amountCents;
+        Status status;
     }
 
-    function count(bytes32 station) external view returns (uint256) {
-        return log[station].length;
+    address public immutable owner;
+    mapping(address =&gt; Role) public roles;
+    mapping(uint256 =&gt; Order) public orders;
+    uint256 public orderCount;
+
+    event RoleSet(address indexed who, Role role);
+    event OrderCreated(uint256 indexed id, bytes32 indexed station, address indexed customer, bytes32 doc);
+    event ServiceLogged(uint256 indexed id, bytes32 indexed station, address technician, bytes32 doc);
+    event AlarmLogged(bytes32 indexed station, uint8 code, bytes32 doc);
+    event InvoiceIssued(uint256 indexed id, uint64 amountCents, bytes32 doc);
+    event PaymentConfirmed(uint256 indexed id, address customer);
+
+    modifier only(Role r) {
+        require(msg.sender == owner || roles[msg.sender] == r, "role");
+        _;
     }
-}</code></pre>
+
+    constructor() {
+        owner = msg.sender;
+        roles[msg.sender] = Role.PFC;
+        emit RoleSet(msg.sender, Role.PFC);
+    }
+
+    function setRole(address who, Role r) external {
+        require(msg.sender == owner, "owner");
+        roles[who] = r;
+        emit RoleSet(who, r);
+    }
+
+    function createOrder(bytes32 station, address customer, bytes32 doc) external only(Role.PFC) returns (uint256 id) {
+        id = ++orderCount;
+        orders[id] = Order(station, customer, 0, Status.Ordered);
+        emit OrderCreated(id, station, customer, doc);
+    }
+
+    function logService(uint256 id, bytes32 doc) external only(Role.Technician) {
+        Order storage o = orders[id];
+        require(o.status == Status.Ordered, "status");
+        o.status = Status.Serviced;
+        emit ServiceLogged(id, o.station, msg.sender, doc);
+    }
+
+    function logAlarm(bytes32 station, uint8 code, bytes32 doc) external only(Role.Technician) {
+        emit AlarmLogged(station, code, doc);
+    }
+
+    function issueInvoice(uint256 id, uint64 amountCents, bytes32 doc) external only(Role.PFC) {
+        Order storage o = orders[id];
+        require(o.status == Status.Serviced, "status");
+        o.status = Status.Invoiced;
+        o.amountCents = amountCents;
+        emit InvoiceIssued(id, amountCents, doc);
+    }
+
+    function confirmPayment(uint256 id) external {
+        Order storage o = orders[id];
+        require(o.status == Status.Invoiced &amp;&amp; msg.sender == o.customer, "customer");
+        o.status = Status.Paid;
+        emit PaymentConfirmed(id, msg.sender);
+    }
+}
+</code></pre>
       </section>
       <div class="s5 colstack">
       <section class="card" id="zasto">
@@ -637,13 +804,13 @@ contract StationLog {
       </section>
       <section class="card" id="rizici">
         <h2 class="ttl">Rizici i otvorena pitanja</h2>
-        <ul class="ul"><li><span>Za produkciju treba komercijalni ugovor s Matter Labsom. Lokalni razvoj traži pristup njihovom privatnom Docker registru.<sup><a href="#s71">71</a></sup><sup><a href="#s74">74</a></sup></span></li><li><span>Za sada lanac vodi jedan sekvencer, decentralizacija je tek u planu.<sup><a href="#s68">68</a></sup></span></li><li><span>Kupci su uglavnom državne energetske tvrtke. Pilot ima smisla samo ako barem jedan kupac želi čitati zapise (moj zaključak).</span></li><li><span>Prvi demo može ići i na javni ZKsync testnet, bez licence. Tada na lanac smiju samo otisci, jer je testnet javan.<sup><a href="#s75">75</a></sup></span></li></ul>
+        <ul class="ul"><li><span>Za produkciju treba komercijalni ugovor s Matter Labsom. Lokalni razvoj traži pristup njihovom privatnom Docker registru.<sup><a href="#s71">71</a></sup><sup><a href="#s74">74</a></sup></span></li><li><span>Za sada lanac vodi jedan sekvencer, decentralizacija je tek u planu.<sup><a href="#s68">68</a></sup></span></li><li><span>Kupci su uglavnom državne energetske tvrtke. Pilot ima smisla samo ako barem jedan kupac želi čitati zapise (moj zaključak).</span></li><li><span>Na javni testnet smiju samo otisci i izmišljeni podaci, jer je javan.<sup><a href="#s75">75</a></sup></span></li></ul>
       </section>
       </div>
       <section class="card s12" id="plan-pilota">
         <h2 class="ttl">Plan pilota</h2>
         <p class="cap">Trajanje je moja procjena, oko 4–5 mjeseci ukupno</p>
-        <div class="steps"><div class="step"><b>0 · 2 tjedna</b><span>Odabir 1–3 stanice i jednog kupca, popis podataka iz AMS-a, zahtjev Matter Labsu za pristup</span></div><div class="step"><b>1 · 3–4 tjedna</b><span>Lokalni Prividium u Dockeru, ugovor StationLog, uloge PFC / kupac / revizor<sup><a href="#s74">74</a></sup></span></div><div class="step"><b>2 · 2–3 mjeseca</b><span>Pilot na terenu: servisi i alarmi odabranih stanica idu na lanac, kupac ih čita</span></div><div class="step"><b>3 · 2 tjedna</b><span>Procjena: koristi, trošak, odluka o produkciji i licenci</span></div></div>
+        <div class="steps"><div class="step"><b>0 · 2 tjedna</b><span>Odabir 1–3 stanice i jednog kupca, popis podataka iz AMS-a, zahtjev Matter Labsu za pristup</span></div><div class="step"><b>1 · 3–4 tjedna</b><span>Lokalni Prividium u Dockeru, ugovor PFCLedger, uloge PFC / kupac / regulator / revizor<sup><a href="#s74">74</a></sup></span></div><div class="step"><b>2 · 2–3 mjeseca</b><span>Pilot na terenu: poslovi odabranih stanica idu na lanac, kupac ih čita i potvrđuje plaćanja</span></div><div class="step"><b>3 · 2 tjedna</b><span>Procjena: koristi, trošak, odluka o produkciji i licenci</span></div></div>
       </section>
     </div>
 
@@ -726,6 +893,10 @@ contract StationLog {
         <li id="s73"><a href="https://docs.zksync.io/zk-stack/prividium/developer-considerations" target="_blank" rel="noopener">ZKsync docs: Prividium, upute za razvoj</a></li>
         <li id="s74"><a href="https://github.com/matter-labs/local-prividium" target="_blank" rel="noopener">GitHub: matter-labs/local-prividium</a></li>
         <li id="s75"><a href="https://docs.zksync.io/zksync-network/quick-start" target="_blank" rel="noopener">ZKsync docs: javni testnet (quick start)</a></li>
+        <li id="s76"><a href="https://docs.zksync.io/zksync-network/zksync-era/network-details" target="_blank" rel="noopener">ZKsync docs: Era Sepolia testnet, podaci o mreži</a></li>
+        <li id="s77"><a href="https://docs.zksync.io/zksync-network/zksync-os/network-details" target="_blank" rel="noopener">ZKsync docs: ZKsync OS testnet, podaci o mreži</a></li>
+        <li id="s78"><a href="https://docs.zksync.io/zksync-network/zksync-era/unique-features" target="_blank" rel="noopener">ZKsync docs: EVM interpreter na Eri</a></li>
+        <li id="s79"><a href="https://docs.zksync.io/zksync-network/zksync-era/ecosystem" target="_blank" rel="noopener">ZKsync docs: faucetovi za testni ETH</a></li>
       </ol>
     </section>
   </main>
@@ -778,66 +949,145 @@ contract StationLog {
   }
   ybars("ch-rev", [["2020.", 11.16, "11,2"], ["2021.", 13.03, "13,0"], ["2022.", 12.80, "12,8"], ["2023.", 21.67, "21,7"], ["2024.", 19.06, "19,1"], ["2025.", 39.36, "39,4", 1]], { max: 40, ticks: [0, 10, 20, 30, 40], W: 520, H: 260, bw: 46 });
   ybars("ch-profit", [["2020.", 2.21, "2,2"], ["2021.", 3.02, "3,0"], ["2022.", 1.55, "1,6"], ["2023.", 4.90, "4,9"], ["2024.", 2.78, "2,8"], ["2025.", 11.30, "11,3", 1]], { max: 12, ticks: [0, 4, 8, 12], W: 400, H: 220, bw: 34 });
-  const BC_TXT = {"st": ["Stanica A, kupac 1", "Stanica B, kupac 1", "Stanica C, kupac 2"], "ty": ["Servis", "Kalibracija LBC-a", "Alarm eLBC", "Zamjena dijela"], "res": ["Ispravno", "Ispravno, zamijenjena brtva", "Ventil zatvoren, pad tlaka", "Kalibrirano unutar tolerancije"], "block": "Blok", "by": "Upisao", "hidden": "Skriveno: ova stanica nije vašeg kupca", "only": "Regulator vidi samo otisak i vrijeme", "ok": "Otisak se poklapa", "bad": "Otisak se NE poklapa: zapis u bazi je promijenjen", "added": "Zapisano. Otisak je izračunat u vašem pregledniku (SHA-256).", "tamper": "Zapis u PFC-ovoj bazi je potajno promijenjen. Kliknite „Provjeri”.", "checked": "Provjereno: svaki zapis uspoređen s otiskom na lancu.", "tech": "Tehničar"};
+  const BC_TXT = {"roles": {"pfc": ["PFC", "Vidi i upisuje sve zapise."], "kupac": ["Kupac 1", "Vidi samo poslove za svoje stanice (MRS-A). Alarm kupca 2 mu je skriven."], "reg": ["Regulator", "Vidi alarme u cijelosti (sigurnost), a za ostalo samo otisak i vrijeme."], "rev": ["Revizor", "Vidi narudžbe, račune i plaćanja; tehničke detalje samo kao otisak."], "pub": ["Javnost", "Na Ethereumu vidi samo dokaz da je lanac ispravan. Nijedan podatak."]}, "steps": [{"k": "order", "who": "Kupac 1", "wsub": "operator plinske mreže", "av": "K", "c": "c", "title": "Narudžba servisa", "text": "Kupac 1 naručuje godišnji servis mjerno-regulacijske stanice MRS-A. PFC narudžbu upisuje na lanac.", "doc": [["Stanica", "MRS-A"], ["Posao", "Godišnji servis"], ["Ponuda", "4.800,00 €"], ["Rok", "15 dana"]], "chain": ["broj narudžbe", "otisak stanice", "adresa kupca", "otisak dokumenta"], "st": "MRS-A", "cust": 1}, {"k": "service", "who": "Tehničar 2", "wsub": "PFC, servis na terenu", "av": "T", "c": "", "title": "Servis na terenu", "text": "Tehničar obavi servis i upiše zapisnik u AMS. Otisak zapisnika s vremenom i potpisom tehničara ide na lanac.", "doc": [["Stanica", "MRS-A"], ["Nalaz", "Ispravno"], ["Zamijenjeno", "Brtva DN50"], ["Trajanje", "3 h"]], "chain": ["broj narudžbe", "adresa tehničara", "otisak zapisnika"], "st": "MRS-A", "cust": 1}, {"k": "alarm", "who": "eLBC uređaj", "wsub": "stanica BVS-C, kupac 2", "av": "e", "c": "d", "title": "Alarm s uređaja", "text": "Na drugoj stanici eLBC sam zatvori ventil zbog naglog pada tlaka i zapiše alarm. Ovo je posao drugog kupca.", "doc": [["Stanica", "BVS-C"], ["Događaj", "Ventil zatvoren"], ["Tlak", "38 → 21 bar"], ["Vrijeme", "02:14"]], "chain": ["otisak stanice", "kod alarma", "otisak zapisa"], "st": "BVS-C", "cust": 2}, {"k": "invoice", "who": "PFC", "wsub": "računovodstvo", "av": "P", "c": "", "title": "Račun", "text": "Pametni ugovor dopušta račun tek kad je servis potvrđen. Iznos i otisak računa idu na lanac.", "doc": [["Račun", "R-2026-1187"], ["Za", "Godišnji servis MRS-A"], ["Iznos", "4.800,00 €"], ["Dospijeće", "30 dana"]], "chain": ["broj narudžbe", "iznos", "otisak računa"], "st": "MRS-A", "cust": 1}, {"k": "payment", "who": "Kupac 1", "wsub": "financije", "av": "K", "c": "c", "title": "Plaćanje", "text": "Kupac potvrdi plaćanje svojim ključem. Samo kupac to smije, pa je potvrda nesporna.", "doc": [["Račun", "R-2026-1187"], ["Plaćeno", "4.800,00 €"], ["Datum", "28. 11. 2026."]], "chain": ["broj narudžbe", "adresa kupca"], "st": "MRS-A", "cust": 1}, {"k": "audit", "who": "Revizor", "wsub": "godišnja revizija", "av": "R", "c": "a", "title": "Revizija", "text": "Revizor ne uzorkuje ručno nego provjerava sve zapise odjednom: odgovara li svaki dokument svom otisku na lancu.", "doc": [], "chain": [], "st": "", "cust": 0}], "frauds": [{"step": 3, "row": 2, "val": "5.800,00 €", "label": "Povećaj iznos računa s 4.800 € na 5.800 €"}, {"step": 1, "row": 2, "val": "Ništa", "label": "Izbriši iz zapisnika zamjenu brtve"}, {"step": 2, "row": 3, "val": "04:14", "label": "Pomakni vrijeme alarma za dva sata"}], "vis": {"pfc": {"order": "f", "service": "f", "alarm": "f", "invoice": "f", "payment": "f"}, "kupac": {"order": "f", "service": "f", "alarm": "n", "invoice": "f", "payment": "f"}, "reg": {"order": "h", "service": "h", "alarm": "f", "invoice": "n", "payment": "n"}, "rev": {"order": "f", "service": "h", "alarm": "h", "invoice": "f", "payment": "f"}, "pub": {"order": "n", "service": "n", "alarm": "n", "invoice": "n", "payment": "n"}}, "ui": {"next": "Upiši na lanac →", "back": "← Natrag", "reset": "Ispočetka", "fraud": "Pokušaj prevare", "check": "Provjeri lanac", "toChain": "Na lanac ide:", "offChain": "Dokument ostaje u PFC-ovom sustavu:", "empty": "Lanac je prazan. Kliknite „Upiši na lanac”.", "block": "Blok", "prev": "veza na prethodni blok", "locked": "Sadržaj skriven, vidljiv je samo otisak", "none": "Nema pristupa", "pub": "Dokaz na Ethereumu: lanac je ispravan ✓", "ok": "Dokument odgovara otisku", "bad": "Dokument NE odgovara otisku: promijenjen je nakon upisa", "fraudH": "Što želite krivotvoriti u bazi?", "fraudNote": "Mijenja se samo dokument u bazi. Zapis na lancu se ne može promijeniti, jer bi trebalo prepisati sve iduće blokove i dokaz već objavljen na Ethereumu.", "faked": "Krivotvoreno. Sada kliknite „Provjeri lanac”.", "allOk": "Svi zapisi su ispravni.", "found": "Pronađena prevara u bloku", "blocks": "Blokova na lancu", "time": "Provjera trajala", "auditDone": "Revizija gotova", "needStep": "Prvo dođite do tog koraka.", "lensH": "Gledate kao:"}};
+  const BC_LIVE = {"order": "Narudžba", "service": "Servis", "alarm": "Alarm eLBC", "invoice": "Račun", "payment": "Plaćanje", "code": "kod", "block": "Blok", "none": "Još nema zapisa.", "err": "Testnet trenutno ne odgovara"};
+  const BC_DEPLOY = null;
 
-  // Demo: servisni karton na privatnom lancu (simulacija u pregledniku)
+  // Interaktivni demo: jedan posao od narudžbe do revizije, s pogledom po ulogama i pokušajem prevare
   (() => {
     const root = document.getElementById("bc-demo"); if (!root) return;
-    const T = BC_TXT, $ = s => root.querySelector(s);
-    const hex = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
-    async function digest(str) {
-      if (crypto?.subtle) return "0x" + hex(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)));
-      let h = 2166136261; for (const c of str) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
-      return "0x" + h.toString(16).padStart(8, "0").repeat(8);
+    const T = BC_TXT, U = T.ui, $ = s => root.querySelector(s);
+    const enc = new TextEncoder(), hx = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
+    async function sha(s) {
+      if (crypto?.subtle) return "0x" + hx(await crypto.subtle.digest("SHA-256", enc.encode(s)));
+      let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0; return "0x" + h.toString(16).padStart(8, "0").repeat(8);
     }
-    const db = [], chain = []; let role = "pfc", n = 1040211;
-    const canon = r => JSON.stringify([r.st, r.ty, r.res, r.tech, r.time]);
-    T.st.forEach((s, i) => $("#d-st").add(new Option(s, i)));
-    T.ty.forEach((s, i) => $("#d-ty").add(new Option(s, i)));
-    T.res.forEach(s => { const o = document.createElement("option"); o.value = s; $("#d-res-l").appendChild(o); });
-    function render(status) {
-      const list = $("#d-ledger"); list.innerHTML = "";
-      [...db].reverse().forEach(r => {
-        const c = chain[r.i], d = document.createElement("div");
-        const see = role === "pfc" || (role === "kupac" && r.st < 2);
-        d.className = "blk" + (role === "kupac" && !see ? " hid" : "") + (status && status[r.i] === false ? " bad" : "");
-        let body = "";
-        if (role === "reg") body = `<span>${T.only}</span>`;
-        else if (!see) body = `<span>${T.hidden}</span>`;
-        else body = `<b>${T.st[r.st]} · ${T.ty[r.ty]}</b><span>${r.res}</span><span style="color:var(--muted);font-size:12px">${T.by}: ${r.tech}</span>`;
-        const chk = status ? (status[r.i] ? `<span class="ok">✓ ${T.ok}</span>` : `<span class="no">✗ ${T.bad}</span>`) : "";
-        d.innerHTML = `<div class="h"><span>${T.block} #${c.block}</span><span>${new Date(c.time).toLocaleString(document.documentElement.lang)}</span></div>${body}<code>${c.digest}</code>${chk}`;
-        list.appendChild(d);
+    const docs = T.steps.map(s => s.doc.map(r => r.slice()));
+    let step = 0, role = "pfc", chain = [], checked = null, faked = new Set(), fraudOpen = false;
+    const short = h => h.slice(0, 10) + "…" + h.slice(-6);
+    async function build() {
+      chain = []; let prev = "0x" + "0".repeat(64);
+      for (let i = 0; i < Math.min(step, 5); i++) {
+        const d = await sha(JSON.stringify(T.steps[i].doc)), n = 1040210 + i * 3;
+        const h = await sha(prev + d + n); chain.push({ i, n, prev, d, h }); prev = h;
+      }
+    }
+    function lens() {
+      const r = T.roles[role]; $("#d-lens").textContent = r[1];
+      root.querySelectorAll(".seg button").forEach(b => b.classList.toggle("on", b.dataset.role === role));
+    }
+    function story() {
+      const s = T.steps[Math.min(step, 5)], idx = Math.min(step, 5);
+      const showDoc = step < 5 ? T.steps[step] : s;
+      $("#d-av").textContent = showDoc.av; $("#d-av").className = "av2 " + showDoc.c;
+      $("#d-who").textContent = showDoc.who; $("#d-wsub").textContent = showDoc.wsub;
+      $("#d-title").textContent = (Math.min(step, 5) + 1) + ". " + showDoc.title; $("#d-txt").textContent = showDoc.text;
+      const docEl = $("#d-doc"), chips = $("#d-chips");
+      $("#d-offh").hidden = $("#d-onh").hidden = !showDoc.doc.length;
+      docEl.hidden = !showDoc.doc.length;
+      docEl.innerHTML = showDoc.doc.map(([k, v]) => `<div class="r"><span>${k}</span><b>${v}</b></div>`).join("");
+      chips.innerHTML = showDoc.chain.map(c => `<span class="chip2">${c}</span>`).join("");
+      root.querySelectorAll(".stepper button").forEach((b, i) => { b.classList.toggle("done", i < step); b.classList.toggle("cur", i === Math.min(step, 5)); });
+      $("#d-back").disabled = step === 0;
+      $("#d-next").hidden = step >= 5; $("#d-check").hidden = step < 5;
+      $("#d-fraud").disabled = step === 0;
+      $("#d-next").disabled = false;
+    }
+    function render(newIdx) {
+      const box = $("#d-chain"); box.innerHTML = "";
+      if (!chain.length) { box.innerHTML = `<div class="empty">${U.empty}</div>`; }
+      if (role === "pub" && chain.length) box.insertAdjacentHTML("beforeend", `<div class="blk ok"><span class="res">${U.pub}</span><code>batch ${short(chain[chain.length - 1].h)}</code></div>`);
+      [...chain].reverse().forEach((c, j) => {
+        const s = T.steps[c.i], v = T.vis[role][s.k], own = role !== "kupac" || s.cust === 1;
+        const vv = !own ? "n" : v, st = checked ? (checked[c.i] ? " ok" : " bad") : "";
+        let body;
+        if (vv === "f") body = `<b>${s.title}</b><div class="kv">${docs[c.i].map(([k, x], r) => `<span>${k}</span><span${faked.has(c.i + ":" + r) ? ' style="color:var(--orange);font-weight:700"' : ""}>${x}</span>`).join("")}</div>`;
+        else if (vv === "h") body = `<b>${s.title}</b><span class="lock">🔒 ${U.locked}</span>`;
+        else body = `<span class="lock">🔒 ${U.none}</span>`;
+        const res = checked ? `<span class="res">${checked[c.i] ? "✓ " + U.ok : "✗ " + U.bad}</span>` : "";
+        const el = document.createElement("div");
+        el.className = "blk" + (vv === "n" ? " nope" : "") + st + (c.i === newIdx ? " new" : "");
+        el.innerHTML = `<div class="h"><span>${U.block} #${c.n}</span><span>${s.st}</span></div>${body}<code title="${c.d}">${role === "pub" ? "" : short(c.d)}</code>${res}`;
+        box.appendChild(el);
+        if (j < chain.length - 1) box.insertAdjacentHTML("beforeend", `<div class="link">↑ ${U.prev} ${short(c.prev)}</div>`);
       });
+      $("#d-n").textContent = chain.length;
     }
-    async function add(st, ty, res, tech, time) {
-      const r = { i: db.length, st, ty, res, tech, time };
-      db.push(r); chain.push({ digest: await digest(canon(r)), time, block: n += 1 + (db.length * 7) % 5 });
+    async function go(to, animate) {
+      step = Math.max(0, Math.min(5, to)); checked = null; await build(); story(); render(animate ? step - 1 : -1);
     }
-    root.querySelector("form").addEventListener("submit", async e => {
-      e.preventDefault();
-      await add(+$("#d-st").value, +$("#d-ty").value, $("#d-res").value || T.res[0], $("#d-tech").value || T.tech + " 1", Date.now());
-      $("#d-msg").textContent = T.added; render();
-    });
-    $("#d-tamper").addEventListener("click", () => {
-      const t = db[db.length - 1]; if (!t) return;
-      t.res = t.res === T.res[0] ? T.res[2] : T.res[0];
-      $("#d-msg").textContent = T.tamper; render();
+    $("#d-next").addEventListener("click", () => go(step + 1, true));
+    $("#d-back").addEventListener("click", () => go(step - 1));
+    $("#d-reset").addEventListener("click", () => { faked.clear(); T.steps.forEach((s, i) => docs[i] = s.doc.map(r => r.slice())); $("#d-msg").textContent = ""; $("#d-ms").textContent = "–"; go(0); });
+    root.querySelectorAll(".stepper button").forEach((b, i) => b.addEventListener("click", () => go(i)));
+    root.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => { role = b.dataset.role; lens(); render(-1); }));
+    $("#d-fraud").addEventListener("click", () => { fraudOpen = !fraudOpen; $("#d-fbox").hidden = !fraudOpen; });
+    T.frauds.forEach(f => {
+      const b = document.createElement("button"); b.type = "button"; b.textContent = f.label;
+      b.addEventListener("click", () => {
+        if (step <= f.step) { $("#d-msg").textContent = U.needStep; return; }
+        docs[f.step][f.row][1] = f.val; faked.add(f.step + ":" + f.row); checked = null;
+        $("#d-msg").textContent = U.faked; $("#d-fbox").hidden = true; fraudOpen = false; if (step < 5) { step = 5; story(); } render(-1);
+      });
+      $("#d-fopts").appendChild(b);
     });
     $("#d-check").addEventListener("click", async () => {
-      const s = {}; for (const r of db) s[r.i] = (await digest(canon(r))) === chain[r.i].digest;
-      $("#d-msg").textContent = T.checked; render(s);
+      const t0 = performance.now(), res = {};
+      for (const c of chain) res[c.i] = (await sha(JSON.stringify(docs[c.i]))) === c.d;
+      const ms = performance.now() - t0; checked = {}; render(-1);
+      const bad = chain.filter(c => !res[c.i]);
+      for (const c of chain) { checked[c.i] = res[c.i]; render(-1); await new Promise(r => setTimeout(r, 220)); }
+      $("#d-ms").textContent = ms.toFixed(1) + " ms";
+      $("#d-msg").textContent = bad.length ? `${U.found} #${bad.map(c => c.n).join(", #")}.` : `${U.auditDone}. ${U.allOk}`;
     });
-    root.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
-      role = b.dataset.role; root.querySelectorAll(".seg button").forEach(x => x.classList.toggle("on", x === b)); render();
-    }));
-    (async () => {
-      const t0 = Date.UTC(2026, 9, 20, 7, 30);
-      await add(0, 0, T.res[1], T.tech + " 2", t0);
-      await add(2, 2, T.res[2], "eLBC", t0 + 86400000 * 2 + 3600000 * 5);
-      await add(1, 1, T.res[3], T.tech + " 1", t0 + 86400000 * 5);
-      render();
-    })();
+    lens(); go(0);
+  })();
+
+  // Kalkulator troškova i koristi
+  (() => {
+    const f = document.getElementById("bc-calc"); if (!f) return;
+    const loc = document.documentElement.lang, eur = v => new Intl.NumberFormat(loc, { style: "currency", currency: "EUR", maximumFractionDigits: Math.abs(v) < 100 ? 2 : 0 }).format(v);
+    const num = v => new Intl.NumberFormat(loc).format(v);
+    function upd() {
+      const g = id => +f.querySelector("#" + id).value;
+      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), hrs = g("c-hrs"), rate = g("c-rate");
+      f.querySelector("[for=c-st]").textContent = num(st); f.querySelector("[for=c-per]").textContent = num(per);
+      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix);
+      f.querySelector("[for=c-hrs]").textContent = num(hrs) + " h"; f.querySelector("[for=c-rate]").textContent = eur(rate);
+      const rec = st * per, pubCost = rec * fee, privCost = fix, gain = hrs * rate;
+      const set = (id, v) => f.querySelector("#" + id).textContent = v;
+      set("o-rec", num(rec)); set("o-rec2", num(rec));
+      set("o-pub", eur(pubCost)); set("o-priv", eur(privCost)); set("o-gain", eur(gain)); set("o-gain2", eur(gain));
+      [["o-npub", gain - pubCost], ["o-npriv", gain - privCost]].forEach(([id, v]) => { const e = f.querySelector("#" + id); e.textContent = eur(v); e.className = v >= 0 ? "pos" : "neg"; });
+    }
+    f.addEventListener("input", upd); upd();
+  })();
+
+  // Uživo s testneta: čita događaje ugovora PFCLedger izravno iz preglednika
+  (() => {
+    const box = document.getElementById("bc-live"); if (!box || !BC_DEPLOY) return;
+    const D = BC_DEPLOY, U = BC_LIVE;
+    const TOP = { "0xd2c81d37e65939b404c6708ddd5b9157ce9a17c263a1b01d9a8fb75311a6dc47": U.order, "0xa0a685d67a6b5c4edc596da3afc7299d962bd0d0caf360d2b1cffafef82615f1": U.service,
+      "0xab174acbbc341611aacffe12a05b3418d48cc05b74b091f71e919c872539eb65": U.alarm, "0xecd8ecb1157f1ab6dc1768b4dfac8e437209a0f13a7d1e13f291403861a5a7a0": U.invoice,
+      "0x2bce41b08631cf63c2dfd0b519d88a1e3db7e906ba6f0234f853996915e09028": U.payment };
+    const ST = { "0xdbab204a81c470303fed86b61770b135165e2c5ad6943ce988d0ee6e6ca521d0": "MRS-A", "0x7462ebd75cdcdc5604d6ce7dc9c68cc611a5c7a3c7d072b31de57f05913ebf6b": "MRS-B", "0x2613850de889d4ffb21ebbbcf452ec19870bdef3738d4be92bf4264fe657aa90": "BVS-C" };
+    const word = (d, i) => d.slice(2 + i * 64, 2 + (i + 1) * 64);
+    const rpc = (method, params) => fetch(D.rpc, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }) }).then(r => r.json()).then(j => { if (j.error) throw new Error(j.error.message); return j.result; });
+    rpc("eth_getLogs", [{ address: D.address, fromBlock: "0x" + Number(D.fromBlock).toString(16), toBlock: "latest" }]).then(logs => {
+      const rows = logs.filter(l => TOP[l.topics[0]]).reverse().map(l => {
+        const t = l.topics[0], kind = TOP[t]; let what = "";
+        if (t.startsWith("0xab17")) what = (ST[l.topics[1]] || "") + " · " + U.code + " " + parseInt(word(l.data, 0), 16);
+        else {
+          const id = parseInt(l.topics[1], 16); what = "#" + id;
+          if (l.topics[2] && ST[l.topics[2]]) what += " · " + ST[l.topics[2]];
+          if (t.startsWith("0xecd8")) what += " · " + new Intl.NumberFormat(document.documentElement.lang, { style: "currency", currency: "EUR" }).format(parseInt(word(l.data, 0), 16) / 100);
+        }
+        const tx = D.explorer ? `<a href="${D.explorer}/tx/${l.transactionHash}" target="_blank" rel="noopener">${l.transactionHash.slice(0, 10)}… ↗</a>` : l.transactionHash.slice(0, 10) + "…";
+        return `<div class="blk"><div class="h"><span>${U.block} ${parseInt(l.blockNumber, 16)}</span><span>${tx}</span></div><b>${kind}</b><span>${what}</span></div>`;
+      });
+      box.innerHTML = rows.length ? rows.join("") : `<div class="empty">${U.none}</div>`;
+      document.getElementById("bc-live-n").textContent = rows.length;
+    }).catch(e => { box.innerHTML = `<div class="empty">${U.err} (${e.message})</div>`; });
   })();
 })();
 </script>

@@ -1,0 +1,363 @@
+{
+ "abi": [
+  {
+   "inputs": [],
+   "stateMutability": "nonpayable",
+   "type": "constructor"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "indexed": false,
+     "internalType": "uint8",
+     "name": "code",
+     "type": "uint8"
+    },
+    {
+     "indexed": false,
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "AlarmLogged",
+   "type": "event"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "indexed": false,
+     "internalType": "uint64",
+     "name": "amountCents",
+     "type": "uint64"
+    },
+    {
+     "indexed": false,
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "InvoiceIssued",
+   "type": "event"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "indexed": true,
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "indexed": true,
+     "internalType": "address",
+     "name": "customer",
+     "type": "address"
+    },
+    {
+     "indexed": false,
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "OrderCreated",
+   "type": "event"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "indexed": false,
+     "internalType": "address",
+     "name": "customer",
+     "type": "address"
+    }
+   ],
+   "name": "PaymentConfirmed",
+   "type": "event"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "address",
+     "name": "who",
+     "type": "address"
+    },
+    {
+     "indexed": false,
+     "internalType": "enum PFCLedger.Role",
+     "name": "role",
+     "type": "uint8"
+    }
+   ],
+   "name": "RoleSet",
+   "type": "event"
+  },
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "indexed": true,
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "indexed": false,
+     "internalType": "address",
+     "name": "technician",
+     "type": "address"
+    },
+    {
+     "indexed": false,
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "ServiceLogged",
+   "type": "event"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    }
+   ],
+   "name": "confirmPayment",
+   "outputs": [],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "internalType": "address",
+     "name": "customer",
+     "type": "address"
+    },
+    {
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "createOrder",
+   "outputs": [
+    {
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    }
+   ],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "internalType": "uint64",
+     "name": "amountCents",
+     "type": "uint64"
+    },
+    {
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "issueInvoice",
+   "outputs": [],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "internalType": "uint8",
+     "name": "code",
+     "type": "uint8"
+    },
+    {
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "logAlarm",
+   "outputs": [],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "uint256",
+     "name": "id",
+     "type": "uint256"
+    },
+    {
+     "internalType": "bytes32",
+     "name": "doc",
+     "type": "bytes32"
+    }
+   ],
+   "name": "logService",
+   "outputs": [],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [],
+   "name": "orderCount",
+   "outputs": [
+    {
+     "internalType": "uint256",
+     "name": "",
+     "type": "uint256"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "uint256",
+     "name": "",
+     "type": "uint256"
+    }
+   ],
+   "name": "orders",
+   "outputs": [
+    {
+     "internalType": "bytes32",
+     "name": "station",
+     "type": "bytes32"
+    },
+    {
+     "internalType": "address",
+     "name": "customer",
+     "type": "address"
+    },
+    {
+     "internalType": "uint64",
+     "name": "amountCents",
+     "type": "uint64"
+    },
+    {
+     "internalType": "enum PFCLedger.Status",
+     "name": "status",
+     "type": "uint8"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [],
+   "name": "owner",
+   "outputs": [
+    {
+     "internalType": "address",
+     "name": "",
+     "type": "address"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "address",
+     "name": "",
+     "type": "address"
+    }
+   ],
+   "name": "roles",
+   "outputs": [
+    {
+     "internalType": "enum PFCLedger.Role",
+     "name": "",
+     "type": "uint8"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "address",
+     "name": "who",
+     "type": "address"
+    },
+    {
+     "internalType": "enum PFCLedger.Role",
+     "name": "r",
+     "type": "uint8"
+    }
+   ],
+   "name": "setRole",
+   "outputs": [],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  }
+ ],
+ "bytecode": "0x60a060405234801561001057600080fd5b5033608081905260008181526020819052604090819020805460ff1916600190811790915590517f86ca834ed77043799de2a6c996fa4b79fadfb467b4694e233b20c43aa0728218916100629161006f565b60405180910390a2610097565b602081016005831061009157634e487b7160e01b600052602160045260246000fd5b91905290565b608051610b146100d5600039600081816101120152818161020d015281816102e40152818161046e01528181610616015261075d0152610b146000f3fe608060405234801561001057600080fd5b506004361061009e5760003560e01c80638da5cb5b116100665780638da5cb5b1461010d578063905314a01461014c578063993746421461015f5780639a9496b21461018f578063a85c38ef146101a257600080fd5b806312e60ca0146100a35780632453ffa8146100b857806348d7cd05146100d4578063571c3e60146100e7578063876ca09f146100fa575b600080fd5b6100b66100b13660046108b6565b610200565b005b6100c160025481565b6040519081526020015b60405180910390f35b6100c16100e2366004610910565b6102d5565b6100b66100f5366004610945565b610463565b6100b6610108366004610980565b610542565b6101347f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020016100cb565b6100b661015a366004610999565b610609565b61018261016d3660046109bb565b60006020819052908152604090205460ff1681565b6040516100cb9190610a14565b6100b661019d366004610a27565b610750565b6101f06101b0366004610980565b600160208190526000918252604090912080549101546001600160a01b03811690600160a01b810467ffffffffffffffff1690600160e01b900460ff1684565b6040516100cb9493929190610a5b565b6002336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016148061026c5750806004811115610246576102466109dd565b3360009081526020819052604090205460ff16600481111561026a5761026a6109dd565b145b6102915760405162461bcd60e51b815260040161028890610a99565b60405180910390fd5b6040805160ff851681526020810184905285917fab174acbbc341611aacffe12a05b3418d48cc05b74b091f71e919c872539eb65910160405180910390a250505050565b60006001336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161480610343575080600481111561031d5761031d6109dd565b3360009081526020819052604090205460ff166004811115610341576103416109dd565b145b61035f5760405162461bcd60e51b815260040161028890610a99565b60026000815461036e90610ab7565b9182905550604080516080810182528781526001600160a01b038781166020808401918252600084860181815260016060870181815289845293819052969091208551815592519583018054915167ffffffffffffffff16600160a01b026001600160e01b031990921696909416959095179490941780835593519496509193919260ff60e01b1916600160e01b83600481111561040e5761040e6109dd565b0217905550905050836001600160a01b031685837fd2c81d37e65939b404c6708ddd5b9157ce9a17c263a1b01d9a8fb75311a6dc478660405161045391815260200190565b60405180910390a4509392505050565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146104c35760405162461bcd60e51b815260206004820152600560248201526437bbb732b960d91b6044820152606401610288565b6001600160a01b0382166000908152602081905260409020805482919060ff191660018360048111156104f8576104f86109dd565b0217905550816001600160a01b03167f86ca834ed77043799de2a6c996fa4b79fadfb467b4694e233b20c43aa0728218826040516105369190610a14565b60405180910390a25050565b600081815260016020526040902060036001820154600160e01b900460ff166004811115610572576105726109dd565b14801561058b575060018101546001600160a01b031633145b6105c25760405162461bcd60e51b815260206004820152600860248201526731bab9ba37b6b2b960c11b6044820152606401610288565b60018101805460ff60e01b1916600160e21b17905560405133815282907f2bce41b08631cf63c2dfd0b519d88a1e3db7e906ba6f0234f853996915e0902890602001610536565b6002336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161480610675575080600481111561064f5761064f6109dd565b3360009081526020819052604090205460ff166004811115610673576106736109dd565b145b6106915760405162461bcd60e51b815260040161028890610a99565b6000838152600160208190526040909120906001820154600160e01b900460ff1660048111156106c3576106c36109dd565b146106f95760405162461bcd60e51b815260206004820152600660248201526573746174757360d01b6044820152606401610288565b60018101805460ff60e01b1916600160e11b17905580546040805133815260208101869052815187927fa0a685d67a6b5c4edc596da3afc7299d962bd0d0caf360d2b1cffafef82615f1928290030190a350505050565b6001336001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001614806107bc5750806004811115610796576107966109dd565b3360009081526020819052604090205460ff1660048111156107ba576107ba6109dd565b145b6107d85760405162461bcd60e51b815260040161028890610a99565b600084815260016020526040902060026001820154600160e01b900460ff166004811115610808576108086109dd565b1461083e5760405162461bcd60e51b815260206004820152600660248201526573746174757360d01b6044820152606401610288565b60018101805467ffffffffffffffff8616600160a01b810268ffffffffffffffffff60a01b1990921691909117600360e01b17909155604080519182526020820185905286917fecd8ecb1157f1ab6dc1768b4dfac8e437209a0f13a7d1e13f291403861a5a7a0910160405180910390a25050505050565b6000806000606084860312156108cb57600080fd5b83359250602084013560ff811681146108e357600080fd5b929592945050506040919091013590565b80356001600160a01b038116811461090b57600080fd5b919050565b60008060006060848603121561092557600080fd5b83359250610935602085016108f4565b9150604084013590509250925092565b6000806040838503121561095857600080fd5b610961836108f4565b915060208301356005811061097557600080fd5b809150509250929050565b60006020828403121561099257600080fd5b5035919050565b600080604083850312156109ac57600080fd5b50508035926020909101359150565b6000602082840312156109cd57600080fd5b6109d6826108f4565b9392505050565b634e487b7160e01b600052602160045260246000fd5b60058110610a1157634e487b7160e01b600052602160045260246000fd5b50565b60208101610a21836109f3565b91905290565b600080600060608486031215610a3c57600080fd5b83359250602084013567ffffffffffffffff811681146108e357600080fd5b8481526001600160a01b038416602082015267ffffffffffffffff8316604082015260808101610a8a836109f3565b82606083015295945050505050565b602080825260049082015263726f6c6560e01b604082015260600190565b600060018201610ad757634e487b7160e01b600052601160045260246000fd5b506001019056fea2646970667358221220d4b2bb3f48058311e4fbaab739d9284ddcafda57456c93f3cfa30fd25e28c1fa64736f6c63430008180033"
+}

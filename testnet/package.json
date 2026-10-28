@@ -1,0 +1,7 @@
+{
+  "name": "pfc-ledger-testnet",
+  "private": true,
+  "description": "PFCLedger: simulacija PFC-ova poslovanja na ZKsync testnetu",
+  "scripts": { "simulate": "node simulate.js" },
+  "dependencies": { "ethers": "6.13.4" }
+}
