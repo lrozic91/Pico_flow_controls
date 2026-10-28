@@ -6,7 +6,7 @@
 const fs = require("fs"), path = require("path");
 const { ethers } = require("ethers");
 
-const RPC = process.env.RPC || "https://sepolia.era.zksync.dev";
+const RPC = process.env.RPC || "https://zksync-os-testnet-alpha.zksync.dev/";  // ZKsync OS testnet (chain ID 8022833)
 const ENV = path.join(__dirname, ".env");
 const OUT = path.join(__dirname, "deployment.json");
 const art = JSON.parse(fs.readFileSync(path.join(__dirname, "PFCLedger.json"), "utf8"));

@@ -685,9 +685,9 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </section>
       <section class="card s12" id="testnet">
         <h2 class="ttl">Pravi ugovor na ZKsync testnetu</h2>
-        <p class="cap"><span class="tag">Čeka objavu</span> Ugovor je napisan i testiran na lokalnom lancu (18 transakcija za 4 posla). Na javni testnet ide kad dobijemo testni ETH.</p>
+        <p class="cap"><span class="tag">Čeka objavu</span> Ugovor je napisan i testiran na lokalnom lancu (24 transakcije za uloge i 4 posla). Na javni testnet ide kad dobijemo testni ETH.</p>
         <div class="tn">
-          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Na faucetu (Alchemy, Chainstack, GetBlock…) pošalješ besplatni testni ETH na tu adresu; captchu rješavaš ti.<sup><a href="#s79">79</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Sepolia (chain ID 300) i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s76">76</a></sup></span></li><li><span>Adresu ugovora upišem na stranicu, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">Običan Solidity radi na Eri preko EVM interpretera, pa ide i Remix s MetaMaskom; transakcije su tada 1,5–4 puta skuplje nego s ZKsyncovim kompajlerom.<sup><a href="#s78">78</a></sup> ZKsync preporučuje i noviji ZKsync OS testnet (chain ID 8022833), na koji se ETH prenosi preko portala.<sup><a href="#s77">77</a></sup><sup><a href="#s75">75</a></sup></p></div>
+          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Besplatni testni Sepolia ETH s faucet-a prebaciš preko ZKsync OS portala na tu adresu.<sup><a href="#s79">79</a></sup><sup><a href="#s77">77</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync OS testnet (chain ID 8022833), dodijeli uloge tehničaru i dvama kupcima i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s77">77</a></sup></span></li><li><span>Adresu ugovora upišem na stranicu, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">ZKsync OS testnet je javni testnet za developere i radi s običnim Solidityjem.<sup><a href="#s77">77</a></sup><sup><a href="#s75">75</a></sup> Stari Era Sepolia (chain ID 300) se gasi; zamjenjuje ga ZKsync Era Testnet (chain ID 312), na kojem skripta također radi.<sup><a href="#s78">78</a></sup></p></div>
           <div><div class="live" id="bc-live"><div class="empty">Ovdje će se uživo prikazivati zapisi s testneta, izravno iz preglednika, s poveznicama na block explorer.</div></div></div>
         </div>
       </section>
@@ -917,7 +917,7 @@ contract PFCLedger {
         <li id="s75"><a href="https://docs.zksync.io/zksync-network/quick-start" target="_blank" rel="noopener">ZKsync docs: javni testnet (quick start)</a></li>
         <li id="s76"><a href="https://docs.zksync.io/zksync-network/zksync-era/network-details" target="_blank" rel="noopener">ZKsync docs: Era Sepolia testnet, podaci o mreži</a></li>
         <li id="s77"><a href="https://docs.zksync.io/zksync-network/zksync-os/network-details" target="_blank" rel="noopener">ZKsync docs: ZKsync OS testnet, podaci o mreži</a></li>
-        <li id="s78"><a href="https://docs.zksync.io/zksync-network/zksync-era/unique-features" target="_blank" rel="noopener">ZKsync docs: EVM interpreter na Eri</a></li>
+        <li id="s78"><a href="https://github.com/matter-labs/hardhat-zksync/pull/1904" target="_blank" rel="noopener">GitHub: hardhat-zksync, Era Testnet (chain 312) zamjenjuje Era Sepoliju (listopad 2026.)</a></li>
         <li id="s79"><a href="https://docs.zksync.io/zksync-network/zksync-era/ecosystem" target="_blank" rel="noopener">ZKsync docs: faucetovi za testni ETH</a></li>
       </ol>
     </section>

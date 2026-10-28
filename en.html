@@ -685,9 +685,9 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </section>
       <section class="card s12" id="testnet">
         <h2 class="ttl">A real contract on the ZKsync testnet</h2>
-        <p class="cap"><span class="tag">Awaiting deploy</span> The contract is written and tested on a local chain (18 transactions for 4 jobs). It goes to the public testnet once we have test ETH.</p>
+        <p class="cap"><span class="tag">Awaiting deploy</span> The contract is written and tested on a local chain (24 transactions for roles and 4 jobs). It goes to the public testnet once we have test ETH.</p>
         <div class="tn">
-          <div><ol class="how"><li><span>The script <code>testnet/simulate.js</code> creates a new wallet for the testnet only. It holds no real money.</span></li><li><span>On a faucet (Alchemy, Chainstack, GetBlock…) you send free test ETH to that address; you solve the captcha.<sup><a href="#s79">79</a></sup></span></li><li><span>The script deploys PFCLedger to ZKsync Era Sepolia (chain ID 300) and runs 4 jobs: order, service, alarm, invoice, payment.<sup><a href="#s76">76</a></sup></span></li><li><span>I put the contract address on the site, and this card reads the records live and links to the block explorer, where anyone can check them.</span></li></ol><p class="note">Plain Solidity runs on Era through the EVM interpreter, so Remix with MetaMask works too; transactions then cost 1.5–4× more than with ZKsync's compiler.<sup><a href="#s78">78</a></sup> ZKsync also recommends the newer ZKsync OS testnet (chain ID 8022833), funded through its portal.<sup><a href="#s77">77</a></sup><sup><a href="#s75">75</a></sup></p></div>
+          <div><ol class="how"><li><span>The script <code>testnet/simulate.js</code> creates a new wallet for the testnet only. It holds no real money.</span></li><li><span>You bridge free Sepolia test ETH from a faucet to that address through the ZKsync OS portal.<sup><a href="#s79">79</a></sup><sup><a href="#s77">77</a></sup></span></li><li><span>The script deploys PFCLedger to the ZKsync OS testnet (chain ID 8022833), gives roles to a technician and two customers, and runs 4 jobs: order, service, alarm, invoice, payment.<sup><a href="#s77">77</a></sup></span></li><li><span>I put the contract address on the site, and this card reads the records live and links to the block explorer, where anyone can check them.</span></li></ol><p class="note">The ZKsync OS testnet is the public developer testnet and runs plain Solidity.<sup><a href="#s77">77</a></sup><sup><a href="#s75">75</a></sup> The old Era Sepolia (chain ID 300) is being shut down; ZKsync Era Testnet (chain ID 312) replaces it, and the script works there too.<sup><a href="#s78">78</a></sup></p></div>
           <div><div class="live" id="bc-live"><div class="empty">Live records from the testnet will show here, read directly by the browser, with links to the block explorer.</div></div></div>
         </div>
       </section>
@@ -917,7 +917,7 @@ contract PFCLedger {
         <li id="s75"><a href="https://docs.zksync.io/zksync-network/quick-start" target="_blank" rel="noopener">ZKsync docs: public testnet (quick start)</a></li>
         <li id="s76"><a href="https://docs.zksync.io/zksync-network/zksync-era/network-details" target="_blank" rel="noopener">ZKsync docs: Era Sepolia testnet network details</a></li>
         <li id="s77"><a href="https://docs.zksync.io/zksync-network/zksync-os/network-details" target="_blank" rel="noopener">ZKsync docs: ZKsync OS testnet network details</a></li>
-        <li id="s78"><a href="https://docs.zksync.io/zksync-network/zksync-era/unique-features" target="_blank" rel="noopener">ZKsync docs: EVM interpreter on Era</a></li>
+        <li id="s78"><a href="https://github.com/matter-labs/hardhat-zksync/pull/1904" target="_blank" rel="noopener">GitHub: hardhat-zksync, Era Testnet (chain 312) replaces Era Sepolia (October 2026)</a></li>
         <li id="s79"><a href="https://docs.zksync.io/zksync-network/zksync-era/ecosystem" target="_blank" rel="noopener">ZKsync docs: faucets for test ETH</a></li>
       </ol>
     </section>
