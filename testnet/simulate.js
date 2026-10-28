@@ -12,24 +12,28 @@ const OUT = path.join(__dirname, "deployment.json");
 const art = JSON.parse(fs.readFileSync(path.join(__dirname, "PFCLedger.json"), "utf8"));
 const id = s => ethers.id(s);   // otisak (keccak256) dokumenta ili oznake stanice
 
+// kupac 1 ima stanice MRS-A i MRS-B, kupac 2 stanicu BVS-C
 const ORDERS = [
-  { station: "MRS-A", what: "Godisnji servis MRS-A", amount: 4800_00, alarm: null },
-  { station: "MRS-B", what: "Kalibracija LBC uredaja MRS-B", amount: 1250_00, alarm: 3 },
-  { station: "BVS-C", what: "Zamjena eLBC baterije BVS-C", amount: 690_00, alarm: 1 },
-  { station: "MRS-A", what: "Popravak regulatora MRS-A", amount: 2340_00, alarm: null },
+  { station: "MRS-A", cust: "CUST1", what: "Godisnji servis MRS-A", amount: 4800_00, alarm: null },
+  { station: "MRS-B", cust: "CUST1", what: "Kalibracija LBC uredaja MRS-B", amount: 1250_00, alarm: 3 },
+  { station: "BVS-C", cust: "CUST2", what: "Zamjena eLBC baterije BVS-C", amount: 690_00, alarm: 1 },
+  { station: "MRS-A", cust: "CUST1", what: "Popravak regulatora MRS-A", amount: 2340_00, alarm: null },
 ];
+const ROLE = { Technician: 2, Customer: 3 };
+const NAMES = ["PRIVATE_KEY", "TECH_KEY", "CUST1_KEY", "CUST2_KEY"];
 
 async function main() {
   if (!fs.existsSync(ENV)) {
-    const w = ethers.Wallet.createRandom();
-    fs.writeFileSync(ENV, `PRIVATE_KEY=${w.privateKey}\n`, { mode: 0o600 });
-    console.log("Napravljen novi TESTNI novcanik (kljuc je u .env, ne dijeli ga i ne koristi za pravi novac).");
-    console.log("Posalji testni ETH na adresu:", w.address);
+    const ws = NAMES.map(() => ethers.Wallet.createRandom());
+    fs.writeFileSync(ENV, NAMES.map((n, i) => `${n}=${ws[i].privateKey}`).join("\n") + "\n", { mode: 0o600 });
+    console.log("Napravljena 4 TESTNA novcanika: PFC, tehnicar, kupac 1, kupac 2 (kljucevi su u .env, ne dijeli ih i ne koristi za pravi novac).");
+    console.log("Posalji testni ETH samo na PFC adresu:", ws[0].address);
     return;
   }
-  const key = fs.readFileSync(ENV, "utf8").match(/PRIVATE_KEY=(0x[0-9a-fA-F]{64})/)[1];
+  const env = fs.readFileSync(ENV, "utf8");
   const provider = new ethers.JsonRpcProvider(RPC);
-  const wallet = new ethers.Wallet(key, provider);
+  const W = Object.fromEntries(NAMES.map(n => [n.replace("_KEY", "").replace("PRIVATE", "PFC"), new ethers.Wallet(env.match(new RegExp(n + "=(0x[0-9a-fA-F]{64})"))[1], provider)]));
+  const wallet = W.PFC;
   const net = await provider.getNetwork();
   const bal = await provider.getBalance(wallet.address);
   console.log("Mreza", net.chainId.toString(), "adresa", wallet.address, "stanje", ethers.formatEther(bal), "ETH");
@@ -45,16 +49,28 @@ async function main() {
     console.log("Ugovor objavljen:", dep.address, "blok", dep.fromBlock);
   }
   const c = new ethers.Contract(dep.address, art.abi, wallet);
+  const as = w => c.connect(w);
   let gas = 0n, n = 0;
   const send = async (label, p) => { const r = await (await p).wait(); gas += r.gasUsed * (r.gasPrice ?? r.effectiveGasPrice ?? 0n); n++; console.log(" ", label, r.hash); return r; };
+  if (!dep.roles) {
+    // uloge i malo ETH-a za plin na adrese tehnicara i kupaca (s PFC adrese)
+    const share = (await provider.getBalance(wallet.address)) / 10n;
+    for (const [k, role] of [["TECH", ROLE.Technician], ["CUST1", ROLE.Customer], ["CUST2", ROLE.Customer]]) {
+      await send("uloga " + k, c.setRole(W[k].address, role));
+      await send("ETH za plin " + k, wallet.sendTransaction({ to: W[k].address, value: share }));
+    }
+    dep.roles = { pfc: wallet.address, tech: W.TECH.address, cust1: W.CUST1.address, cust2: W.CUST2.address };
+    fs.writeFileSync(OUT, JSON.stringify(dep, null, 1));
+  }
   for (const o of ORDERS) {
     console.log(o.what);
-    const r = await send("narudzba", c.createOrder(id(o.station), wallet.address, id("narudzba:" + o.what)));
+    const cust = W[o.cust];
+    const r = await send("narudzba (PFC)", c.createOrder(id(o.station), cust.address, id("narudzba:" + o.what)));
     const oid = c.interface.parseLog(r.logs[0]).args.id;
-    await send("servis", c.logService(oid, id("zapisnik:" + o.what)));
-    if (o.alarm) await send("alarm eLBC", c.logAlarm(id(o.station), o.alarm, id("alarm:" + o.station + ":" + o.alarm)));
-    await send("racun", c.issueInvoice(oid, o.amount, id("racun:" + o.what)));
-    await send("placanje", c.confirmPayment(oid));
+    await send("servis (tehnicar)", as(W.TECH).logService(oid, id("zapisnik:" + o.what)));
+    if (o.alarm) await send("alarm eLBC (tehnicar)", as(W.TECH).logAlarm(id(o.station), o.alarm, id("alarm:" + o.station + ":" + o.alarm)));
+    await send("racun (PFC)", c.issueInvoice(oid, o.amount, id("racun:" + o.what)));
+    await send("placanje (" + o.cust.toLowerCase() + ")", as(cust).confirmPayment(oid));
   }
   dep.txCount = (dep.txCount || 0) + n;
   dep.feeWei = (BigInt(dep.feeWei || 0) + gas).toString();

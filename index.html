@@ -342,6 +342,19 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;fo
 .live a{color:inherit}
 .tn{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
 ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
+.cmp{display:grid;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp .row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,5fr) minmax(0,5fr);border-top:1px solid var(--line)}
+.cmp .row:first-child{border-top:0}
+.cmp .row>div{padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.cmp .row.hd>div{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--soft)}
+.cmp .row>div:first-child{font-weight:600}
+.cmp .row>div:last-child{background:color-mix(in srgb,var(--green) 9%,transparent)}
+.bdg{align-self:flex-start;font-size:10.5px;font-weight:700;border-radius:99px;padding:1px 8px;font-family:var(--f-mono)}
+.bdg.m{background:var(--bar);color:var(--muted)}.bdg.a{background:var(--green);color:#16170f}.bdg.w{background:var(--orange);color:#16170f}
+.sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.sum div{background:var(--soft);border-radius:12px;padding:12px}.sum b{display:block;font-family:var(--f-mono);font-size:18px}.sum span{font-size:12px;color:var(--muted)}
+.sum s{color:var(--muted);font-weight:400;font-size:14px;margin-right:6px}
+@media (max-width:900px){.cmp .row{grid-template-columns:minmax(0,1fr)}.cmp .row.hd{display:none}.cmp .row>div:nth-child(2)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase}.cmp .row>div:nth-child(3)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--green-d);text-transform:uppercase}.sum{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.demo2,.ben,.calc,.res2,.tn{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
 </style>
 </head>
@@ -379,6 +392,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
         <a href="#blockchain" data-jump="prednosti">Prednosti</a>
+        <a href="#blockchain" data-jump="usporedba">Danas i na lancu</a>
         <a href="#blockchain" data-jump="demo">Demo</a>
         <a href="#blockchain" data-jump="testnet">Testnet</a>
         <a href="#blockchain" data-jump="troskovi">Troškovi</a>
@@ -623,6 +637,14 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <h2 class="ttl">Zašto blockchain: danas i s lancem</h2>
         <p class="cap">Prednosti za PFC i njegove kupce; procjena je moj zaključak</p>
         <div class="ben"><div><h3>Jedan izvor istine</h3><p class="was"><b>Danas</b>zapisnici u AMS-u, PDF-ovi e-mailom, Excel kod kupca, svatko ima svoju verziju.</p><p class="is"><b>S lancem</b>PFC, kupac i revizor čitaju isti zapis, s istim vremenom i otiskom.</p></div><div><h3>Dokaz umjesto rasprave</h3><p class="was"><b>Danas</b>spor oko toga je li servis obavljen, kad je alarm bio i koji je iznos dogovoren.</p><p class="is"><b>S lancem</b>vrijeme i otisak upisani su jednom i ne mogu se naknadno promijeniti; svaka izmjena se odmah vidi.</p></div><div><h3>Transparentno, ali privatno</h3><p class="was"><b>Danas</b>ili dijelite cijeli dokument ili ništa.</p><p class="is"><b>S lancem</b>svaka uloga vidi točno svoje: kupac svoje stanice, regulator alarme, revizor iznose, konkurencija ništa.<sup><a href="#s72">72</a></sup><sup><a href="#s68">68</a></sup></p></div><div><h3>Brža revizija i kontrola</h3><p class="was"><b>Danas</b>revizor ručno uzorkuje dio dokumenata, a controlling slaže izvještaje iz više sustava.</p><p class="is"><b>S lancem</b>provjera svih zapisa traje sekunde; controlling vidi stanje svakog posla od narudžbe do plaćanja.</p></div><div><h3>Pravila u kodu</h3><p class="was"><b>Danas</b>pravila („račun tek nakon servisa”) postoje na papiru i ovise o ljudima.</p><p class="is"><b>S lancem</b>pametni ugovor ih provodi sam: račun se ne može izdati prije potvrđenog servisa, a plaćanje potvrđuje samo kupac.</p></div><div><h3>Prednost na tržištu</h3><p class="was"><b>Danas</b>ponuda se natječe cijenom i referencama.</p><p class="is"><b>S lancem</b>PFC nudi provjerljiv digitalni karton svake stanice i uređaja; banka može brže financirati potvrđene račune (moj zaključak).</p></div></div>
+      </section>
+      <section class="card s12" id="usporedba">
+        <h2 class="ttl">Usporedba: kako je danas, a kako bi bilo na blockchainu</h2>
+        <p class="cap">Današnji tijek je moja pretpostavka o tipičnom servisnom poslu, ne opis PFC-ovih internih procesa</p>
+        <div class="sum"><div><b><s>7</s>1</b><span>ručnih koraka u jednom poslu</span></div><div><b><s>4+</s>1</b><span>mjesta s istim podatkom</span></div><div><b><s>uzorak</s>100 %</b><span>zapisa koje revizor provjeri</span></div><div><b><s>dani</s>sekunde</b><span>do potvrde stanja posla</span></div></div>
+        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">Jedan posao, korak po korak</button><button type="button" data-v="k">Po kriterijima</button></div></div>
+        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Korak</div><div>Danas (pretpostavka)</div><div>Na blockchainu</div></div><div class="row"><div>Narudžba</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Stiže e-mailom ili kroz natječaj; PFC je prepisuje u svoj sustav, kupac čuva svoju kopiju.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Upisuje se jednom; obje strane vide isti zapis i isti broj narudžbe.</div></div><div class="row"><div>Servis na terenu</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Zapisnik na papiru ili tabletu, potpis, skeniranje, unos u AMS; kupcu ide PDF.</div><div data-l="Na blockchainu"><span class="bdg m">unos ručno</span><span class="bdg a">automatski</span>Unos u AMS kao i danas; otisak, vrijeme i potpis tehničara odmah idu na lanac.</div></div><div class="row"><div>Alarm eLBC-a</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Bilježi se u sustavu nadzora; kasnije se dokazuje izvozom logova.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Uređaj ili sustav upisuje alarm; vrijeme se ne može naknadno pomaknuti.</div></div><div class="row"><div>Račun</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>ERP izdaje račun; netko ručno provjerava je li servis stvarno obavljen.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Pametni ugovor ne dopušta račun bez potvrđenog servisa.</div></div><div class="row"><div>Plaćanje</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Kupac plaća bankom; PFC uparuje izvod s računom.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Kupac potvrđuje plaćanje svojim ključem; status posla je odmah „plaćeno”.</div></div><div class="row"><div>Usklađivanje s kupcem</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Na kraju godine e-mailovi i tablice: što je obavljeno, fakturirano i plaćeno.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Nema usklađivanja; obje strane gledaju isti lanac.</div></div><div class="row"><div>Revizija</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Revizor uzorkuje dio dokumenata i traži dokaze.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Revizor provjerava sve zapise prema otiscima u nekoliko sekundi.</div></div><div class="row"><div>Spor</div><div data-l="Danas (pretpostavka)"><span class="bdg w">rizik</span>Riječ protiv riječi, traže se e-mailovi i potpisi.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Zapis s vremenom i potpisom je dokaz koji obje strane prihvaćaju.</div></div></div></div>
+        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Kriterij</div><div>Danas</div><div>Na blockchainu</div></div><div class="row"><div>Gdje su podaci</div><div data-l="Danas (pretpostavka)">AMS, ERP, e-mail, Excel, kod kupca</div><div data-l="Na blockchainu">Isti sustavi, plus jedan zajednički zapis na lancu</div></div><div class="row"><div>Može li se zapis promijeniti</div><div data-l="Danas (pretpostavka)">Da, često bez traga</div><div data-l="Na blockchainu">Ne; svaka izmjena dokumenta odmah se vidi</div></div><div class="row"><div>Tko što vidi</div><div data-l="Danas (pretpostavka)">Šalje se cijeli dokument ili ništa</div><div data-l="Na blockchainu">Prava po ulozi, do pojedinog polja<sup><a href="#s72">72</a></sup></div></div><div class="row"><div>Pravila poslovanja</div><div data-l="Danas (pretpostavka)">Na papiru, ovise o ljudima</div><div data-l="Na blockchainu">U pametnom ugovoru, provode se sama</div></div><div class="row"><div>Trošak</div><div data-l="Danas (pretpostavka)">Skriven u radnim satima: unos, usklađivanje, revizija, sporovi</div><div data-l="Na blockchainu">Platforma i razvoj; cijena Prividiuma nije javna<sup><a href="#s68">68</a></sup></div></div><div class="row"><div>Rizici</div><div data-l="Danas (pretpostavka)">Greške pri prepisivanju, izgubljeni dokumenti</div><div data-l="Na blockchainu">Nova tehnologija, ovisnost o dobavljaču platforme, kupci je moraju prihvatiti</div></div></div></div>
       </section>
       <section class="card s12" id="uvid">
         <h2 class="ttl">Tko što vidi</h2>
@@ -953,6 +975,12 @@ contract PFCLedger {
   const BC_LIVE = {"order": "Narudžba", "service": "Servis", "alarm": "Alarm eLBC", "invoice": "Račun", "payment": "Plaćanje", "code": "kod", "block": "Blok", "none": "Još nema zapisa.", "err": "Testnet trenutno ne odgovara"};
   const BC_DEPLOY = null;
 
+
+  // Usporedba: prebacivanje prikaza
+  document.querySelectorAll("#cmp-seg button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll("#cmp-seg button").forEach(x => x.classList.toggle("on", x === b));
+    document.getElementById("cmp-p").hidden = b.dataset.v !== "p"; document.getElementById("cmp-k").hidden = b.dataset.v !== "k";
+  }));
   // Interaktivni demo: jedan posao od narudžbe do revizije, s pogledom po ulogama i pokušajem prevare
   (() => {
     const root = document.getElementById("bc-demo"); if (!root) return;

@@ -342,6 +342,19 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;fo
 .live a{color:inherit}
 .tn{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:14px}
 ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
+.cmp{display:grid;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp .row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,5fr) minmax(0,5fr);border-top:1px solid var(--line)}
+.cmp .row:first-child{border-top:0}
+.cmp .row>div{padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.cmp .row.hd>div{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--soft)}
+.cmp .row>div:first-child{font-weight:600}
+.cmp .row>div:last-child{background:color-mix(in srgb,var(--green) 9%,transparent)}
+.bdg{align-self:flex-start;font-size:10.5px;font-weight:700;border-radius:99px;padding:1px 8px;font-family:var(--f-mono)}
+.bdg.m{background:var(--bar);color:var(--muted)}.bdg.a{background:var(--green);color:#16170f}.bdg.w{background:var(--orange);color:#16170f}
+.sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.sum div{background:var(--soft);border-radius:12px;padding:12px}.sum b{display:block;font-family:var(--f-mono);font-size:18px}.sum span{font-size:12px;color:var(--muted)}
+.sum s{color:var(--muted);font-weight:400;font-size:14px;margin-right:6px}
+@media (max-width:900px){.cmp .row{grid-template-columns:minmax(0,1fr)}.cmp .row.hd{display:none}.cmp .row>div:nth-child(2)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase}.cmp .row>div:nth-child(3)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--green-d);text-transform:uppercase}.sum{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.demo2,.ben,.calc,.res2,.tn{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
 </style>
 </head>
@@ -379,6 +392,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
         <a href="#blockchain" data-jump="prednosti">Benefits</a>
+        <a href="#blockchain" data-jump="usporedba">Today vs chain</a>
         <a href="#blockchain" data-jump="demo">Demo</a>
         <a href="#blockchain" data-jump="testnet">Testnet</a>
         <a href="#blockchain" data-jump="troskovi">Costs</a>
@@ -623,6 +637,14 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <h2 class="ttl">Why blockchain: today and with a chain</h2>
         <p class="cap">Benefits for PFC and its customers; the assessment is my conclusion</p>
         <div class="ben"><div><h3>One source of truth</h3><p class="was"><b>Today</b>reports in AMS, PDFs by e-mail, Excel at the customer; everyone has their own version.</p><p class="is"><b>With a chain</b>PFC, the customer and the auditor read the same record, with the same time and fingerprint.</p></div><div><h3>Proof instead of argument</h3><p class="was"><b>Today</b>disputes over whether a service was done, when an alarm happened and what amount was agreed.</p><p class="is"><b>With a chain</b>time and fingerprint are written once and cannot be changed later; any change shows at once.</p></div><div><h3>Transparent but private</h3><p class="was"><b>Today</b>you either share the whole document or nothing.</p><p class="is"><b>With a chain</b>each role sees exactly its own: the customer its stations, the regulator alarms, the auditor amounts, competitors nothing.<sup><a href="#s72">72</a></sup><sup><a href="#s68">68</a></sup></p></div><div><h3>Faster audit and control</h3><p class="was"><b>Today</b>the auditor samples some documents by hand, and controlling assembles reports from several systems.</p><p class="is"><b>With a chain</b>checking every record takes seconds; controlling sees each job's status from order to payment.</p></div><div><h3>Rules in code</h3><p class="was"><b>Today</b>rules (“invoice only after service”) exist on paper and depend on people.</p><p class="is"><b>With a chain</b>the smart contract enforces them: no invoice before a confirmed service, and only the customer confirms payment.</p></div><div><h3>Market advantage</h3><p class="was"><b>Today</b>a bid competes on price and references.</p><p class="is"><b>With a chain</b>PFC offers a verifiable digital record for every station and device; a bank can finance confirmed invoices faster (my conclusion).</p></div></div>
+      </section>
+      <section class="card s12" id="usporedba">
+        <h2 class="ttl">Comparison: how it is today and how it would be on blockchain</h2>
+        <p class="cap">Today's flow is my assumption about a typical service job, not a description of PFC's internal processes</p>
+        <div class="sum"><div><b><s>7</s>1</b><span>manual steps in one job</span></div><div><b><s>4+</s>1</b><span>places holding the same data</span></div><div><b><s>sample</s>100 %</b><span>of records the auditor checks</span></div><div><b><s>days</s>seconds</b><span>to confirm a job's status</span></div></div>
+        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">One job, step by step</button><button type="button" data-v="k">By criteria</button></div></div>
+        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Step</div><div>Today (assumption)</div><div>On blockchain</div></div><div class="row"><div>Order</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Arrives by e-mail or through a tender; PFC retypes it into its system, the customer keeps its own copy.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>Written once; both sides see the same record and order number.</div></div><div class="row"><div>Field service</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Report on paper or tablet, signature, scan, entry into AMS; the customer gets a PDF.</div><div data-l="On blockchain"><span class="bdg m">entry manual</span><span class="bdg a">automatic</span>Entry into AMS as today; fingerprint, time and the technician's signature go on chain at once.</div></div><div class="row"><div>eLBC alarm</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>Logged in the monitoring system; later proven by exporting logs.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The device or system writes the alarm; the time cannot be moved later.</div></div><div class="row"><div>Invoice</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The ERP issues the invoice; someone checks by hand that the service was really done.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The smart contract does not allow an invoice without a confirmed service.</div></div><div class="row"><div>Payment</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The customer pays by bank; PFC matches the statement to the invoice.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The customer confirms payment with its key; the job status is instantly “paid”.</div></div><div class="row"><div>Reconciling with the customer</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>At year end, e-mails and spreadsheets: what was done, invoiced and paid.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>No reconciliation; both sides look at the same chain.</div></div><div class="row"><div>Audit</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The auditor samples some documents and asks for evidence.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The auditor checks every record against its fingerprint in seconds.</div></div><div class="row"><div>Dispute</div><div data-l="Today (assumption)"><span class="bdg w">risk</span>Word against word; e-mails and signatures are dug up.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>A record with time and signature is evidence both sides accept.</div></div></div></div>
+        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Criterion</div><div>Today</div><div>On blockchain</div></div><div class="row"><div>Where the data is</div><div data-l="Today (assumption)">AMS, ERP, e-mail, Excel, at the customer</div><div data-l="On blockchain">The same systems, plus one shared record on chain</div></div><div class="row"><div>Can a record be changed</div><div data-l="Today (assumption)">Yes, often without a trace</div><div data-l="On blockchain">No; any change to a document shows at once</div></div><div class="row"><div>Who sees what</div><div data-l="Today (assumption)">The whole document is sent, or nothing</div><div data-l="On blockchain">Rights by role, down to single fields<sup><a href="#s72">72</a></sup></div></div><div class="row"><div>Business rules</div><div data-l="Today (assumption)">On paper, depend on people</div><div data-l="On blockchain">In the smart contract, enforced automatically</div></div><div class="row"><div>Cost</div><div data-l="Today (assumption)">Hidden in work hours: data entry, reconciliation, audit, disputes</div><div data-l="On blockchain">Platform and development; Prividium pricing is not public<sup><a href="#s68">68</a></sup></div></div><div class="row"><div>Risks</div><div data-l="Today (assumption)">Retyping errors, lost documents</div><div data-l="On blockchain">New technology, dependence on the platform vendor, customers must accept it</div></div></div></div>
       </section>
       <section class="card s12" id="uvid">
         <h2 class="ttl">Who sees what</h2>
@@ -953,6 +975,12 @@ contract PFCLedger {
   const BC_LIVE = {"order": "Order", "service": "Service", "alarm": "eLBC alarm", "invoice": "Invoice", "payment": "Payment", "code": "code", "block": "Block", "none": "No records yet.", "err": "The testnet is not responding right now"};
   const BC_DEPLOY = null;
 
+
+  // Usporedba: prebacivanje prikaza
+  document.querySelectorAll("#cmp-seg button").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll("#cmp-seg button").forEach(x => x.classList.toggle("on", x === b));
+    document.getElementById("cmp-p").hidden = b.dataset.v !== "p"; document.getElementById("cmp-k").hidden = b.dataset.v !== "k";
+  }));
   // Interaktivni demo: jedan posao od narudžbe do revizije, s pogledom po ulogama i pokušajem prevare
   (() => {
     const root = document.getElementById("bc-demo"); if (!root) return;
