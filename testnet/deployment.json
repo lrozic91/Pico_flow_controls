@@ -1,0 +1,15 @@
+{
+ "chainId": "312",
+ "rpc": "https://rpc.zksync-era-testnet.zksync.dev",
+ "address": "0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf",
+ "fromBlock": 15618,
+ "tx": "0x678d4bacc2a6c6c3ff19d55515c163641b17eb802fdb5bf20b751eb3bee81f44",
+ "roles": {
+  "pfc": "0xE934b0a4645C23EeF6F22D21067988486FA3aB53",
+  "tech": "0x5c79DB771a72777a913C734B32682377f24F05DA",
+  "cust1": "0xd3c77702Fd2Fe60dEf952F18D8CE79142fA6aa54",
+  "cust2": "0x75e21e89221886a4c625f43290Ed3c3B19D6531c"
+ },
+ "txCount": 18,
+ "feeWei": "57077250000000"
+}

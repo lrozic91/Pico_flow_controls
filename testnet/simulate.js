@@ -66,7 +66,8 @@ async function main() {
     console.log(o.what);
     const cust = W[o.cust];
     const r = await send("narudzba (PFC)", c.createOrder(id(o.station), cust.address, id("narudzba:" + o.what)));
-    const oid = c.interface.parseLog(r.logs[0]).args.id;
+    // na ZKsyncu prvi log je sistemski (naknada), zato trazimo log nasega ugovora
+    const oid = r.logs.filter(l => l.address.toLowerCase() === dep.address.toLowerCase()).map(l => c.interface.parseLog(l)).find(e => e && e.name === "OrderCreated").args.id;
     await send("servis (tehnicar)", as(W.TECH).logService(oid, id("zapisnik:" + o.what)));
     if (o.alarm) await send("alarm eLBC (tehnicar)", as(W.TECH).logAlarm(id(o.station), o.alarm, id("alarm:" + o.station + ":" + o.alarm)));
     await send("racun (PFC)", c.issueInvoice(oid, o.amount, id("racun:" + o.what)));
