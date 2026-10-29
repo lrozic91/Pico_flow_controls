@@ -8,4 +8,4 @@ Na lanac idu samo brojevi, iznosi i otisci (hash) dokumenata; podaci su izmišlj
 3. Na faucetu pošalji testni ETH samo na PFC adresu (ZKsync OS testnet, chain ID 8022833; ETH se prenosi sa Sepolije preko https://zksync-os.portal.zksync.io/)
 4. `node simulate.js` – objavi ugovor, dodijeli uloge tehničaru i kupcima, podijeli im malo ETH-a za plin i odradi 4 posla; adresa ide u `deployment.json`
 
-Druga mreža: `RPC=https://rpc.zksync-era-testnet.zksync.dev node simulate.js` (novi ZKsync Era Testnet, chain ID 312). Era Sepolia (chain ID 300) se gasi.
+Druga mreža: `RPC=https://rpc.zksync-era-testnet.zksync.dev node simulate.js` (najavljeni ZKsync Era Testnet, chain ID 312, kad bude pokrenut) ili `RPC=https://sepolia.era.zksync.dev` (Era Sepolia, chain ID 300, zastarjela).
