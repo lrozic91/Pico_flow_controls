@@ -250,6 +250,11 @@ table.matrix td:nth-child(2){background:var(--soft)}
   .tl li::after{left:calc(48px + 10px + 5px)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px 40px;margin-top:14px}
+.glossary .gl-h{margin:22px 0 0;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.glossary dl.facts{margin-top:8px;grid-template-columns:minmax(80px,auto) minmax(0,1fr)}
+.glossary dl.facts dt{font-weight:700;color:inherit}
+.glossary>div>.gl-h:first-child{margin-top:0}
 
 /* PFC dodaci */
 .todo{border:1.5px dashed var(--faint);background:transparent;box-shadow:none}
@@ -401,6 +406,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
     </nav>
     <div class="hr"></div>
     <nav class="nav" aria-label="More">
+      <a href="#pojmovnik"><svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11"/></svg>Glossary</a>
       <a href="#izvori"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Sources</a>
     </nav>
     <div class="pro">
@@ -847,6 +853,13 @@ contract PFCLedger {
       </section>
     </div>
 
+    <section class="card" id="pojmovnik">
+      <h2 class="ttl">Glossary</h2>
+      <p class="cap">Abbreviations and terms used on this page</p>
+      <div class="glossary"><div><h3 class="gl-h">Products and equipment</h3><dl class="facts"><dt>eLBC</dt><dd>electronic line break control: a device that automatically closes a valve when a pipeline breaks<sup><a href="#s22">22</a></sup></dd><dt>RIKI</dt><dd>a calibration device for eLBC units<sup><a href="#s23">23</a></sup></dd><dt>KPPP</dt><dd>a mobile compressor unit that pumps gas out of a pipeline section instead of venting it; a product name, the letters are not explained<sup><a href="#s29">29</a></sup></dd><dt>MEGC</dt><dd>multi-element gas container: a container with several cylinders for compressed gas, on a semi-trailer<sup><a href="#s30">30</a></sup></dd><dt>AYMO</dt><dd>PFC's pipeline integrity management software<sup><a href="#s27">27</a></sup></dd><dt>PIMSF</dt><dd>Feromihin's earlier pipeline integrity management system, the forerunner of AYMO (my conclusion)<sup><a href="#s61">61</a></sup></dd><dt>AMS</dt><dd>asset management software<sup><a href="#s28">28</a></sup></dd><dt>AEGIS</dt><dd>plastic mesh for pipe protection, geogrids and fences<sup><a href="#s25">25</a></sup></dd><dt>GRIZO</dt><dd>synthetic gas station<sup><a href="#s65">65</a></sup></dd><dt>MRS</dt><dd>metering and reduction station: measures gas flow and reduces pressure<sup><a href="#s43">43</a></sup></dd><dt>CNG · LNG · LPG · H2</dt><dd>compressed natural gas, liquefied natural gas, liquefied petroleum gas, hydrogen</dd><dt>DN</dt><dd>nominal pipe diameter in millimetres; DN150 is a pipe of about 150 mm</dd><dt>ILI / NON-ILI</dt><dd>pipeline inspection with a device that travels through the pipe (in-line inspection), and inspection by other methods</dd><dt>DCS / ESD</dt><dd>process control system and emergency shutdown system</dd></dl><h3 class="gl-h">Blockchain</h3><dl class="facts"><dt>L2</dt><dd>layer 2: a network running on top of a public blockchain (Ethereum) that processes transactions more cheaply</dd><dt>ZK</dt><dd>zero-knowledge proof: proves that something is true without revealing the data</dd><dt>ETH</dt><dd>Ethereum's cryptocurrency, used to pay record fees</dd></dl></div><div><h3 class="gl-h">Organisations</h3><dl class="facts"><dt>Plinacro</dt><dd>operator of the Croatian gas transmission system, an important PFC customer</dd><dt>INA · HEP</dt><dd>Croatia's oil company and its national electricity utility</dd><dt>HSUP</dt><dd>the Croatian Gas Association, organiser of the gas professionals' meeting in Opatija<sup><a href="#s46">46</a></sup></dd><dt>HUNIG</dt><dd>the Croatian association of petroleum engineers and geologists, organiser of a professional meeting</dd><dt>ptc Berlin</dt><dd>Pipeline Technology Conference, the annual pipeline conference in Berlin</dd><dt>DKOM</dt><dd>State Commission for Supervision of Public Procurement Procedures</dd><dt>FINA · RGFI</dt><dd>the Financial Agency; the Register of Annual Financial Statements, the public register of balance sheets</dd><dt>MBS · OIB</dt><dd>company number in the court register; tax identification number</dd></dl><h3 class="gl-h">Finance and legal terms</h3><dl class="facts"><dt>EBITDA · EBIT</dt><dd>earnings before interest, tax, depreciation and amortisation; operating profit before interest and tax</dd><dt>RDG</dt><dd>profit and loss account</dd><dt>Bilješke</dt><dd>explanations attached to the annual statements</dd><dt>Odluka o raspodjeli dobiti</dt><dd>the decision on where profit goes: kept or paid to owners</dd><dt>Konsolidirano / pojedinačno</dt><dd>the whole group as one entity; a single company only</dd><dt>Zadržana dobit</dt><dd>profit of earlier years that was not paid out</dd><dt>Holding</dt><dd>a company whose main income is dividends from its subsidiaries; PFC was one until 2024</dd><dt>Pripajanje</dt><dd>one company ceases to exist and is absorbed into another</dd><dt>j.d.o.o.</dt><dd>simple limited liability company with share capital from HRK 10 (how Async was founded)</dd><dt>Goodwill</dt><dd>the amount paid above the net asset value of an acquired company</dd></dl></div></div>
+      <p class="note">Product descriptions follow PFC's web pages (source number beside each). General technical and financial terms are explained from general knowledge.</p>
+    </section>
+
     <section class="card" id="izvori">
       <h2 class="ttl">Sources</h2>
       <p class="note">Figures in the text carry a source number. Collected 27–29 October 2026. Financial figures are in euros; amounts before 2023 were converted at the fixed rate of HRK 7.5345 per euro.</p>
@@ -954,7 +967,7 @@ contract PFCLedger {
     const a = e.target.closest("a[href^='#']");
     if (!a) return;
     const h = a.getAttribute("href").slice(1);
-    if (/^s\d+$/.test(h) || h === "izvori") {
+    if (/^s\d+$/.test(h) || h === "izvori" || h === "pojmovnik") {
       e.preventDefault();
       const t = document.getElementById(h);
       t.scrollIntoView({ behavior: "smooth", block: "center" });

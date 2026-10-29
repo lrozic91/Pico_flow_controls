@@ -250,6 +250,11 @@ table.matrix td:nth-child(2){background:var(--soft)}
   .tl li::after{left:calc(48px + 10px + 5px)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px 40px;margin-top:14px}
+.glossary .gl-h{margin:22px 0 0;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.glossary dl.facts{margin-top:8px;grid-template-columns:minmax(80px,auto) minmax(0,1fr)}
+.glossary dl.facts dt{font-weight:700;color:inherit}
+.glossary>div>.gl-h:first-child{margin-top:0}
 
 /* PFC dodaci */
 .todo{border:1.5px dashed var(--faint);background:transparent;box-shadow:none}
@@ -401,6 +406,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
     </nav>
     <div class="hr"></div>
     <nav class="nav" aria-label="Ostalo">
+      <a href="#pojmovnik"><svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11"/></svg>Pojmovnik</a>
       <a href="#izvori"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Izvori</a>
     </nav>
     <div class="pro">
@@ -847,6 +853,13 @@ contract PFCLedger {
       </section>
     </div>
 
+    <section class="card" id="pojmovnik">
+      <h2 class="ttl">Pojmovnik</h2>
+      <p class="cap">Kratice i pojmovi koji se koriste na stranici</p>
+      <div class="glossary"><div><h3 class="gl-h">Proizvodi i oprema</h3><dl class="facts"><dt>eLBC</dt><dd>electronic line break control: uređaj koji automatski zatvara ventil kad pukne plinovod<sup><a href="#s22">22</a></sup></dd><dt>RIKI</dt><dd>uređaj za kalibraciju eLBC uređaja<sup><a href="#s23">23</a></sup></dd><dt>KPPP</dt><dd>mobilna kompresorska jedinica koja plin iz dionice plinovoda prepumpava umjesto da se ispusti; naziv proizvoda, slova nisu objašnjena<sup><a href="#s29">29</a></sup></dd><dt>MEGC</dt><dd>multi-element gas container: kontejner s više cilindara za stlačeni plin na poluprikolici<sup><a href="#s30">30</a></sup></dd><dt>AYMO</dt><dd>PFC-ov softver za upravljanje integritetom cjevovoda<sup><a href="#s27">27</a></sup></dd><dt>PIMSF</dt><dd>raniji Feromihinov sustav za upravljanje integritetom cjevovoda, preteča AYMO-a (moj zaključak)<sup><a href="#s61">61</a></sup></dd><dt>AMS</dt><dd>asset management software: sustav za upravljanje imovinom<sup><a href="#s28">28</a></sup></dd><dt>AEGIS</dt><dd>plastične mreže za zaštitu cijevi, geomreže i ograde<sup><a href="#s25">25</a></sup></dd><dt>GRIZO</dt><dd>stanica sintetskog plina<sup><a href="#s65">65</a></sup></dd><dt>MRS</dt><dd>mjerno-redukcijska stanica: mjeri protok i smanjuje tlak plina<sup><a href="#s43">43</a></sup></dd><dt>CNG · LNG · LPG · H2</dt><dd>stlačeni prirodni plin, ukapljeni prirodni plin, ukapljeni naftni plin, vodik</dd><dt>DN</dt><dd>nazivni promjer cijevi u milimetrima; DN150 je cijev promjera oko 150 mm</dd><dt>ILI / NON-ILI</dt><dd>pregled cjevovoda uređajem koji putuje kroz cijev (in-line inspection) i pregled drugim metodama</dd><dt>DCS / ESD</dt><dd>sustav za upravljanje procesom i sustav za nužno zaustavljanje</dd></dl><h3 class="gl-h">Blockchain</h3><dl class="facts"><dt>L2</dt><dd>drugi sloj: mreža koja radi iznad javnog blockchaina (Ethereuma) i jeftinije obrađuje transakcije</dd><dt>ZK</dt><dd>zero-knowledge dokaz: dokazuje se da je nešto točno bez otkrivanja podataka</dd><dt>ETH</dt><dd>kriptovaluta Ethereuma, kojom se plaćaju naknade za zapis</dd></dl></div><div><h3 class="gl-h">Organizacije</h3><dl class="facts"><dt>Plinacro</dt><dd>operator hrvatskog plinskog transportnog sustava, PFC-ov važan kupac</dd><dt>INA · HEP</dt><dd>Industrija nafte, Hrvatska elektroprivreda</dd><dt>HSUP</dt><dd>Hrvatska stručna udruga za plin (Croatian Gas Association), organizator stručnog skupa u Opatiji<sup><a href="#s46">46</a></sup></dd><dt>HUNIG</dt><dd>Hrvatska udruga naftnih inženjera i geologa, organizator stručnog skupa</dd><dt>ptc Berlin</dt><dd>Pipeline Technology Conference, godišnja konferencija o cjevovodima u Berlinu</dd><dt>DKOM</dt><dd>Državna komisija za kontrolu postupaka javne nabave</dd><dt>FINA · RGFI</dt><dd>Financijska agencija; Registar godišnjih financijskih izvještaja, javni registar bilanci</dd><dt>MBS · OIB</dt><dd>matični broj subjekta u sudskom registru; osobni identifikacijski broj tvrtke</dd></dl><h3 class="gl-h">Financije i pravni pojmovi</h3><dl class="facts"><dt>EBITDA · EBIT</dt><dd>dobit prije kamata, poreza i amortizacije; dobit iz poslovanja prije kamata i poreza</dd><dt>RDG</dt><dd>račun dobiti i gubitka</dd><dt>Bilješke</dt><dd>objašnjenja uz godišnji financijski izvještaj</dd><dt>Odluka o raspodjeli dobiti</dt><dd>odluka kamo ide dobit: zadržava se ili se isplaćuje vlasnicima</dd><dt>Konsolidirano / pojedinačno</dt><dd>cijela grupa kao jedna cjelina; samo jedna tvrtka</dd><dt>Zadržana dobit</dt><dd>neisplaćena dobit ranijih godina</dd><dt>Holding</dt><dd>tvrtka kojoj glavni prihod čine dividende društava kćeri; PFC je to bio do 2024.</dd><dt>Pripajanje</dt><dd>jedna tvrtka prestaje postojati i prelazi u drugu</dd><dt>j.d.o.o.</dt><dd>jednostavno društvo s ograničenom odgovornošću, temeljni kapital od 10 kn (Async je tako osnovan)</dd><dt>Goodwill</dt><dd>iznos plaćen iznad vrijednosti neto imovine kupljene tvrtke</dd></dl></div></div>
+      <p class="note">Opisi proizvoda su prema PFC-ovim stranicama (broj izvora uz opis). Opće stručne nazive i financijske pojmove objašnjavam općim znanjem.</p>
+    </section>
+
     <section class="card" id="izvori">
       <h2 class="ttl">Izvori</h2>
       <p class="note">Brojke u tekstu označene su brojem izvora. Prikupljeno 27.–29. listopada 2026. Financijski podaci su u eurima; iznosi prije 2023. preračunati su po fiksnom tečaju 7,5345 kn za euro.</p>
@@ -954,7 +967,7 @@ contract PFCLedger {
     const a = e.target.closest("a[href^='#']");
     if (!a) return;
     const h = a.getAttribute("href").slice(1);
-    if (/^s\d+$/.test(h) || h === "izvori") {
+    if (/^s\d+$/.test(h) || h === "izvori" || h === "pojmovnik") {
       e.preventDefault();
       const t = document.getElementById(h);
       t.scrollIntoView({ behavior: "smooth", block: "center" });
