@@ -372,7 +372,8 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;fo
 .res2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .res2>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start}
 .res2 h3{margin:0;font-size:14.5px}.res2 .r{display:flex;justify-content:space-between;font-size:13px}.res2 .r span{color:var(--muted)}
-.res2 .r b{font-family:var(--f-mono)}.res2 .kick{margin-top:6px}.res2 .r.sub{font-weight:700;border-top:1px dashed var(--line);padding-top:4px}.res2 .r.sub span{color:inherit}
+.res2 .r b{font-family:var(--f-mono)}.res2.one{grid-template-columns:minmax(0,1fr)}
+.res2 .kick{margin-top:6px}.res2 .r.sub{font-weight:700;border-top:1px dashed var(--line);padding-top:4px}.res2 .r.sub span{color:inherit}
 .res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
 .res2 .net b.pos{color:var(--green-d)}.res2 .net b.neg{color:var(--orange)}
 .live{display:grid;gap:6px;max-height:360px;overflow-y:auto;margin-top:10px}
@@ -842,24 +843,12 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           <div>
             <label>Stanica i uređaja<output for="c-st"></output><input type="range" id="c-st" min="50" max="3000" step="50" value="1000"><small>Oko 1000 eLBC uređaja je instalirano.<sup><a href="#s22">22</a></sup></small></label>
             <label>Zapisa po stanici godišnje<output for="c-per"></output><input type="range" id="c-per" min="1" max="50" step="1" value="8"><small>Servisi, kalibracije, alarmi, računi</small></label>
-            <label>Naknada po zapisu na javnom L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Pretpostavka; stvarna naknada mjeri se na testnetu</small></label>
             <label>Privatni blockchain godišnje (licenca, hosting, održavanje)<output for="c-fix"></output><input type="range" id="c-fix" min="0" max="150000" step="5000" value="40000"><small>Procjena; početno 40.000 €</small></label>
             <label>Integracija s AMS-om i ERP-om i podrška godišnje<output for="c-int"></output><input type="range" id="c-int" min="0" max="50000" step="1000" value="5000"><small>Procjena; početno 5.000 €</small></label>
             <label>Ušteđeni sati godišnje<output for="c-hrs"></output><input type="range" id="c-hrs" min="0" max="3000" step="50" value="800"><small>Usklađivanje s kupcima, revizija, sporovi, izvještaji</small></label>
             <label>Trošak sata rada<output for="c-rate"></output><input type="range" id="c-rate" min="15" max="80" step="1" value="30"></label>
           </div>
-          <div class="res2">
-            <div><h3>Javni L2, samo jedinstveni kodovi</h3>
-              <div class="r"><span>Zapisa godišnje</span><b id="o-recp"></b></div>
-              <span class="kick">Troškovi godišnje</span>
-              <div class="r"><span>Naknade za upis zapisa</span><b id="o-fp"></b></div>
-              <div class="r"><span>Integracija s AMS-om i ERP-om, podrška</span><b id="o-intp"></b></div>
-              <div class="r sub"><span>Ukupni troškovi</span><b id="o-ctp"></b></div>
-              <span class="kick">Koristi godišnje</span>
-              <div class="r"><span id="o-glp"></span><b id="o-gainp"></b></div>
-              <div class="r sub"><span>Ukupne koristi</span><b id="o-btp"></b></div>
-              <div class="r net"><span>Neto godišnje (koristi − troškovi)</span><b id="o-np"></b></div>
-              <p class="note" style="margin:0"><span id="o-bep"></span> Najjeftinije, ali na javni blockchain smiju samo jedinstveni kodovi, a ne podaci.</p></div>
+          <div class="res2 one">
             <div><h3>Privatni blockchain (Prividium)</h3>
               <div class="r"><span>Zapisa godišnje</span><b id="o-recv"></b></div>
               <span class="kick">Troškovi godišnje</span>
@@ -870,7 +859,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
               <div class="r"><span id="o-glv"></span><b id="o-gainv"></b></div>
               <div class="r sub"><span>Ukupne koristi</span><b id="o-btv"></b></div>
               <div class="r net"><span>Neto godišnje (koristi − troškovi)</span><b id="o-nv"></b></div>
-              <p class="note" style="margin:0"><span id="o-bev"></span> Podaci i uloge na blockchainu; skuplje, ali bez otkrivanja podataka.</p></div>
+              <p class="note" style="margin:0"><span id="o-bev"></span> Podaci ostaju privatni; svaka uloga vidi samo ono na što ima pravo.</p></div>
           </div>
         </form>
       </section>
@@ -1288,12 +1277,12 @@ contract PFCLedger {
     const num = v => new Intl.NumberFormat(loc).format(v);
     function upd() {
       const g = id => +f.querySelector("#" + id).value;
-      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), itg = g("c-int"), hrs = g("c-hrs"), rate = g("c-rate");
+      const st = g("c-st"), per = g("c-per"), fix = g("c-fix"), itg = g("c-int"), hrs = g("c-hrs"), rate = g("c-rate");
       f.querySelector("[for=c-st]").textContent = num(st); f.querySelector("[for=c-per]").textContent = num(per);
-      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix); f.querySelector("[for=c-int]").textContent = eur(itg);
+      f.querySelector("[for=c-fix]").textContent = eur(fix); f.querySelector("[for=c-int]").textContent = eur(itg);
       f.querySelector("[for=c-hrs]").textContent = num(hrs) + " h"; f.querySelector("[for=c-rate]").textContent = eur(rate);
       const rec = st * per, gain = hrs * rate, set = (id, v) => f.querySelector("#" + id).textContent = v;
-      [["p", rec * fee], ["v", fix]].forEach(([k, c]) => {
+      [["v", fix]].forEach(([k, c]) => {
         const ct = c + itg, net = gain - ct;
         set("o-rec" + k, num(rec)); set("o-f" + k, eur(c)); set("o-int" + k, eur(itg)); set("o-ct" + k, eur(ct));
         set("o-gl" + k, BC_CALC.gl.replace("{h}", num(hrs)).replace("{r}", eur(rate))); set("o-gain" + k, eur(gain)); set("o-bt" + k, eur(gain));
