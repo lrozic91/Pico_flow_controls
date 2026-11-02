@@ -1150,7 +1150,7 @@ contract PFCLedger {
       $("#fd-prev").disabled = i === 0; $("#fd-next").disabled = i >= (f ? 2 : N - 1);
     }
     function stop() { clearInterval(timer); timer = null; }
-    function play() { stop(); show(0); timer = setInterval(() => { if (cur >= (fail() ? 2 : N - 1)) return stop(); show(cur + 1); }, 1400); }
+    function play() { stop(); show(0); timer = setInterval(() => { if (cur >= (fail() ? 2 : N - 1)) return stop(); show(cur + 1); }, 2600); }
     root.querySelectorAll("#fd-seg button").forEach(b => b.addEventListener("click", () => {
       root.querySelectorAll("#fd-seg button").forEach(x => x.classList.toggle("on", x === b));
       k = b.dataset.k; $("#fd-okl").hidden = k !== "invoice"; $("#fd-ok").checked = true; play();
