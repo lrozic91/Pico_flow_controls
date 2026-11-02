@@ -294,6 +294,22 @@ details.codebox{margin-top:12px}details.codebox summary{cursor:pointer;font-weig
 .flow .fb small,.kick{font-family:var(--f-mono);font-size:10.5px;color:var(--green-d);text-transform:uppercase;letter-spacing:.06em}
 .flow .fb:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
 .flow .fb.on,.ben .now b.y{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+.fd-top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:14px}
+.fd-ok{font-size:13px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.fd-nodes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px;margin-top:16px}
+.bc .fd-nodes .nd{position:relative;text-align:left;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;font-weight:400;transition:background .25s,border-color .25s}
+.fd-nodes .nd b{font-size:14px}.fd-nodes .nd span{font-size:12px;color:var(--muted)}
+.fd-nodes .nd small{font-family:var(--f-mono);font-size:10.5px;color:var(--green-d)}
+.fd-nodes .nd:not(:last-child)::after{content:"→";position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:var(--faint);font-weight:700;transition:color .25s}
+.fd-nodes .nd.done{border-color:color-mix(in srgb,var(--green) 55%,transparent)}.fd-nodes .nd.done::after{color:var(--green-d)}
+.fd-nodes .nd.cur{background:color-mix(in srgb,var(--green) 22%,transparent);border-color:var(--green);box-shadow:0 0 0 2px color-mix(in srgb,var(--green) 30%,transparent)}
+.fd-nodes .nd.stop{background:color-mix(in srgb,var(--orange) 18%,transparent);border-color:var(--orange)}
+.fd-nodes .nd.off{opacity:.45}
+.fd-panel{margin-top:14px;border:1px dashed var(--faint);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-height:96px}
+.fd-panel b{font-size:15px}.fd-panel p{margin:0;font-size:13.5px}.fd-panel.stop{border-color:var(--orange)}
+.fd-roles{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px}.fd-roles i{font-style:normal}.fd-roles span{font-size:12.5px;display:flex;align-items:center;gap:6px}
+.fd .btns{margin-top:12px}
+@media (max-width:900px){.fd-nodes{grid-template-columns:1fr;gap:22px}.fd-nodes .nd:not(:last-child)::after{content:"↓";right:auto;left:22px;top:auto;bottom:-20px;transform:none}}
 .ben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .ben>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .ben h3{margin:0;font-size:15px}
@@ -740,8 +756,15 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </section>
       <section class="card s12" id="ideja">
         <h2 class="ttl">Kako bi radilo u PFC-u</h2>
-        <p class="cap">Dokumenti ostaju u postojećim sustavima, na lanac idu otisci, status i pravila</p>
-        <div class="flow"><div class="fb"><small>1</small><b>Teren i kupci</b><span>Narudžba, servis, alarm eLBC-a, račun, plaćanje</span></div><div class="fb"><small>2</small><b>PFC-ov softver</b><span>Dokumenti ostaju u AMS-u, AYMO-u i ERP-u, kao i danas</span></div><div class="fb on"><small>3</small><b>Privatni lanac</b><span>Otisak, vrijeme, autor i status posla upisuju se u pametni ugovor</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>Dokaz da je lanac ispravan; podaci ostaju kod PFC-a</span></div></div>
+        <p class="cap">Odaberite događaj i pokrenite tijek ili kliknite pojedini korak. Dokumenti ostaju u postojećim sustavima, a na lanac idu otisci, status i pravila.</p>
+        <div class="bc fd" id="bc-flow">
+          <div class="fd-top"><div class="seg" role="group" id="fd-seg"><button type="button" data-k="order" class="on">Narudžba</button><button type="button" data-k="service">Servis</button><button type="button" data-k="alarm">Alarm eLBC</button><button type="button" data-k="invoice">Račun</button><button type="button" data-k="payment">Plaćanje</button></div>
+            <label class="fd-ok" id="fd-okl" hidden><input type="checkbox" id="fd-ok" checked> Kupac je potvrdio servis</label></div>
+          <div class="fd-nodes"><button type="button" class="nd" data-i="0"><small>1</small><b>Teren i kupac</b><span>gdje posao nastaje</span></button><button type="button" class="nd" data-i="1"><small>2</small><b>PFC-ov softver</b><span>AMS, AYMO, ERP</span></button><button type="button" class="nd" data-i="2"><small>3</small><b>Privatni lanac</b><span>pametni ugovor</span></button><button type="button" class="nd" data-i="3"><small>4</small><b>Uvid po ulogama</b><span>tko što vidi</span></button><button type="button" class="nd" data-i="4"><small>5</small><b>Ethereum</b><span>javni dokaz</span></button></div>
+          <div class="fd-panel" aria-live="polite"><span class="kick" id="fd-k"></span><b id="fd-h"></b><p id="fd-t"></p><div class="fd-roles" id="fd-r"></div></div>
+          <div class="btns"><button type="button" class="go" id="fd-play">▶ Pokreni tijek</button><button type="button" id="fd-prev">Natrag</button><button type="button" id="fd-next">Dalje</button></div>
+          <script type="application/json" id="fd-data">{"sc": {"order": {"t": ["Kupac naručuje servis ili isporuku za svoju stanicu.", "Narudžba se unosi u ERP. Dokument ostaje u ERP-u, kao i danas.", "Na lanac se upisuju otisak narudžbe, vrijeme, autor i status „naručeno”. Pametni ugovor otvara posao.", "Svaka uloga vidi samo ono na što ima pravo:", "Privatni lanac na Ethereum šalje samo dokaz da su svi zapisi ispravni. Sadržaj posla se ne objavljuje."], "vis": {"pfc": "f", "kupac": "f", "reg": "h", "rev": "f", "pub": "n"}}, "service": {"t": ["Tehničar PFC-a obavlja servis na stanici i ispunjava zapisnik.", "Zapisnik se sprema u AMS.", "Upisuje se otisak zapisnika. Status „servis obavljen” vrijedi tek kad ga kupac potvrdi.", "Svaka uloga vidi samo ono na što ima pravo:", "Privatni lanac na Ethereum šalje samo dokaz da su svi zapisi ispravni. Sadržaj posla se ne objavljuje."], "vis": {"pfc": "f", "kupac": "f", "reg": "h", "rev": "h", "pub": "n"}}, "alarm": {"t": ["eLBC na stanici sam zatvara ventil zbog naglog pada tlaka.", "AYMO bilježi alarm i podatke senzora.", "Alarm se upisuje s točnim vremenom i ne može se naknadno promijeniti ni obrisati.", "Svaka uloga vidi samo ono na što ima pravo:", "Privatni lanac na Ethereum šalje samo dokaz da su svi zapisi ispravni. Sadržaj posla se ne objavljuje."], "vis": {"pfc": "f", "kupac": "f", "reg": "f", "rev": "h", "pub": "n"}}, "invoice": {"t": ["Posao je završen i kupac je potvrdio servis.", "ERP izrađuje račun.", "Pametni ugovor provjerava je li servis potvrđen. Jest, pa se upisuju otisak i iznos računa.", "Svaka uloga vidi samo ono na što ima pravo:", "Privatni lanac na Ethereum šalje samo dokaz da su svi zapisi ispravni. Sadržaj posla se ne objavljuje."], "vis": {"pfc": "f", "kupac": "f", "reg": "n", "rev": "f", "pub": "n"}}, "payment": {"t": ["Kupac plaća račun.", "ERP knjiži uplatu.", "Plaćanje potvrđuje samo kupac. Posao dobiva status „zatvoren”.", "Svaka uloga vidi samo ono na što ima pravo:", "Privatni lanac na Ethereum šalje samo dokaz da su svi zapisi ispravni. Sadržaj posla se ne objavljuje."], "vis": {"pfc": "f", "kupac": "f", "reg": "n", "rev": "f", "pub": "n"}}}, "roles": [["pfc", "PFC"], ["kupac", "Kupac"], ["reg", "Regulator"], ["rev", "Revizor"], ["pub", "Javnost"]], "lab": {"f": "vidi sve", "h": "otisak", "n": "–"}, "nodes": ["Teren i kupac", "PFC-ov softver", "Privatni lanac", "Uvid po ulogama", "Ethereum"], "fail1": "Posao je završen, ali kupac još nije potvrdio servis.", "fail3": "Pametni ugovor provjerava je li servis potvrđen. Nije, pa odbija račun i tijek se ovdje zaustavlja. Račun se može izdati tek nakon potvrde.", "step": "Korak", "of": "od"}</script>
+        </div>
       </section>
       <section class="card s12" id="prednosti">
         <h2 class="ttl">Zašto blockchain: danas i s lancem</h2>
@@ -1108,6 +1131,35 @@ contract PFCLedger {
   const BC_DEPLOY = {"chainId": "312", "rpc": "https://rpc.zksync-era-testnet.zksync.dev", "address": "0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf", "fromBlock": 15618, "tx": "0x678d4bacc2a6c6c3ff19d55515c163641b17eb802fdb5bf20b751eb3bee81f44", "roles": {"pfc": "0xE934b0a4645C23EeF6F22D21067988486FA3aB53", "tech": "0x5c79DB771a72777a913C734B32682377f24F05DA", "cust1": "0xd3c77702Fd2Fe60dEf952F18D8CE79142fA6aa54", "cust2": "0x75e21e89221886a4c625f43290Ed3c3B19D6531c"}, "txCount": 18, "feeWei": "57077250000000", "explorer": "https://block-explorer.zksync-era-testnet.zksync.dev"};
 
 
+  // Interaktivni dijagram toka
+  (() => {
+    const root = document.getElementById("bc-flow"); if (!root) return;
+    const D = JSON.parse(document.getElementById("fd-data").textContent), $ = s => root.querySelector(s);
+    const nodes = [...root.querySelectorAll(".nd")], N = nodes.length;
+    let k = "order", cur = 0, timer = null;
+    const fail = () => k === "invoice" && !$("#fd-ok").checked;
+    function show(i) {
+      cur = i; const sc = D.sc[k], f = fail(), stopAt = f ? 2 : N;
+      nodes.forEach((n, j) => { n.classList.toggle("done", j < i && j < stopAt); n.classList.toggle("cur", j === i && !(f && j === 2)); n.classList.toggle("stop", f && j === 2 && i >= 2); n.classList.toggle("off", f && j > 2); });
+      let txt = sc.t[i]; if (f && i === 0) txt = D.fail1; if (f && i === 2) txt = D.fail3;
+      $("#fd-k").textContent = `${D.step} ${i + 1} ${D.of} ${N}`; $("#fd-h").textContent = D.nodes[i]; $("#fd-t").textContent = txt;
+      $(".fd-panel").classList.toggle("stop", f && i === 2);
+      $("#fd-r").innerHTML = i === 3 ? D.roles.map(([r, n]) => `<span>${n} <i class="vi ${sc.vis[r]}">${D.lab[sc.vis[r]]}</i></span>`).join("") : "";
+      $("#fd-prev").disabled = i === 0; $("#fd-next").disabled = i >= (f ? 2 : N - 1);
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    function play() { stop(); show(0); timer = setInterval(() => { if (cur >= (fail() ? 2 : N - 1)) return stop(); show(cur + 1); }, 1400); }
+    root.querySelectorAll("#fd-seg button").forEach(b => b.addEventListener("click", () => {
+      root.querySelectorAll("#fd-seg button").forEach(x => x.classList.toggle("on", x === b));
+      k = b.dataset.k; $("#fd-okl").hidden = k !== "invoice"; $("#fd-ok").checked = true; play();
+    }));
+    $("#fd-ok").addEventListener("change", play);
+    nodes.forEach((n, j) => n.addEventListener("click", () => { stop(); if (fail() && j > 2) return; show(j); }));
+    $("#fd-play").addEventListener("click", play);
+    $("#fd-prev").addEventListener("click", () => { stop(); if (cur > 0) show(cur - 1); });
+    $("#fd-next").addEventListener("click", () => { stop(); if (cur < (fail() ? 2 : N - 1)) show(cur + 1); });
+    show(0);
+  })();
   // Usporedba: prebacivanje prikaza
   document.querySelectorAll("#cmp-seg button").forEach(b => b.addEventListener("click", () => {
     document.querySelectorAll("#cmp-seg button").forEach(x => x.classList.toggle("on", x === b));
