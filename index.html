@@ -765,7 +765,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <h2 class="ttl">Pravi ugovor na ZKsync testnetu</h2>
         <p class="cap">Ugovor je objavljen na adresi <a href="https://block-explorer.zksync-era-testnet.zksync.dev/address/0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf" target="_blank" rel="noopener"><code>0xfDd7146B…</code> ↗</a>. Zapisa: <b id="bc-live-n">…</b>.</p>
         <div class="tn">
-          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Besplatni testni Sepolia ETH s faucet-a prebaciš preko ZKsync portala na tu adresu.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Testnet (chain ID 312), dodijeli uloge tehničaru i dvama kupcima i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s86">86</a></sup></span></li><li><span>Adresa ugovora je na stranici, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) je novi Era testnet iz listopada 2026. i zamjenjuje zastarjeli Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> Prijenos ETH-a na njemu stoji oko 0,000002 ETH. Skripta radi i na ZKsync OS testnetu (chain ID 8022833).<sup><a href="#s86">86</a></sup> Izmjereno 29. 10. 2026.: 18 transakcija za 4 posla (narudžba, servis, alarm, račun, plaćanje) stajalo je ukupno 0,000057 testnog ETH-a, odnosno oko 3,2 milijuntih dijelova ETH-a po zapisu.</p></div>
+          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Besplatni testni Sepolia ETH s faucet-a prebacuje se preko ZKsync portala na tu adresu.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Testnet (chain ID 312), dodijeli uloge tehničaru i dvama kupcima i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s86">86</a></sup></span></li><li><span>Adresa ugovora je na stranici, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) je novi Era testnet iz listopada 2026. i zamjenjuje zastarjeli Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> Prijenos ETH-a na njemu stoji oko 0,000002 ETH. Skripta radi i na ZKsync OS testnetu (chain ID 8022833).<sup><a href="#s86">86</a></sup> Izmjereno 29. 10. 2026.: 18 transakcija za 4 posla (narudžba, servis, alarm, račun, plaćanje) stajalo je ukupno 0,000057 testnog ETH-a, odnosno oko 3,2 milijuntih dijelova ETH-a po zapisu.</p></div>
           <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
         </div>
       </section>
@@ -812,7 +812,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </section>
       <section class="card s7" id="ugovor">
         <h2 class="ttl">Pametni ugovor PFCLedger</h2>
-        <p class="cap">Cijeli kod koji ide na testnet; <a href="testnet/PFCLedger.sol" target="_blank">preuzmi .sol</a></p>
+        <p class="cap">Cijeli kod koji ide na testnet; <a href="testnet/PFCLedger.sol" target="_blank">preuzmite .sol</a></p>
         <pre class="code"><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
