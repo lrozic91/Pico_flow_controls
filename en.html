@@ -272,6 +272,7 @@ table.fin tr.tot td{font-weight:700}
 .li-bars{display:grid;gap:8px;margin-top:10px}.li-row{display:grid;grid-template-columns:150px 1fr 24px;align-items:center;gap:10px;font-size:13px}.li-row .meter{margin:0}.li-row b{text-align:right}
 table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-child(-n+2){white-space:nowrap}
 table.kon{table-layout:fixed;width:100%;min-width:860px}table.kon td,table.kon th{text-align:left;white-space:normal;vertical-align:top;font-size:13px;line-height:1.45}table.kon th:first-child{width:15%}table.kon th:nth-child(2){width:19%}table.kon td:not(:first-child){color:var(--fg)}
+.phases{display:grid;gap:10px;margin-top:12px}.phases .ph{display:grid;grid-template-columns:110px 1fr;gap:12px;background:var(--soft);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.5}.phases .ph b{color:var(--green-d);font-size:13px}
 .q{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px}
 .q li{border-left:3px solid var(--orange);padding:4px 0 4px 12px}
 .miss{margin:12px 0 0;padding-left:20px;font-size:13px;display:grid;gap:6px}
@@ -694,7 +695,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
 
     <div class="grid" id="p-rast" hidden>
       <section class="card s12" id="rast-top">
-        <div class="hero"><div><div class="eyebrow">Growth</div><h1>Where PFC can grow</h1><p class="lead">A first look at strengths, opportunities and risks from the data collected. Detailed proposals with estimated revenue, costs and investment come in the next phase of the project.</p></div>
+        <div class="hero"><div><div class="eyebrow">Growth</div><h1>Where PFC can grow</h1><p class="lead">Strengths, opportunities and risks from the data collected, plus concise growth proposals with an implementation plan.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
       <section class="card s12" id="prilike">
@@ -702,13 +703,15 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <p class="cap">My assessment based on the research, not the company's plan</p>
         <div class="deals" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))"><div class="deal hi"><div class="deal-h"><h3>Own products and know-how</h3><span class="fit">Strength</span></div><p>eLBC, KPPP, MEGC, AYMO and AMS are its own products, not resale. That explains the high margins: 21–24% net even before the merger.<sup><a href="#s9">9</a></sup><sup><a href="#s12">12</a></sup></p></div><div class="deal hi"><div class="deal-h"><h3>EU methane regulation</h3><span class="fit">Opportunity</span></div><p>Regulation (EU) 2024/1787 limits methane venting. KPPP lets gas be pumped out of a pipeline section instead of vented, and PFC presented this solution at the HUNIG conference in 2026.<sup><a href="#s47">47</a></sup></p></div><div class="deal mid"><div class="deal-h"><h3>Exporting software and devices</h3><span class="fit">Opportunity</span></div><p>AYMO has been shown at fairs from Kazakhstan to Brazil, and Feromihin exported to 8 countries. The statements do not show today's export share.<sup><a href="#s50">50</a></sup><sup><a href="#s51">51</a></sup></p></div><div class="deal lo"><div class="deal-h"><h3>Dependence on few customers</h3><span class="fit">Risk</span></div><p>Partners on the website are mostly Croatian state energy companies (Plinacro, INA, HEP, LNG Hrvatska). Individual customers' shares are not public.<sup><a href="#s77">77</a></sup></p></div></div>
       </section>
-      <section class="card s6 todo" id="prijedlozi">
-        <h2 class="ttl">Proposals<span class="tag">Next phase</span></h2>
-        <p>Growth proposals with assumption sliders, annual revenue and costs, and one-off investment.</p>
+      <section class="card s6" id="prijedlozi">
+        <h2 class="ttl">Growth proposals</h2>
+        <p class="cap">Ranked by impact versus effort; estimate</p>
+        <ul class="ul"><li><span><b>Service contracts for installed devices.</b> Offer annual maintenance and calibration (RIKI) for the roughly 1,000 installed eLBC units. Brings recurring revenue with little investment.<sup><a href="#s22">22</a></sup><sup><a href="#s23">23</a></sup></span></li><li><span><b>Project controlling.</b> Margin by project and business line, monthly plan vs actual in Power BI. Quick to set up and shows where PFC makes money.</span></li><li><span><b>KPPP as a service in neighbouring countries.</b> The methane regulation pushes operators to transfer gas instead of venting it. KPPP with a crew can be offered to operators in Slovenia, Hungary and Austria.<sup><a href="#s47">47</a></sup></span></li><li><span><b>AYMO and AMS as a subscription.</b> Sell the software as an annual licence and grow exports through regional partners.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span><b>Blockchain pilot project.</b> A shared job record with one customer on 1–3 stations (Blockchain tab).</span></li></ul>
       </section>
-      <section class="card s6 todo" id="plan">
-        <h2 class="ttl">Phased plan<span class="tag">Next phase</span></h2>
-        <p>Order of implementation: 0–6, 6–12 and 12–24 months.</p>
+      <section class="card s6" id="plan">
+        <h2 class="ttl">Phased plan</h2>
+        <p class="cap">Order in which to carry out the proposals; estimate</p>
+        <div class="phases"><div class="ph"><b>0–6 months</b><span>Project controlling, a register of installed devices and service contract offers, preparing the blockchain pilot project.</span></div><div class="ph"><b>6–12 months</b><span>First service contracts, offering KPPP in neighbouring countries, the blockchain pilot project in the field, a subscription model for AYMO.</span></div><div class="ph"><b>12–24 months</b><span>Exporting AYMO and eLBC through partners, expanding the KPPP service in the EU, a decision on putting the chain into regular operation.</span></div></div>
       </section>
     </div>
 

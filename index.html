@@ -272,6 +272,7 @@ table.fin tr.tot td{font-weight:700}
 .li-bars{display:grid;gap:8px;margin-top:10px}.li-row{display:grid;grid-template-columns:150px 1fr 24px;align-items:center;gap:10px;font-size:13px}.li-row .meter{margin:0}.li-row b{text-align:right}
 table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-child(-n+2){white-space:nowrap}
 table.kon{table-layout:fixed;width:100%;min-width:860px}table.kon td,table.kon th{text-align:left;white-space:normal;vertical-align:top;font-size:13px;line-height:1.45}table.kon th:first-child{width:15%}table.kon th:nth-child(2){width:19%}table.kon td:not(:first-child){color:var(--fg)}
+.phases{display:grid;gap:10px;margin-top:12px}.phases .ph{display:grid;grid-template-columns:110px 1fr;gap:12px;background:var(--soft);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.5}.phases .ph b{color:var(--green-d);font-size:13px}
 .q{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px}
 .q li{border-left:3px solid var(--orange);padding:4px 0 4px 12px}
 .miss{margin:12px 0 0;padding-left:20px;font-size:13px;display:grid;gap:6px}
@@ -694,7 +695,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
 
     <div class="grid" id="p-rast" hidden>
       <section class="card s12" id="rast-top">
-        <div class="hero"><div><div class="eyebrow">Rast</div><h1>Gdje PFC može rasti</h1><p class="lead">Prvi pregled snaga, prilika i rizika iz prikupljenih podataka. Razrađeni prijedlozi s procjenom prihoda, troškova i ulaganja dolaze u idućoj fazi projekta.</p></div>
+        <div class="hero"><div><div class="eyebrow">Rast</div><h1>Gdje PFC može rasti</h1><p class="lead">Snage, prilike i rizici iz prikupljenih podataka te sažeti prijedlozi rasta s planom provedbe.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
       <section class="card s12" id="prilike">
@@ -702,13 +703,15 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <p class="cap">Moja procjena na temelju istraživanja, ne plan tvrtke</p>
         <div class="deals" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))"><div class="deal hi"><div class="deal-h"><h3>Vlastiti proizvodi i znanje</h3><span class="fit">Snaga</span></div><p>eLBC, KPPP, MEGC, AYMO i AMS su vlastiti proizvodi, a ne preprodaja. To objašnjava visoke marže: 21–24 % neto već prije pripajanja.<sup><a href="#s9">9</a></sup><sup><a href="#s12">12</a></sup></p></div><div class="deal hi"><div class="deal-h"><h3>EU uredba o metanu</h3><span class="fit">Prilika</span></div><p>Uredba (EU) 2024/1787 ograničava ispuštanje metana. KPPP omogućuje da se plin iz dionice plinovoda prepumpa umjesto ispusti, a PFC je to rješenje 2026. predstavio na stručnom skupu HUNIG-a.<sup><a href="#s47">47</a></sup></p></div><div class="deal mid"><div class="deal-h"><h3>Izvoz softvera i uređaja</h3><span class="fit">Prilika</span></div><p>AYMO je predstavljen na sajmovima od Kazahstana do Brazila, a Feromihin je izvozio u 8 zemalja. Iz izvještaja se ne vidi koliki je udio izvoza danas.<sup><a href="#s50">50</a></sup><sup><a href="#s51">51</a></sup></p></div><div class="deal lo"><div class="deal-h"><h3>Ovisnost o malom broju kupaca</h3><span class="fit">Rizik</span></div><p>Partneri na stranici su uglavnom hrvatske državne energetske tvrtke (Plinacro, INA, HEP, LNG Hrvatska). Udio pojedinog kupca nije javan.<sup><a href="#s77">77</a></sup></p></div></div>
       </section>
-      <section class="card s6 todo" id="prijedlozi">
-        <h2 class="ttl">Prijedlozi<span class="tag">Iduća faza</span></h2>
-        <p>Prijedlozi rasta s klizačima za pretpostavke, godišnjim iznosom prihoda i troškova te jednokratnim ulaganjem.</p>
+      <section class="card s6" id="prijedlozi">
+        <h2 class="ttl">Prijedlozi rasta</h2>
+        <p class="cap">Poredano po omjeru učinka i truda; procjena</p>
+        <ul class="ul"><li><span><b>Servisni ugovori za instalirane uređaje.</b> Za oko 1000 ugrađenih eLBC uređaja ponuditi godišnje održavanje i kalibraciju (RIKI). Donosi stalan prihod uz malo ulaganja.<sup><a href="#s22">22</a></sup><sup><a href="#s23">23</a></sup></span></li><li><span><b>Controlling po projektu.</b> Marža po projektu i liniji posla, mjesečni plan i ostvarenje u Power BI-ju. Brzo se uvodi, a pokazuje gdje PFC zarađuje.</span></li><li><span><b>KPPP kao usluga u susjednim zemljama.</b> Uredba o metanu tjera operatere da plin prepumpavaju umjesto ispuštaju. KPPP s posadom može se nuditi operaterima u Sloveniji, Mađarskoj i Austriji.<sup><a href="#s47">47</a></sup></span></li><li><span><b>AYMO i AMS kao pretplata.</b> Softver prodavati kao godišnju licencu, a izvoz širiti preko regionalnih partnera.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span><b>Blockchain pilot projekt.</b> Zajednički zapis poslova s jednim kupcem na 1–3 stanice (kartica Blockchain).</span></li></ul>
       </section>
-      <section class="card s6 todo" id="plan">
-        <h2 class="ttl">Plan po fazama<span class="tag">Iduća faza</span></h2>
-        <p>Redoslijed provedbe: 0–6, 6–12 i 12–24 mjeseca.</p>
+      <section class="card s6" id="plan">
+        <h2 class="ttl">Plan po fazama</h2>
+        <p class="cap">Redoslijed provedbe prijedloga; procjena</p>
+        <div class="phases"><div class="ph"><b>0–6 mjeseci</b><span>Controlling po projektu, popis instaliranih uređaja i ponuda servisnih ugovora, priprema blockchain pilot projekta.</span></div><div class="ph"><b>6–12 mjeseci</b><span>Prvi servisni ugovori, ponuda KPPP-a u susjednim zemljama, blockchain pilot projekt na terenu, pretplatni model za AYMO.</span></div><div class="ph"><b>12–24 mjeseca</b><span>Izvoz AYMO-a i eLBC-a preko partnera, širenje KPPP usluge u EU, odluka o uvođenju lanca u redovno poslovanje.</span></div></div>
       </section>
     </div>
 
