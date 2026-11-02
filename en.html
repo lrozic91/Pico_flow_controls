@@ -423,6 +423,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </div>
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
+        <a href="#blockchain" data-jump="prividium">What Prividium is</a>
         <a href="#blockchain" data-jump="ukratko">In short</a>
         <a href="#blockchain" data-jump="ideja">How it works</a>
         <a href="#blockchain" data-jump="prednosti">Benefits</a>
@@ -738,6 +739,14 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot project: PFC's business on a private chain</h1><p class="lead">Orders, services, alarms, invoices and payments get a record nobody can change afterwards. Each party sees only what it is allowed to, and the data stays with PFC. This is my proposal, not the company's plan.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
+      <section class="card s7" id="prividium">
+        <h2 class="ttl">What ZKsync Prividium is</h2>
+        <ul class="ul"><li><span>A private blockchain that ZKsync launched on 27 May 2025. The first partner was Memento, a chain built with Deutsche Bank.<sup><a href="#s83">83</a></sup></span></li><li><span>Transactions, counterparties and balances stay private, inside the company's infrastructure. Only ZK proofs that everything is correct go to Ethereum.<sup><a href="#s82">82</a></sup></span></li><li><span>The company decides who may see and call what, down to individual smart contract functions. An auditor or regulator can get read-only access.<sup><a href="#s86">86</a></sup><sup><a href="#s85">85</a></sup></span></li><li><span>Smart contracts are written in Solidity with the usual tools (Hardhat, Foundry, Viem).<sup><a href="#s87">87</a></sup></span></li><li><span>The company can run it itself or have Matter Labs run it as a service. Pricing is not published.<sup><a href="#s82">82</a></sup></span></li></ul>
+      </section>
+      <section class="card s5" id="korisnici">
+        <h2 class="ttl">Who uses it</h2>
+        <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: a private L2 for issuing and servicing tokenised funds. It grew out of Project DAMA under Singapore's MAS Project Guardian.<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span>Launching a fund went from 2–3 months to 2–3 weeks.<sup><a href="#s84">84</a></sup></span></li><li><span>ZKsync also lists other banks and funds, but these are its own claims.<sup><a href="#s82">82</a></sup></span></li><li><span>I found no industrial company using Prividium. PFC would be among the first outside finance (estimate).</span></li></ul>
+      </section>
       <section class="card s12" id="ukratko">
         <h2 class="ttl">In short</h2>
         <div class="tri">
@@ -860,7 +869,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </section>
       <section class="card s12 divider" id="tehnicki">
         <h2 class="ttl">Technical part</h2>
-        <p class="cap">For readers interested in how I built the demo: a real contract on the testnet, the Prividium platform and the smart contract code</p>
+        <p class="cap">For readers interested in how I built the demo: a real contract on the testnet and the smart contract code</p>
       </section>
       <section class="card s12" id="testnet">
         <h2 class="ttl">A real contract on the ZKsync testnet</h2>
@@ -869,14 +878,6 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           <div><ol class="how"><li><span>The script <code>testnet/simulate.js</code> creates a new wallet for the testnet only. It holds no real money.</span></li><li><span>You bridge free Sepolia test ETH from a faucet to that address through the ZKsync portal.<sup><a href="#s93">93</a></sup><sup><a href="#s92">92</a></sup></span></li><li><span>The script deploys PFCLedger to ZKsync Era Testnet (chain ID 312), gives roles to a technician and two customers, and runs 4 jobs: order, service, alarm, invoice, payment.<sup><a href="#s91">91</a></sup></span></li><li><span>The contract address is on the site, and this card reads the records live and links to the block explorer, where anyone can check them.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) is the new Era testnet from October 2026 and replaces the deprecated Era Sepolia (chain ID 300).<sup><a href="#s92">92</a></sup> An ETH transfer on it costs about 0.000002 ETH. The script also runs on the ZKsync OS testnet (chain ID 8022833).<sup><a href="#s91">91</a></sup> Measured on 29 Oct 2026: 18 transactions for 4 jobs (order, service, alarm, invoice, payment) cost 0.000057 test ETH in total, about 3.2 millionths of an ETH per record.</p></div>
           <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
         </div>
-      </section>
-      <section class="card s7" id="prividium">
-        <h2 class="ttl">What ZKsync Prividium is</h2>
-        <ul class="ul"><li><span>A private blockchain that ZKsync launched on 27 May 2025. The first partner was Memento, a chain built with Deutsche Bank.<sup><a href="#s83">83</a></sup></span></li><li><span>Transactions, counterparties and balances stay private, inside the company's infrastructure. Only ZK proofs that everything is correct go to Ethereum.<sup><a href="#s82">82</a></sup></span></li><li><span>The company decides who may see and call what, down to individual smart contract functions. An auditor or regulator can get read-only access.<sup><a href="#s86">86</a></sup><sup><a href="#s85">85</a></sup></span></li><li><span>Smart contracts are written in Solidity with the usual tools (Hardhat, Foundry, Viem).<sup><a href="#s87">87</a></sup></span></li><li><span>The company can run it itself or have Matter Labs run it as a service. Pricing is not published.<sup><a href="#s82">82</a></sup></span></li></ul>
-      </section>
-      <section class="card s5" id="korisnici">
-        <h2 class="ttl">Who uses it</h2>
-        <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: a private L2 for issuing and servicing tokenised funds. It grew out of Project DAMA under Singapore's MAS Project Guardian.<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span>Launching a fund went from 2–3 months to 2–3 weeks.<sup><a href="#s84">84</a></sup></span></li><li><span>ZKsync also lists other banks and funds, but these are its own claims.<sup><a href="#s82">82</a></sup></span></li><li><span>I found no industrial company using Prividium. PFC would be among the first outside finance (estimate).</span></li></ul>
       </section>
       <section class="card s12" id="ugovor">
         <h2 class="ttl">The PFCLedger smart contract</h2>
