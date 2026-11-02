@@ -372,7 +372,8 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;fo
 .res2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .res2>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start}
 .res2 h3{margin:0;font-size:14.5px}.res2 .r{display:flex;justify-content:space-between;font-size:13px}.res2 .r span{color:var(--muted)}
-.res2 .r b{font-family:var(--f-mono)}.res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
+.res2 .r b{font-family:var(--f-mono)}.res2 .kick{margin-top:6px}.res2 .r.sub{font-weight:700;border-top:1px dashed var(--line);padding-top:4px}.res2 .r.sub span{color:inherit}
+.res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
 .res2 .net b.pos{color:var(--green-d)}.res2 .net b.neg{color:var(--orange)}
 .live{display:grid;gap:6px;max-height:360px;overflow-y:auto;margin-top:10px}
 .live a{color:inherit}
@@ -841,24 +842,35 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           <div>
             <label>Stanica i uređaja<output for="c-st"></output><input type="range" id="c-st" min="50" max="3000" step="50" value="1000"><small>Oko 1000 eLBC uređaja je instalirano.<sup><a href="#s22">22</a></sup></small></label>
             <label>Zapisa po stanici godišnje<output for="c-per"></output><input type="range" id="c-per" min="1" max="50" step="1" value="8"><small>Servisi, kalibracije, alarmi, računi</small></label>
-            <label>Naknada po zapisu na javnom L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Pretpostavka; stvarnu izmjerimo na testnetu</small></label>
+            <label>Naknada po zapisu na javnom L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Pretpostavka; stvarna naknada mjeri se na testnetu</small></label>
             <label>Privatni blockchain godišnje (licenca, hosting, održavanje)<output for="c-fix"></output><input type="range" id="c-fix" min="0" max="150000" step="5000" value="40000"><small>Procjena; početno 40.000 €</small></label>
+            <label>Integracija s AMS-om i ERP-om i podrška godišnje<output for="c-int"></output><input type="range" id="c-int" min="0" max="50000" step="1000" value="5000"><small>Procjena; početno 5.000 €</small></label>
             <label>Ušteđeni sati godišnje<output for="c-hrs"></output><input type="range" id="c-hrs" min="0" max="3000" step="50" value="800"><small>Usklađivanje s kupcima, revizija, sporovi, izvještaji</small></label>
             <label>Trošak sata rada<output for="c-rate"></output><input type="range" id="c-rate" min="15" max="80" step="1" value="30"></label>
           </div>
           <div class="res2">
             <div><h3>Javni L2, samo jedinstveni kodovi</h3>
-              <div class="r"><span>Zapisa godišnje</span><b id="o-rec"></b></div>
-              <div class="r"><span>Trošak blockchaina</span><b id="o-pub"></b></div>
-              <div class="r"><span>Korist (ušteđeni rad)</span><b id="o-gain"></b></div>
-              <div class="r net"><span>Neto godišnje</span><b id="o-npub"></b></div>
-              <p class="note" style="margin:0">Najjeftinije, ali na javni blockchain smiju samo jedinstveni kodovi, a ne podaci.</p></div>
+              <div class="r"><span>Zapisa godišnje</span><b id="o-recp"></b></div>
+              <span class="kick">Troškovi godišnje</span>
+              <div class="r"><span>Naknade za upis zapisa</span><b id="o-fp"></b></div>
+              <div class="r"><span>Integracija s AMS-om i ERP-om, podrška</span><b id="o-intp"></b></div>
+              <div class="r sub"><span>Ukupni troškovi</span><b id="o-ctp"></b></div>
+              <span class="kick">Koristi godišnje</span>
+              <div class="r"><span id="o-glp"></span><b id="o-gainp"></b></div>
+              <div class="r sub"><span>Ukupne koristi</span><b id="o-btp"></b></div>
+              <div class="r net"><span>Neto godišnje (koristi − troškovi)</span><b id="o-np"></b></div>
+              <p class="note" style="margin:0"><span id="o-bep"></span> Najjeftinije, ali na javni blockchain smiju samo jedinstveni kodovi, a ne podaci.</p></div>
             <div><h3>Privatni blockchain (Prividium)</h3>
-              <div class="r"><span>Zapisa godišnje</span><b id="o-rec2"></b></div>
-              <div class="r"><span>Trošak platforme</span><b id="o-priv"></b></div>
-              <div class="r"><span>Korist (ušteđeni rad)</span><b id="o-gain2"></b></div>
-              <div class="r net"><span>Neto godišnje</span><b id="o-npriv"></b></div>
-              <p class="note" style="margin:0">Podaci i uloge na blockchainu; skuplje, ali bez otkrivanja podataka.</p></div>
+              <div class="r"><span>Zapisa godišnje</span><b id="o-recv"></b></div>
+              <span class="kick">Troškovi godišnje</span>
+              <div class="r"><span>Platforma (licenca, hosting, održavanje)</span><b id="o-fv"></b></div>
+              <div class="r"><span>Integracija s AMS-om i ERP-om, podrška</span><b id="o-intv"></b></div>
+              <div class="r sub"><span>Ukupni troškovi</span><b id="o-ctv"></b></div>
+              <span class="kick">Koristi godišnje</span>
+              <div class="r"><span id="o-glv"></span><b id="o-gainv"></b></div>
+              <div class="r sub"><span>Ukupne koristi</span><b id="o-btv"></b></div>
+              <div class="r net"><span>Neto godišnje (koristi − troškovi)</span><b id="o-nv"></b></div>
+              <p class="note" style="margin:0"><span id="o-bev"></span> Podaci i uloge na blockchainu; skuplje, ali bez otkrivanja podataka.</p></div>
           </div>
         </form>
       </section>
@@ -1138,6 +1150,7 @@ contract PFCLedger {
   const BC_TXT = {"roles": {"pfc": ["PFC", "Vidi i upisuje sve zapise."], "kupac": ["Kupac 1", "Vidi samo poslove za svoje stanice (MRS-A). Alarm kupca 2 mu je skriven."], "reg": ["Regulator", "Vidi alarme u cijelosti (sigurnost), a za ostalo samo jedinstveni kod i vrijeme."], "rev": ["Revizor", "Vidi narudžbe, račune i plaćanja; tehničke detalje samo kao jedinstveni kod."], "pub": ["Javnost", "Na Ethereumu vidi samo dokaz da je blockchain ispravan. Nijedan podatak."]}, "steps": [{"k": "order", "who": "Kupac 1", "wsub": "operator plinske mreže", "av": "K", "c": "c", "title": "Narudžba servisa", "text": "Kupac 1 naručuje godišnji servis mjerno-regulacijske stanice MRS-A. PFC narudžbu upisuje na blockchain.", "doc": [["Stanica", "MRS-A"], ["Posao", "Godišnji servis"], ["Ponuda", "4.800,00 €"], ["Rok", "15 dana"]], "chain": ["broj narudžbe", "jedinstveni kod stanice", "adresa kupca", "jedinstveni kod dokumenta"], "st": "MRS-A", "cust": 1}, {"k": "service", "who": "Tehničar 2", "wsub": "PFC, servis na terenu", "av": "T", "c": "", "title": "Servis na terenu", "text": "Tehničar obavi servis i upiše zapisnik u AMS. Jedinstveni kod zapisnika s vremenom i potpisom tehničara ide na blockchain.", "doc": [["Stanica", "MRS-A"], ["Nalaz", "Ispravno"], ["Zamijenjeno", "Brtva DN50"], ["Trajanje", "3 h"]], "chain": ["broj narudžbe", "adresa tehničara", "jedinstveni kod zapisnika"], "st": "MRS-A", "cust": 1}, {"k": "alarm", "who": "eLBC uređaj", "wsub": "stanica BVS-C, kupac 2", "av": "e", "c": "d", "title": "Alarm s uređaja", "text": "Na blokadnoj stanici BVS-C, koja pripada drugom kupcu (Kupac 2), eLBC sam zatvori ventil zbog naglog pada tlaka i zapiše alarm. Kupac 1 taj alarm ne vidi, jer to nije njegova stanica.", "doc": [["Stanica", "BVS-C"], ["Događaj", "Ventil zatvoren"], ["Tlak", "38 → 21 bar"], ["Vrijeme", "02:14"]], "chain": ["jedinstveni kod stanice", "kod alarma", "jedinstveni kod zapisa"], "st": "BVS-C", "cust": 2}, {"k": "invoice", "who": "PFC", "wsub": "računovodstvo", "av": "P", "c": "", "title": "Račun", "text": "Pametni ugovor dopušta račun tek kad je servis potvrđen. Iznos i jedinstveni kod računa idu na blockchain.", "doc": [["Račun", "R-2026-1187"], ["Za", "Godišnji servis MRS-A"], ["Iznos", "4.800,00 €"], ["Dospijeće", "30 dana"]], "chain": ["broj narudžbe", "iznos", "jedinstveni kod računa"], "st": "MRS-A", "cust": 1}, {"k": "payment", "who": "Kupac 1", "wsub": "financije", "av": "K", "c": "c", "title": "Plaćanje", "text": "Kupac potvrdi plaćanje svojim ključem. Samo kupac to smije, pa je potvrda nesporna.", "doc": [["Račun", "R-2026-1187"], ["Plaćeno", "4.800,00 €"], ["Datum", "28. 11. 2026."]], "chain": ["broj narudžbe", "adresa kupca"], "st": "MRS-A", "cust": 1}, {"k": "audit", "who": "Automatska provjera", "wsub": "na kraju svakog posla", "av": "✓", "c": "a", "title": "Automatska provjera", "text": "Na kraju posla sustav automatski usporedi svaki dokument s njegovim jedinstvenim kodom na blockchainu. Provjera se radi uvijek, bez ičijeg pokretanja; PFC, kupac i revizor odmah vide rezultat, a revizor je može ponoviti kad god želi.", "doc": [], "chain": [], "st": "", "cust": 0}], "frauds": [{"step": 1, "row": 2, "val": "Ništa", "label": "Izbriši iz zapisnika zamjenu brtve"}, {"step": 2, "row": 3, "val": "04:14", "label": "Pomakni vrijeme alarma za dva sata"}, {"step": 3, "row": 2, "val": "5.800,00 €", "label": "Povećaj iznos računa s 4.800 € na 5.800 €"}], "vis": {"pfc": {"order": "f", "service": "f", "alarm": "f", "invoice": "f", "payment": "f"}, "kupac": {"order": "f", "service": "f", "alarm": "n", "invoice": "f", "payment": "f"}, "reg": {"order": "h", "service": "h", "alarm": "f", "invoice": "n", "payment": "n"}, "rev": {"order": "f", "service": "h", "alarm": "h", "invoice": "f", "payment": "f"}, "pub": {"order": "n", "service": "n", "alarm": "n", "invoice": "n", "payment": "n"}}, "ui": {"next": "Upiši na blockchain →", "back": "← Natrag", "reset": "Ispočetka", "fraud": "Pokušaj prevare", "check": "Ponovi provjeru", "toChain": "Na blockchain ide:", "offChain": "Dokument ostaje u PFC-ovom sustavu:", "empty": "Blockchain je prazan. Kliknite „Upiši na blockchain”.", "block": "Blok", "prev": "veza na prethodni blok", "locked": "Sadržaj skriven, vidljiv je samo jedinstveni kod", "none": "Nema pristupa", "pub": "Dokaz na Ethereumu: blockchain je ispravan ✓", "ok": "Dokument odgovara jedinstvenom kodu", "bad": "Dokument NE odgovara jedinstvenom kodu: promijenjen je nakon upisa", "fraudH": "Što želite krivotvoriti u bazi?", "fraudNote": "Mijenja se samo dokument u bazi. Zapis na blockchainu se ne može promijeniti, jer bi trebalo prepisati sve iduće blokove i dokaz već objavljen na Ethereumu.", "faked": "Dokument je krivotvoren. Nastavite kroz korake: na kraju posla automatska provjera usporedit će sve dokumente s blockchainom.", "allOk": "Svi zapisi su ispravni.", "found": "Pronađena prevara u bloku", "blocks": "Blokova na blockchainu", "time": "Provjera trajala", "auditDone": "Provjera gotova", "orig": "ispravno", "needStep": "Prvo dođite do tog koraka.", "lensH": "Gledate kao:"}};
   const BC_LIVE = {"order": "Narudžba", "service": "Servis", "alarm": "Alarm eLBC", "invoice": "Račun", "payment": "Plaćanje", "code": "kod", "block": "Blok", "none": "Još nema zapisa.", "err": "Testnet trenutno ne odgovara"};
   const BC_DEPLOY = {"chainId": "312", "rpc": "https://rpc.zksync-era-testnet.zksync.dev", "address": "0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf", "fromBlock": 15618, "tx": "0x678d4bacc2a6c6c3ff19d55515c163641b17eb802fdb5bf20b751eb3bee81f44", "roles": {"pfc": "0xE934b0a4645C23EeF6F22D21067988486FA3aB53", "tech": "0x5c79DB771a72777a913C734B32682377f24F05DA", "cust1": "0xd3c77702Fd2Fe60dEf952F18D8CE79142fA6aa54", "cust2": "0x75e21e89221886a4c625f43290Ed3c3B19D6531c"}, "txCount": 18, "feeWei": "57077250000000", "explorer": "https://block-explorer.zksync-era-testnet.zksync.dev"};
+  const BC_CALC = {"gl": "Ušteđeni rad ({h} h × {r})", "be": "Isplativo od {h} ušteđenih sati godišnje."};
 
 
   // Interaktivni dijagram toka
@@ -1275,15 +1288,18 @@ contract PFCLedger {
     const num = v => new Intl.NumberFormat(loc).format(v);
     function upd() {
       const g = id => +f.querySelector("#" + id).value;
-      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), hrs = g("c-hrs"), rate = g("c-rate");
+      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), itg = g("c-int"), hrs = g("c-hrs"), rate = g("c-rate");
       f.querySelector("[for=c-st]").textContent = num(st); f.querySelector("[for=c-per]").textContent = num(per);
-      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix);
+      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix); f.querySelector("[for=c-int]").textContent = eur(itg);
       f.querySelector("[for=c-hrs]").textContent = num(hrs) + " h"; f.querySelector("[for=c-rate]").textContent = eur(rate);
-      const rec = st * per, pubCost = rec * fee, privCost = fix, gain = hrs * rate;
-      const set = (id, v) => f.querySelector("#" + id).textContent = v;
-      set("o-rec", num(rec)); set("o-rec2", num(rec));
-      set("o-pub", eur(pubCost)); set("o-priv", eur(privCost)); set("o-gain", eur(gain)); set("o-gain2", eur(gain));
-      [["o-npub", gain - pubCost], ["o-npriv", gain - privCost]].forEach(([id, v]) => { const e = f.querySelector("#" + id); e.textContent = eur(v); e.className = v >= 0 ? "pos" : "neg"; });
+      const rec = st * per, gain = hrs * rate, set = (id, v) => f.querySelector("#" + id).textContent = v;
+      [["p", rec * fee], ["v", fix]].forEach(([k, c]) => {
+        const ct = c + itg, net = gain - ct;
+        set("o-rec" + k, num(rec)); set("o-f" + k, eur(c)); set("o-int" + k, eur(itg)); set("o-ct" + k, eur(ct));
+        set("o-gl" + k, BC_CALC.gl.replace("{h}", num(hrs)).replace("{r}", eur(rate))); set("o-gain" + k, eur(gain)); set("o-bt" + k, eur(gain));
+        const e = f.querySelector("#o-n" + k); e.textContent = eur(net); e.className = net >= 0 ? "pos" : "neg";
+        set("o-be" + k, rate > 0 ? BC_CALC.be.replace("{h}", num(Math.ceil(ct / rate))) : "");
+      });
     }
     f.addEventListener("input", upd); upd();
   })();

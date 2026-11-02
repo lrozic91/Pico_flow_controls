@@ -372,7 +372,8 @@ pre.code{background:var(--soft);border-radius:12px;padding:14px;overflow:auto;fo
 .res2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .res2>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start}
 .res2 h3{margin:0;font-size:14.5px}.res2 .r{display:flex;justify-content:space-between;font-size:13px}.res2 .r span{color:var(--muted)}
-.res2 .r b{font-family:var(--f-mono)}.res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
+.res2 .r b{font-family:var(--f-mono)}.res2 .kick{margin-top:6px}.res2 .r.sub{font-weight:700;border-top:1px dashed var(--line);padding-top:4px}.res2 .r.sub span{color:inherit}
+.res2 .net{border-top:1px solid var(--line);padding-top:6px;font-size:14px}
 .res2 .net b.pos{color:var(--green-d)}.res2 .net b.neg{color:var(--orange)}
 .live{display:grid;gap:6px;max-height:360px;overflow-y:auto;margin-top:10px}
 .live a{color:inherit}
@@ -841,24 +842,35 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           <div>
             <label>Stations and devices<output for="c-st"></output><input type="range" id="c-st" min="50" max="3000" step="50" value="1000"><small>About 1,000 eLBC units are installed.<sup><a href="#s22">22</a></sup></small></label>
             <label>Records per station per year<output for="c-per"></output><input type="range" id="c-per" min="1" max="50" step="1" value="8"><small>Services, calibrations, alarms, invoices</small></label>
-            <label>Fee per record on a public L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Assumption; we measure the real one on the testnet</small></label>
+            <label>Fee per record on a public L2<output for="c-fee"></output><input type="range" id="c-fee" min="0.005" max="0.5" step="0.005" value="0.03"><small>Assumption; the real fee is measured on the testnet</small></label>
             <label>Private chain per year (licence, hosting, upkeep)<output for="c-fix"></output><input type="range" id="c-fix" min="0" max="150000" step="5000" value="40000"><small>Estimate; default €40,000</small></label>
+            <label>AMS and ERP integration and support per year<output for="c-int"></output><input type="range" id="c-int" min="0" max="50000" step="1000" value="5000"><small>Estimate; default €5,000</small></label>
             <label>Hours saved per year<output for="c-hrs"></output><input type="range" id="c-hrs" min="0" max="3000" step="50" value="800"><small>Reconciling with customers, audit, disputes, reports</small></label>
             <label>Cost per hour<output for="c-rate"></output><input type="range" id="c-rate" min="15" max="80" step="1" value="30"></label>
           </div>
           <div class="res2">
             <div><h3>Public L2, unique codes only</h3>
-              <div class="r"><span>Records per year</span><b id="o-rec"></b></div>
-              <div class="r"><span>Chain cost</span><b id="o-pub"></b></div>
-              <div class="r"><span>Benefit (work saved)</span><b id="o-gain"></b></div>
-              <div class="r net"><span>Net per year</span><b id="o-npub"></b></div>
-              <p class="note" style="margin:0">Cheapest, but only unique codes, not data, may go on a public chain.</p></div>
+              <div class="r"><span>Records per year</span><b id="o-recp"></b></div>
+              <span class="kick">Costs per year</span>
+              <div class="r"><span>Fees for writing records</span><b id="o-fp"></b></div>
+              <div class="r"><span>AMS and ERP integration, support</span><b id="o-intp"></b></div>
+              <div class="r sub"><span>Total costs</span><b id="o-ctp"></b></div>
+              <span class="kick">Benefits per year</span>
+              <div class="r"><span id="o-glp"></span><b id="o-gainp"></b></div>
+              <div class="r sub"><span>Total benefits</span><b id="o-btp"></b></div>
+              <div class="r net"><span>Net per year (benefits − costs)</span><b id="o-np"></b></div>
+              <p class="note" style="margin:0"><span id="o-bep"></span> Cheapest, but only unique codes, not data, may go on a public chain.</p></div>
             <div><h3>Private chain (Prividium)</h3>
-              <div class="r"><span>Records per year</span><b id="o-rec2"></b></div>
-              <div class="r"><span>Platform cost</span><b id="o-priv"></b></div>
-              <div class="r"><span>Benefit (work saved)</span><b id="o-gain2"></b></div>
-              <div class="r net"><span>Net per year</span><b id="o-npriv"></b></div>
-              <p class="note" style="margin:0">Data and roles on chain; more expensive, but nothing is exposed.</p></div>
+              <div class="r"><span>Records per year</span><b id="o-recv"></b></div>
+              <span class="kick">Costs per year</span>
+              <div class="r"><span>Platform (licence, hosting, upkeep)</span><b id="o-fv"></b></div>
+              <div class="r"><span>AMS and ERP integration, support</span><b id="o-intv"></b></div>
+              <div class="r sub"><span>Total costs</span><b id="o-ctv"></b></div>
+              <span class="kick">Benefits per year</span>
+              <div class="r"><span id="o-glv"></span><b id="o-gainv"></b></div>
+              <div class="r sub"><span>Total benefits</span><b id="o-btv"></b></div>
+              <div class="r net"><span>Net per year (benefits − costs)</span><b id="o-nv"></b></div>
+              <p class="note" style="margin:0"><span id="o-bev"></span> Data and roles on chain; more expensive, but nothing is exposed.</p></div>
           </div>
         </form>
       </section>
@@ -1138,6 +1150,7 @@ contract PFCLedger {
   const BC_TXT = {"roles": {"pfc": ["PFC", "Sees and writes every record."], "kupac": ["Customer 1", "Sees only jobs for its own station (MRS-A). Customer 2's alarm is hidden."], "reg": ["Regulator", "Sees alarms in full (safety); everything else only as a unique code and time."], "rev": ["Auditor", "Sees orders, invoices and payments; technical details only as a unique code."], "pub": ["Public", "On Ethereum it sees only a proof that the chain is valid. No data at all."]}, "steps": [{"k": "order", "who": "Customer 1", "wsub": "gas network operator", "av": "C", "c": "c", "title": "Service order", "text": "Customer 1 orders the annual service of metering and regulating station MRS-A. PFC writes the order to the chain.", "doc": [["Station", "MRS-A"], ["Job", "Annual service"], ["Quote", "€4,800.00"], ["Deadline", "15 days"]], "chain": ["order number", "unique station code", "customer address", "unique document code"], "st": "MRS-A", "cust": 1}, {"k": "service", "who": "Technician 2", "wsub": "PFC, field service", "av": "T", "c": "", "title": "Field service", "text": "The technician does the service and enters the report in AMS. The report's unique code, with the time and the technician's signature, goes on chain.", "doc": [["Station", "MRS-A"], ["Finding", "OK"], ["Replaced", "Seal DN50"], ["Duration", "3 h"]], "chain": ["order number", "technician address", "unique report code"], "st": "MRS-A", "cust": 1}, {"k": "alarm", "who": "eLBC device", "wsub": "station BVS-C, customer 2", "av": "e", "c": "d", "title": "Device alarm", "text": "At block valve station BVS-C, which belongs to another customer (Customer 2), an eLBC closes the valve after a sudden pressure drop and records an alarm. Customer 1 does not see this alarm because it is not their station.", "doc": [["Station", "BVS-C"], ["Event", "Valve closed"], ["Pressure", "38 → 21 bar"], ["Time", "02:14"]], "chain": ["unique station code", "alarm code", "unique record code"], "st": "BVS-C", "cust": 2}, {"k": "invoice", "who": "PFC", "wsub": "accounting", "av": "P", "c": "", "title": "Invoice", "text": "The smart contract allows an invoice only once the service is confirmed. The amount and the unique invoice code go on chain.", "doc": [["Invoice", "R-2026-1187"], ["For", "Annual service MRS-A"], ["Amount", "€4,800.00"], ["Due", "30 days"]], "chain": ["order number", "amount", "unique invoice code"], "st": "MRS-A", "cust": 1}, {"k": "payment", "who": "Customer 1", "wsub": "finance", "av": "C", "c": "c", "title": "Payment", "text": "The customer confirms payment with its own key. Only the customer can do that, so the confirmation is beyond dispute.", "doc": [["Invoice", "R-2026-1187"], ["Paid", "€4,800.00"], ["Date", "28 Nov 2026"]], "chain": ["order number", "customer address"], "st": "MRS-A", "cust": 1}, {"k": "audit", "who": "Automatic check", "wsub": "at the end of every job", "av": "✓", "c": "a", "title": "Automatic check", "text": "At the end of the job the system automatically compares every document with its unique code on the chain. The check always runs without anyone starting it; PFC, the customer and the auditor see the result at once, and the auditor can repeat it at any time.", "doc": [], "chain": [], "st": "", "cust": 0}], "frauds": [{"step": 1, "row": 2, "val": "Nothing", "label": "Delete the seal replacement from the report"}, {"step": 2, "row": 3, "val": "04:14", "label": "Move the alarm time by two hours"}, {"step": 3, "row": 2, "val": "€5,800.00", "label": "Raise the invoice from €4,800 to €5,800"}], "vis": {"pfc": {"order": "f", "service": "f", "alarm": "f", "invoice": "f", "payment": "f"}, "kupac": {"order": "f", "service": "f", "alarm": "n", "invoice": "f", "payment": "f"}, "reg": {"order": "h", "service": "h", "alarm": "f", "invoice": "n", "payment": "n"}, "rev": {"order": "f", "service": "h", "alarm": "h", "invoice": "f", "payment": "f"}, "pub": {"order": "n", "service": "n", "alarm": "n", "invoice": "n", "payment": "n"}}, "ui": {"next": "Write to chain →", "back": "← Back", "reset": "Start over", "fraud": "Try to cheat", "check": "Repeat the check", "toChain": "Goes on chain:", "offChain": "The document stays in PFC's system:", "empty": "The chain is empty. Click “Write to chain”.", "block": "Block", "prev": "link to previous block", "locked": "Content hidden, only the unique code is visible", "none": "No access", "pub": "Proof on Ethereum: the chain is valid ✓", "ok": "Document matches its unique code", "bad": "Document does NOT match: it was changed after it was recorded", "fraudH": "What do you want to forge in the database?", "fraudNote": "Only the database document changes. The record on the chain cannot be changed: that would mean rewriting every later block and the proof already published on Ethereum.", "faked": "The document is forged. Carry on through the steps: at the end of the job the automatic check compares every document with the chain.", "allOk": "All records are valid.", "found": "Fraud found in block", "blocks": "Blocks on chain", "time": "Check took", "auditDone": "Check done", "orig": "original", "needStep": "First get to that step.", "lensH": "Viewing as:"}};
   const BC_LIVE = {"order": "Order", "service": "Service", "alarm": "eLBC alarm", "invoice": "Invoice", "payment": "Payment", "code": "code", "block": "Block", "none": "No records yet.", "err": "The testnet is not responding right now"};
   const BC_DEPLOY = {"chainId": "312", "rpc": "https://rpc.zksync-era-testnet.zksync.dev", "address": "0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf", "fromBlock": 15618, "tx": "0x678d4bacc2a6c6c3ff19d55515c163641b17eb802fdb5bf20b751eb3bee81f44", "roles": {"pfc": "0xE934b0a4645C23EeF6F22D21067988486FA3aB53", "tech": "0x5c79DB771a72777a913C734B32682377f24F05DA", "cust1": "0xd3c77702Fd2Fe60dEf952F18D8CE79142fA6aa54", "cust2": "0x75e21e89221886a4c625f43290Ed3c3B19D6531c"}, "txCount": 18, "feeWei": "57077250000000", "explorer": "https://block-explorer.zksync-era-testnet.zksync.dev"};
+  const BC_CALC = {"gl": "Work saved ({h} h × {r})", "be": "Pays off from {h} hours saved per year."};
 
 
   // Interaktivni dijagram toka
@@ -1275,15 +1288,18 @@ contract PFCLedger {
     const num = v => new Intl.NumberFormat(loc).format(v);
     function upd() {
       const g = id => +f.querySelector("#" + id).value;
-      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), hrs = g("c-hrs"), rate = g("c-rate");
+      const st = g("c-st"), per = g("c-per"), fee = g("c-fee"), fix = g("c-fix"), itg = g("c-int"), hrs = g("c-hrs"), rate = g("c-rate");
       f.querySelector("[for=c-st]").textContent = num(st); f.querySelector("[for=c-per]").textContent = num(per);
-      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix);
+      f.querySelector("[for=c-fee]").textContent = eur(fee); f.querySelector("[for=c-fix]").textContent = eur(fix); f.querySelector("[for=c-int]").textContent = eur(itg);
       f.querySelector("[for=c-hrs]").textContent = num(hrs) + " h"; f.querySelector("[for=c-rate]").textContent = eur(rate);
-      const rec = st * per, pubCost = rec * fee, privCost = fix, gain = hrs * rate;
-      const set = (id, v) => f.querySelector("#" + id).textContent = v;
-      set("o-rec", num(rec)); set("o-rec2", num(rec));
-      set("o-pub", eur(pubCost)); set("o-priv", eur(privCost)); set("o-gain", eur(gain)); set("o-gain2", eur(gain));
-      [["o-npub", gain - pubCost], ["o-npriv", gain - privCost]].forEach(([id, v]) => { const e = f.querySelector("#" + id); e.textContent = eur(v); e.className = v >= 0 ? "pos" : "neg"; });
+      const rec = st * per, gain = hrs * rate, set = (id, v) => f.querySelector("#" + id).textContent = v;
+      [["p", rec * fee], ["v", fix]].forEach(([k, c]) => {
+        const ct = c + itg, net = gain - ct;
+        set("o-rec" + k, num(rec)); set("o-f" + k, eur(c)); set("o-int" + k, eur(itg)); set("o-ct" + k, eur(ct));
+        set("o-gl" + k, BC_CALC.gl.replace("{h}", num(hrs)).replace("{r}", eur(rate))); set("o-gain" + k, eur(gain)); set("o-bt" + k, eur(gain));
+        const e = f.querySelector("#o-n" + k); e.textContent = eur(net); e.className = net >= 0 ? "pos" : "neg";
+        set("o-be" + k, rate > 0 ? BC_CALC.be.replace("{h}", num(Math.ceil(ct / rate))) : "");
+      });
     }
     f.addEventListener("input", upd); upd();
   })();
