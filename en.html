@@ -310,6 +310,7 @@ details.codebox{margin-top:12px}details.codebox summary{cursor:pointer;font-weig
 .fd-roles{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px}.fd-roles i{font-style:normal}.fd-roles span{font-size:12.5px;display:flex;align-items:center;gap:6px}
 .fd .btns{margin-top:12px}
 @media (max-width:900px){.fd-nodes{grid-template-columns:1fr;gap:22px}.fd-nodes .nd:not(:last-child)::after{content:"↓";right:auto;left:22px;top:auto;bottom:-20px;transform:none}}
+#prividium,#korisnici{display:flex;flex-direction:column}#prividium .ul,#korisnici .ul{flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .ben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .ben>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .ben h3{margin:0;font-size:15px}
@@ -739,13 +740,13 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot project: PFC's business on a private chain</h1><p class="lead">Orders, services, alarms, invoices and payments get a record nobody can change afterwards. Each party sees only what it is allowed to, and the data stays with PFC. This is my proposal, not the company's plan.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s8" id="prividium">
+      <section class="card s7" id="prividium">
         <h2 class="ttl">What ZKsync Prividium is</h2>
         <ul class="ul"><li><span>A private blockchain that ZKsync launched on 27 May 2025. The first partner was Memento, a chain built with Deutsche Bank.<sup><a href="#s83">83</a></sup></span></li><li><span>Transactions, counterparties and balances stay private, inside the company's infrastructure. Only ZK proofs that everything is correct go to Ethereum.<sup><a href="#s82">82</a></sup></span></li><li><span>The company decides who may see and call what, down to individual smart contract functions. An auditor or regulator can get read-only access.<sup><a href="#s86">86</a></sup><sup><a href="#s85">85</a></sup></span></li><li><span>Smart contracts are written in Solidity with the usual tools (Hardhat, Foundry, Viem).<sup><a href="#s87">87</a></sup></span></li><li><span>The company can run it on its own servers or have Matter Labs run it as a service.<sup><a href="#s82">82</a></sup> I estimate the annual cost of licence, hosting and upkeep for a company of PFC's size at about €40,000, as in the cost calculator (estimate).</span></li></ul>
       </section>
-      <section class="card s4" id="korisnici">
+      <section class="card s5" id="korisnici">
         <h2 class="ttl">Who uses it</h2>
-        <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: a private L2 for issuing and servicing tokenised funds. It grew out of Project DAMA under Singapore's MAS Project Guardian.<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span>Launching a fund went from 2–3 months to 2–3 weeks.<sup><a href="#s84">84</a></sup></span></li><li><span>ZKsync also lists other banks and funds, but these are its own claims.<sup><a href="#s82">82</a></sup></span></li><li><span>I found no industrial company using Prividium. PFC would be among the first outside finance (estimate).</span></li></ul>
+        <ul class="ul"><li><span><b>Deutsche Bank and Memento.</b> Deutsche Bank and Memento built a private blockchain on Prividium on which investment funds are issued and managed in digital form (tokenised funds). The solution grew out of Project DAMA in Project Guardian, a programme run by Singapore's central bank (MAS).<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span><b>Result.</b> Launching a new fund went from 2–3 months to 2–3 weeks.<sup><a href="#s84">84</a></sup></span></li><li><span><b>Other users.</b> ZKsync lists other banks and investment funds on its website, but I could not confirm this independently.<sup><a href="#s82">82</a></sup></span></li><li><span><b>Industry.</b> I found no industrial company using Prividium. PFC would be among the first outside the financial sector (estimate).</span></li></ul>
       </section>
       <section class="card s12" id="ukratko">
         <h2 class="ttl">In short</h2>

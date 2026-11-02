@@ -310,6 +310,7 @@ details.codebox{margin-top:12px}details.codebox summary{cursor:pointer;font-weig
 .fd-roles{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px}.fd-roles i{font-style:normal}.fd-roles span{font-size:12.5px;display:flex;align-items:center;gap:6px}
 .fd .btns{margin-top:12px}
 @media (max-width:900px){.fd-nodes{grid-template-columns:1fr;gap:22px}.fd-nodes .nd:not(:last-child)::after{content:"↓";right:auto;left:22px;top:auto;bottom:-20px;transform:none}}
+#prividium,#korisnici{display:flex;flex-direction:column}#prividium .ul,#korisnici .ul{flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .ben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
 .ben>div{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .ben h3{margin:0;font-size:15px}
@@ -739,13 +740,13 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot projekt: PFC-ovo poslovanje na privatnom lancu</h1><p class="lead">Narudžbe, servisi, alarmi, računi i plaćanja dobivaju zapis koji nitko ne može naknadno promijeniti. Svaka strana vidi samo ono što smije, a podaci ostaju kod PFC-a. Ovo je moj prijedlog, a ne plan tvrtke.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
-      <section class="card s8" id="prividium">
+      <section class="card s7" id="prividium">
         <h2 class="ttl">Što je ZKsync Prividium</h2>
         <ul class="ul"><li><span>Privatni blockchain koji je ZKsync pokrenuo 27. svibnja 2025. Prvi partner bio je Memento, lanac razvijen s Deutsche Bankom.<sup><a href="#s83">83</a></sup></span></li><li><span>Transakcije, strane i salda ostaju privatni, unutar infrastrukture tvrtke. Na Ethereum idu samo ZK dokazi da je sve ispravno.<sup><a href="#s82">82</a></sup></span></li><li><span>Tvrtka sama određuje tko smije što vidjeti i pozivati, sve do pojedine funkcije pametnog ugovora. Revizor ili regulator može dobiti pristup samo za čitanje.<sup><a href="#s86">86</a></sup><sup><a href="#s85">85</a></sup></span></li><li><span>Pametni ugovori pišu se u Solidityju, s uobičajenim alatima (Hardhat, Foundry, Viem).<sup><a href="#s87">87</a></sup></span></li><li><span>Tvrtka ga može voditi na vlastitim poslužiteljima ili ga Matter Labs vodi kao uslugu.<sup><a href="#s82">82</a></sup> Godišnji trošak licence, hostinga i održavanja za tvrtku veličine PFC-a procijenio sam na oko 40.000 €, kao i u kalkulatoru troškova (procjena).</span></li></ul>
       </section>
-      <section class="card s4" id="korisnici">
+      <section class="card s5" id="korisnici">
         <h2 class="ttl">Tko ga koristi</h2>
-        <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: privatni L2 za izdavanje i vođenje tokeniziranih fondova. Nastao je iz projekta DAMA u singapurskom programu MAS Project Guardian.<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span>Uvođenje fonda skratilo se s 2–3 mjeseca na 2–3 tjedna.<sup><a href="#s84">84</a></sup></span></li><li><span>ZKsync navodi i druge banke i fondove, ali to su njegove vlastite tvrdnje.<sup><a href="#s82">82</a></sup></span></li><li><span>Industrijsku tvrtku koja koristi Prividium nisam našao. PFC bi bio među prvima izvan financija (procjena).</span></li></ul>
+        <ul class="ul"><li><span><b>Deutsche Bank i Memento.</b> Deutsche Bank je s tvrtkom Memento na Prividiumu izgradila privatni blockchain na kojem se investicijski fondovi izdaju i vode u digitalnom obliku (tokenizirani fondovi). Rješenje je nastalo iz projekta DAMA u programu Project Guardian, koji vodi singapurska središnja banka (MAS).<sup><a href="#s83">83</a></sup><sup><a href="#s84">84</a></sup></span></li><li><span><b>Rezultat.</b> Pokretanje novog fonda skratilo se s 2–3 mjeseca na 2–3 tjedna.<sup><a href="#s84">84</a></sup></span></li><li><span><b>Ostali korisnici.</b> ZKsync na svojoj stranici navodi i druge banke i investicijske fondove, ali te podatke nisam mogao neovisno potvrditi.<sup><a href="#s82">82</a></sup></span></li><li><span><b>Industrija.</b> Industrijsku tvrtku koja koristi Prividium nisam našao. PFC bi bio među prvima izvan financijskog sektora (procjena).</span></li></ul>
       </section>
       <section class="card s12" id="ukratko">
         <h2 class="ttl">Ukratko</h2>
