@@ -1093,6 +1093,7 @@ contract PFCLedger {
   function show(id, jump) {
     if (!pages[id]) id = "onama";
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
+    const last = Object.keys(pages).pop(); document.getElementById("pojmovnik").hidden = id !== last;
     document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
     document.getElementById("crumb").textContent = pages[id];
     document.title = pages[id] + " · Pico Flow Controls case study";
@@ -1106,6 +1107,7 @@ contract PFCLedger {
     const h = a.getAttribute("href").slice(1);
     if (/^s\d+$/.test(h) || h === "izvori" || h === "pojmovnik") {
       e.preventDefault();
+      if (h === "pojmovnik" && document.getElementById(h).hidden) { const last = Object.keys(pages).pop(); history.replaceState(null, "", "#" + last); show(last, h); return; }
       const t = document.getElementById(h);
       t.scrollIntoView({ behavior: "smooth", block: "center" });
       document.querySelectorAll(".src li.hl").forEach(x => x.classList.remove("hl"));
