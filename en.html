@@ -394,6 +394,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
 .sum s{color:var(--muted);font-weight:400;font-size:14px;margin-right:6px}
 @media (max-width:900px){.cmp .row{grid-template-columns:minmax(0,1fr)}.cmp .row.hd{display:none}.cmp .row>div:nth-child(2)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase}.cmp .row>div:nth-child(3)::before{content:attr(data-l);font-size:10.5px;font-weight:700;color:var(--green-d);text-transform:uppercase}.sum{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.tabs{flex-wrap:wrap;min-width:0}.flow,.demo2,.ben,.calc,.res2,.tn{grid-template-columns:minmax(0,1fr)}.flow .fb:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}
+.langsw{display:inline-flex;border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px;background:var(--card);font-size:13px;font-weight:600}.langsw b,.langsw a{padding:4px 10px;border-radius:7px;text-decoration:none}.langsw b{background:var(--ink-btn);color:var(--ink-btn-fg)}.langsw a{color:var(--muted)}.langsw a:hover{color:inherit;background:var(--soft)}
 </style>
 </head>
 <body>
@@ -458,7 +459,7 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       <div class="crumb">Pico Flow Controls <span>/</span> <b id="crumb">About</b></div>
       <nav class="tabs" aria-label="Pages"><a href="#onama" data-page="onama">About</a><a href="#djelatnosti" data-page="djelatnosti">Business</a><a href="#financije" data-page="financije">Financials</a><a href="#rast" data-page="rast">Growth</a><a href="#blockchain" data-page="blockchain">Blockchain</a></nav>
       <span class="sp"></span>
-      <a class="pill" id="lang" href="index.html" hreflang="hr" lang="hr" title="Hrvatska verzija">HR</a>
+      <span class="langsw" role="group" aria-label="Jezik / Language"><a id="lang" href="index.html" hreflang="hr" lang="hr" title="Hrvatska verzija">HR</a><b>EN</b></span>
       <a class="pill" href="https://pfc.hr/" target="_blank" rel="noopener">pfc.hr ↗</a>
     </header>
 
