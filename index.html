@@ -279,7 +279,11 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
 .stackbar{display:flex;height:34px;border-radius:9px;overflow:hidden;margin-top:14px}.stackbar i{display:block;height:100%}
 .sbleg{display:grid;gap:7px;margin-top:12px;font-size:13px}.sbleg div{display:grid;grid-template-columns:14px 1fr auto auto;gap:8px;align-items:center}.sbleg i{width:12px;height:12px;border-radius:3px}.sbleg b{text-align:right;min-width:48px}.sbleg span.m{color:var(--muted);text-align:right;min-width:62px}
 .dup{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin-top:14px}.dup .t{flex:1 1 70px;border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}.dup .t b{font-size:19px}.dup .t span{font-size:11.5px;color:var(--muted)}.dup .op{align-self:center;font-weight:700;color:var(--muted)}.dup .t.r{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
-@media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}.duo{grid-template-columns:1fr}}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.tri>div{border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5}.tri b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-d);margin-bottom:6px}
+.terms-h{font-size:13px;font-weight:600;margin:18px 0 8px}.terms{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.terms>div{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;color:var(--muted)}.terms b{display:block;color:var(--fg);font-size:13px;margin-bottom:3px}
+.divider{background:transparent;box-shadow:none;border:0;padding-bottom:0}
+details.codebox{margin-top:12px}details.codebox summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--green-d);padding:8px 0}details.codebox[open] summary{margin-bottom:8px}
+@media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}.duo{grid-template-columns:1fr}.tri{grid-template-columns:1fr}.terms{grid-template-columns:1fr 1fr}}
 
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:14px}
 .flow .fb{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
@@ -400,12 +404,14 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </div>
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
+        <a href="#blockchain" data-jump="ukratko">Ukratko</a>
+        <a href="#blockchain" data-jump="ideja">Kako radi</a>
         <a href="#blockchain" data-jump="prednosti">Prednosti</a>
-        <a href="#blockchain" data-jump="usporedba">Danas i na lancu</a>
         <a href="#blockchain" data-jump="demo">Demo</a>
-        <a href="#blockchain" data-jump="testnet">Testnet</a>
+        <a href="#blockchain" data-jump="usporedba">Danas i na lancu</a>
         <a href="#blockchain" data-jump="troskovi">Troškovi</a>
         <a href="#blockchain" data-jump="plan-pilota">Plan pilot projekta</a>
+        <a href="#blockchain" data-jump="tehnicki">Tehnički dio</a>
       </div>
     </nav>
     <div class="hr"></div>
@@ -710,24 +716,31 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot projekt: PFC-ovo poslovanje na privatnom lancu</h1><p class="lead">Narudžbe, servisi, alarmi, računi i plaćanja dobivaju zapis koji nitko ne može naknadno promijeniti. Svaka strana vidi samo ono što smije, a podaci ostaju kod PFC-a. Ovo je moj prijedlog, a ne plan tvrtke.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
+      <section class="card s12" id="ukratko">
+        <h2 class="ttl">Ukratko</h2>
+        <div class="tri">
+          <div><b>Što predlažem</b>Zajednički digitalni dnevnik poslova s kupcima. Svaki posao, od narudžbe preko servisa do računa i plaćanja, dobiva zapis koji se ne može naknadno promijeniti.</div>
+          <div><b>Što PFC dobiva</b>Manje usklađivanja i sporova s kupcima, bržu reviziju i provjerljiv dokaz kvalitete na natječajima (procjena).</div>
+          <div><b>Kako krenuti</b>Pilot projekt od 4–5 mjeseci na 1–3 stanice s jednim kupcem. Dokumenti ostaju u AMS-u i ERP-u, kao i danas (procjena).</div>
+        </div>
+        <h3 class="terms-h">Pet pojmova koje treba znati</h3>
+        <div class="terms">
+          <div><b>Lanac (blockchain)</b>zajednička knjiga zapisa; novi zapis se dodaje, a stari se ne može potajno promijeniti</div>
+          <div><b>Otisak (hash)</b>kratak kod izračunat iz dokumenta; dokazuje da dokument nije mijenjan, a ne otkriva sadržaj</div>
+          <div><b>Pametni ugovor</b>pravilo zapisano u kodu, npr. račun se ne može izdati prije potvrđenog servisa</div>
+          <div><b>Privatni lanac</b>lanac koji vodi tvrtka i sama određuje tko što vidi; ovdje ZKsync Prividium</div>
+          <div><b>Testnet</b>besplatna probna mreža bez pravog novca, na kojoj sam isprobao demo</div>
+        </div>
+      </section>
+      <section class="card s12" id="ideja">
+        <h2 class="ttl">Kako bi radilo u PFC-u</h2>
+        <p class="cap">Dokumenti ostaju u postojećim sustavima, na lanac idu otisci, status i pravila</p>
+        <div class="flow"><div class="fb"><small>1</small><b>Teren i kupci</b><span>Narudžba, servis, alarm eLBC-a, račun, plaćanje</span></div><div class="fb"><small>2</small><b>PFC-ov softver</b><span>Dokumenti ostaju u AMS-u, AYMO-u i ERP-u, kao i danas</span></div><div class="fb on"><small>3</small><b>Privatni lanac</b><span>Otisak, vrijeme, autor i status posla upisuju se u pametni ugovor</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>Dokaz da je lanac ispravan; podaci ostaju kod PFC-a</span></div></div>
+      </section>
       <section class="card s12" id="prednosti">
         <h2 class="ttl">Zašto blockchain: danas i s lancem</h2>
         <p class="cap">Prednosti za PFC i njegove kupce; procjena</p>
         <div class="ben"><div><h3>Zajednički podaci za sve strane</h3><p class="was"><b>Danas</b>zapisnici u AMS-u, PDF-ovi e-mailom, Excel kod kupca, svatko ima svoju verziju.</p><p class="is"><b>S lancem</b>PFC, kupac i revizor čitaju isti zapis, s istim vremenom i otiskom.</p></div><div><h3>Dokaz umjesto rasprave</h3><p class="was"><b>Danas</b>spor oko toga je li servis obavljen, kad je alarm bio i koji je iznos dogovoren.</p><p class="is"><b>S lancem</b>vrijeme i otisak upisani su jednom i ne mogu se naknadno promijeniti; svaka izmjena se odmah vidi.</p></div><div><h3>Transparentno, ali privatno</h3><p class="was"><b>Danas</b>ili dijelite cijeli dokument ili ništa.</p><p class="is"><b>S lancem</b>svaka uloga vidi točno svoje: kupac svoje stanice, regulator alarme, revizor iznose, konkurencija ništa.<sup><a href="#s81">81</a></sup><sup><a href="#s77">77</a></sup></p></div><div><h3>Brža revizija i kontrola</h3><p class="was"><b>Danas</b>revizor provjerava samo odabrani dio računa i zapisnika (uzorak), a controlling slaže izvještaje iz više sustava.</p><p class="is"><b>S lancem</b>provjera svih zapisa traje sekunde; controlling vidi stanje svakog posla od narudžbe do plaćanja.</p></div><div><h3>Pravila u kodu</h3><p class="was"><b>Danas</b>pravila („račun tek nakon servisa”) postoje na papiru i ovise o ljudima.</p><p class="is"><b>S lancem</b>pametni ugovor ih provodi sam: račun se ne može izdati prije potvrđenog servisa, a plaćanje potvrđuje samo kupac.</p></div><div><h3>Prednost na tržištu</h3><p class="was"><b>Danas</b>na natječaju PFC se uspoređuje cijenom i popisom ranijih projekata.</p><p class="is"><b>S lancem</b>uz ponudu PFC pokazuje povijest svakog uređaja (ugradnja, servisi, kalibracije) koju kupac sam može provjeriti. Banka bi potvrđene račune mogla brže otkupiti (factoring), pa PFC prije dolazi do novca (procjena).</p></div></div>
-      </section>
-      <section class="card s12" id="usporedba">
-        <h2 class="ttl">Usporedba: kako je danas, a kako bi bilo na blockchainu</h2>
-        <p class="cap">Današnji tijek je moja pretpostavka o tipičnom servisnom poslu, ne opis PFC-ovih internih procesa</p>
-        <div class="sum"><div><b><s>7</s>1</b><span>ručnih koraka u jednom poslu</span></div><div><b><s>4+</s>1</b><span>mjesta s istim podatkom</span></div><div><b><s>uzorak</s>100 %</b><span>zapisa koje revizor provjeri</span></div><div><b><s>dani</s>sekunde</b><span>do potvrde stanja posla</span></div></div>
-        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">Jedan posao, korak po korak</button><button type="button" data-v="k">Po kriterijima</button></div></div>
-        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Korak</div><div>Danas (pretpostavka)</div><div>Na blockchainu</div></div><div class="row"><div>Narudžba</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Stiže e-mailom ili kroz natječaj; PFC je prepisuje u svoj sustav, kupac čuva svoju kopiju.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Upisuje se jednom; obje strane vide isti zapis i isti broj narudžbe.</div></div><div class="row"><div>Servis na terenu</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Zapisnik na papiru ili tabletu, potpis, skeniranje, unos u AMS; kupcu ide PDF.</div><div data-l="Na blockchainu"><span class="bdg m">unos ručno</span><span class="bdg a">automatski</span>Unos u AMS kao i danas; otisak, vrijeme i potpis tehničara odmah idu na lanac.</div></div><div class="row"><div>Alarm eLBC-a</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Bilježi se u sustavu nadzora; kasnije se dokazuje izvozom logova.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Uređaj ili sustav upisuje alarm; vrijeme se ne može naknadno pomaknuti.</div></div><div class="row"><div>Račun</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>ERP izdaje račun; netko ručno provjerava je li servis stvarno obavljen.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Pametni ugovor ne dopušta račun bez potvrđenog servisa.</div></div><div class="row"><div>Plaćanje</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Kupac plaća bankom; PFC uparuje izvod s računom.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Kupac potvrđuje plaćanje svojim ključem; status posla je odmah „plaćeno”.</div></div><div class="row"><div>Usklađivanje s kupcem</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Na kraju godine e-mailovi i tablice: što je obavljeno, fakturirano i plaćeno.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Nema usklađivanja; obje strane gledaju isti lanac.</div></div><div class="row"><div>Revizija</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Revizor provjerava samo odabrani dio dokumenata i traži dokaze.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Revizor provjerava sve zapise prema otiscima u nekoliko sekundi.</div></div><div class="row"><div>Spor</div><div data-l="Danas (pretpostavka)"><span class="bdg w">rizik</span>Riječ protiv riječi, traže se e-mailovi i potpisi.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Zapis s vremenom i potpisom je dokaz koji obje strane prihvaćaju.</div></div></div></div>
-        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Kriterij</div><div>Danas</div><div>Na blockchainu</div></div><div class="row"><div>Gdje su podaci</div><div data-l="Danas (pretpostavka)">AMS, ERP, e-mail, Excel, kod kupca</div><div data-l="Na blockchainu">Isti sustavi, plus jedan zajednički zapis na lancu</div></div><div class="row"><div>Može li se zapis promijeniti</div><div data-l="Danas (pretpostavka)">Da, često bez traga</div><div data-l="Na blockchainu">Ne; svaka izmjena dokumenta odmah se vidi</div></div><div class="row"><div>Tko što vidi</div><div data-l="Danas (pretpostavka)">Šalje se cijeli dokument ili ništa</div><div data-l="Na blockchainu">Prava po ulozi, do pojedinog polja<sup><a href="#s81">81</a></sup></div></div><div class="row"><div>Pravila poslovanja</div><div data-l="Danas (pretpostavka)">Na papiru, ovise o ljudima</div><div data-l="Na blockchainu">U pametnom ugovoru, provode se sama</div></div><div class="row"><div>Trošak</div><div data-l="Danas (pretpostavka)">Skriven u radnim satima: unos, usklađivanje, revizija, sporovi</div><div data-l="Na blockchainu">Platforma i razvoj; cijena Prividiuma nije javna<sup><a href="#s77">77</a></sup></div></div><div class="row"><div>Rizici</div><div data-l="Danas (pretpostavka)">Greške pri prepisivanju, izgubljeni dokumenti</div><div data-l="Na blockchainu">Nova tehnologija, ovisnost o dobavljaču platforme, kupci je moraju prihvatiti</div></div></div></div>
-      </section>
-      <section class="card s12" id="uvid">
-        <h2 class="ttl">Tko što vidi</h2>
-        <p class="cap">Transparentno za one koji imaju pravo uvida, privatno za sve ostale. Prava se dodjeljuju ulogama u Prividiumu.<sup><a href="#s81">81</a></sup></p>
-        <div class="tw" style="margin-top:10px"><table class="vis"><thead><tr><th></th><th>PFC</th><th>Kupac (svoje stanice)</th><th>Regulator</th><th>Revizor</th><th>Javnost</th></tr></thead><tbody><tr><td>Narudžba</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Servisni zapisnik</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Alarm eLBC</td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Račun i iznos</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Plaćanje</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr></tbody></table></div>
-        <p class="note">„Otisak“ je digitalni otisak dokumenta (hash): ta uloga vidi da dokument postoji, kada je upisan i da nije mijenjan, ali ne vidi njegov sadržaj. „Vidi sve“ znači i sadržaj, a „–“ da uloga taj zapis ne vidi.</p>
       </section>
       <section class="card s12" id="demo">
         <h2 class="ttl">Demo: jedan posao od narudžbe do revizije</h2>
@@ -761,13 +774,19 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           </div>
         </div>
       </section>
-      <section class="card s12" id="testnet">
-        <h2 class="ttl">Pravi ugovor na ZKsync testnetu</h2>
-        <p class="cap">Ugovor je objavljen na adresi <a href="https://block-explorer.zksync-era-testnet.zksync.dev/address/0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf" target="_blank" rel="noopener"><code>0xfDd7146B…</code> ↗</a>. Zapisa: <b id="bc-live-n">…</b>.</p>
-        <div class="tn">
-          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Besplatni testni Sepolia ETH s faucet-a prebacuje se preko ZKsync portala na tu adresu.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Testnet (chain ID 312), dodijeli uloge tehničaru i dvama kupcima i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s86">86</a></sup></span></li><li><span>Adresa ugovora je na stranici, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) je novi Era testnet iz listopada 2026. i zamjenjuje zastarjeli Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> Prijenos ETH-a na njemu stoji oko 0,000002 ETH. Skripta radi i na ZKsync OS testnetu (chain ID 8022833).<sup><a href="#s86">86</a></sup> Izmjereno 29. 10. 2026.: 18 transakcija za 4 posla (narudžba, servis, alarm, račun, plaćanje) stajalo je ukupno 0,000057 testnog ETH-a, odnosno oko 3,2 milijuntih dijelova ETH-a po zapisu.</p></div>
-          <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
-        </div>
+      <section class="card s12" id="usporedba">
+        <h2 class="ttl">Usporedba: kako je danas, a kako bi bilo na blockchainu</h2>
+        <p class="cap">Današnji tijek je moja pretpostavka o tipičnom servisnom poslu, ne opis PFC-ovih internih procesa</p>
+        <div class="sum"><div><b><s>7</s>1</b><span>ručnih koraka u jednom poslu</span></div><div><b><s>4+</s>1</b><span>mjesta s istim podatkom</span></div><div><b><s>uzorak</s>100 %</b><span>zapisa koje revizor provjeri</span></div><div><b><s>dani</s>sekunde</b><span>do potvrde stanja posla</span></div></div>
+        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">Jedan posao, korak po korak</button><button type="button" data-v="k">Po kriterijima</button></div></div>
+        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Korak</div><div>Danas (pretpostavka)</div><div>Na blockchainu</div></div><div class="row"><div>Narudžba</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Stiže e-mailom ili kroz natječaj; PFC je prepisuje u svoj sustav, kupac čuva svoju kopiju.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Upisuje se jednom; obje strane vide isti zapis i isti broj narudžbe.</div></div><div class="row"><div>Servis na terenu</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Zapisnik na papiru ili tabletu, potpis, skeniranje, unos u AMS; kupcu ide PDF.</div><div data-l="Na blockchainu"><span class="bdg m">unos ručno</span><span class="bdg a">automatski</span>Unos u AMS kao i danas; otisak, vrijeme i potpis tehničara odmah idu na lanac.</div></div><div class="row"><div>Alarm eLBC-a</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Bilježi se u sustavu nadzora; kasnije se dokazuje izvozom logova.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Uređaj ili sustav upisuje alarm; vrijeme se ne može naknadno pomaknuti.</div></div><div class="row"><div>Račun</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>ERP izdaje račun; netko ručno provjerava je li servis stvarno obavljen.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Pametni ugovor ne dopušta račun bez potvrđenog servisa.</div></div><div class="row"><div>Plaćanje</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Kupac plaća bankom; PFC uparuje izvod s računom.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Kupac potvrđuje plaćanje svojim ključem; status posla je odmah „plaćeno”.</div></div><div class="row"><div>Usklađivanje s kupcem</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span><span class="bdg w">rizik</span>Na kraju godine e-mailovi i tablice: što je obavljeno, fakturirano i plaćeno.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Nema usklađivanja; obje strane gledaju isti lanac.</div></div><div class="row"><div>Revizija</div><div data-l="Danas (pretpostavka)"><span class="bdg m">ručno</span>Revizor provjerava samo odabrani dio dokumenata i traži dokaze.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Revizor provjerava sve zapise prema otiscima u nekoliko sekundi.</div></div><div class="row"><div>Spor</div><div data-l="Danas (pretpostavka)"><span class="bdg w">rizik</span>Riječ protiv riječi, traže se e-mailovi i potpisi.</div><div data-l="Na blockchainu"><span class="bdg a">automatski</span>Zapis s vremenom i potpisom je dokaz koji obje strane prihvaćaju.</div></div></div></div>
+        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Kriterij</div><div>Danas</div><div>Na blockchainu</div></div><div class="row"><div>Gdje su podaci</div><div data-l="Danas (pretpostavka)">AMS, ERP, e-mail, Excel, kod kupca</div><div data-l="Na blockchainu">Isti sustavi, plus jedan zajednički zapis na lancu</div></div><div class="row"><div>Može li se zapis promijeniti</div><div data-l="Danas (pretpostavka)">Da, često bez traga</div><div data-l="Na blockchainu">Ne; svaka izmjena dokumenta odmah se vidi</div></div><div class="row"><div>Tko što vidi</div><div data-l="Danas (pretpostavka)">Šalje se cijeli dokument ili ništa</div><div data-l="Na blockchainu">Prava po ulozi, do pojedinog polja<sup><a href="#s81">81</a></sup></div></div><div class="row"><div>Pravila poslovanja</div><div data-l="Danas (pretpostavka)">Na papiru, ovise o ljudima</div><div data-l="Na blockchainu">U pametnom ugovoru, provode se sama</div></div><div class="row"><div>Trošak</div><div data-l="Danas (pretpostavka)">Skriven u radnim satima: unos, usklađivanje, revizija, sporovi</div><div data-l="Na blockchainu">Platforma i razvoj; cijena Prividiuma nije javna<sup><a href="#s77">77</a></sup></div></div><div class="row"><div>Rizici</div><div data-l="Danas (pretpostavka)">Greške pri prepisivanju, izgubljeni dokumenti</div><div data-l="Na blockchainu">Nova tehnologija, ovisnost o dobavljaču platforme, kupci je moraju prihvatiti</div></div></div></div>
+      </section>
+      <section class="card s12" id="uvid">
+        <h2 class="ttl">Tko što vidi</h2>
+        <p class="cap">Transparentno za one koji imaju pravo uvida, privatno za sve ostale. Prava se dodjeljuju ulogama u Prividiumu.<sup><a href="#s81">81</a></sup></p>
+        <div class="tw" style="margin-top:10px"><table class="vis"><thead><tr><th></th><th>PFC</th><th>Kupac (svoje stanice)</th><th>Regulator</th><th>Revizor</th><th>Javnost</th></tr></thead><tbody><tr><td>Narudžba</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Servisni zapisnik</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Alarm eLBC</td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi h">otisak</span></td><td><span class="vi n">–</span></td></tr><tr><td>Račun i iznos</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr><tr><td>Plaćanje</td><td><span class="vi f">vidi sve</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td><td><span class="vi f">vidi sve</span></td><td><span class="vi n">–</span></td></tr></tbody></table></div>
+        <p class="note">„Otisak“ je digitalni otisak dokumenta (hash): ta uloga vidi da dokument postoji, kada je upisan i da nije mijenjan, ali ne vidi njegov sadržaj. „Vidi sve“ znači i sadržaj, a „–“ da uloga taj zapis ne vidi.</p>
       </section>
       <section class="card s12" id="troskovi">
         <h2 class="ttl">Troškovi i koristi: kalkulator</h2>
@@ -797,6 +816,31 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           </div>
         </form>
       </section>
+      <section class="card s6" id="zasto">
+        <h2 class="ttl">Zašto baš PFC</h2>
+        <ul class="ul"><li><span>PFC već ima podatke: AMS vodi 46.013 sredstava i koristi ga i LNG terminal, a instalirano je oko 1000 eLBC uređaja.<sup><a href="#s28">28</a></sup><sup><a href="#s22">22</a></sup></span></li><li><span>Ima vlastiti IT i softver (AYMO, AMS), pa pilot projekt ne ovisi o vanjskoj agenciji.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span>Kupac dobiva zapis koji PFC ne može neprimjetno promijeniti, što je argument više na natječajima (procjena).</span></li><li><span>Isti lanac kasnije može nositi digitalni karton opreme i certifikate (procjena).</span></li></ul>
+      </section>
+      <section class="card s6" id="rizici">
+        <h2 class="ttl">Rizici i otvorena pitanja</h2>
+        <ul class="ul"><li><span>Za produkciju treba komercijalni ugovor s Matter Labsom. Lokalni razvoj traži pristup njihovom privatnom Docker registru.<sup><a href="#s80">80</a></sup><sup><a href="#s83">83</a></sup></span></li><li><span>Za sada lanac vodi jedan sekvencer (poslužitelj koji redom upisuje transakcije), a decentralizacija je tek u planu.<sup><a href="#s77">77</a></sup></span></li><li><span>Kupci su uglavnom državne energetske tvrtke. Pilot projekt ima smisla samo ako barem jedan kupac želi čitati zapise (procjena).</span></li><li><span>Na javni testnet smiju samo otisci i izmišljeni podaci, jer je javan.<sup><a href="#s84">84</a></sup></span></li></ul>
+      </section>
+      <section class="card s12" id="plan-pilota">
+        <h2 class="ttl">Plan pilot projekta</h2>
+        <p class="cap">Trajanje je moja procjena, oko 4–5 mjeseci ukupno</p>
+        <div class="steps"><div class="step"><b>0 · 2 tjedna</b><span>Odabir 1–3 stanice i jednog kupca, popis podataka iz AMS-a, zahtjev Matter Labsu za pristup</span></div><div class="step"><b>1 · 3–4 tjedna</b><span>Lokalni Prividium u Dockeru, ugovor PFCLedger, uloge PFC / kupac / regulator / revizor<sup><a href="#s83">83</a></sup></span></div><div class="step"><b>2 · 2–3 mjeseca</b><span>Pilot projekt na terenu: poslovi odabranih stanica idu na lanac, kupac ih čita i potvrđuje plaćanja</span></div><div class="step"><b>3 · 2 tjedna</b><span>Procjena: koristi, trošak, odluka o produkciji i licenci</span></div></div>
+      </section>
+      <section class="card s12 divider" id="tehnicki">
+        <h2 class="ttl">Tehnički dio</h2>
+        <p class="cap">Za čitatelje koje zanima kako sam napravio demo: pravi ugovor na testnetu, platforma Prividium i kod pametnog ugovora</p>
+      </section>
+      <section class="card s12" id="testnet">
+        <h2 class="ttl">Pravi ugovor na ZKsync testnetu</h2>
+        <p class="cap">Ugovor je objavljen na adresi <a href="https://block-explorer.zksync-era-testnet.zksync.dev/address/0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf" target="_blank" rel="noopener"><code>0xfDd7146B…</code> ↗</a>. Zapisa: <b id="bc-live-n">…</b>.</p>
+        <div class="tn">
+          <div><ol class="how"><li><span>Skripta <code>testnet/simulate.js</code> napravi novi novčanik samo za testnet. Na njemu nema pravog novca.</span></li><li><span>Besplatni testni Sepolia ETH s faucet-a prebacuje se preko ZKsync portala na tu adresu.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>Skripta objavi ugovor PFCLedger na ZKsync Era Testnet (chain ID 312), dodijeli uloge tehničaru i dvama kupcima i odradi 4 posla: narudžba, servis, alarm, račun, plaćanje.<sup><a href="#s86">86</a></sup></span></li><li><span>Adresa ugovora je na stranici, a ova kartica čita zapise uživo i vodi na block explorer, gdje ih svatko može provjeriti.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) je novi Era testnet iz listopada 2026. i zamjenjuje zastarjeli Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> Prijenos ETH-a na njemu stoji oko 0,000002 ETH. Skripta radi i na ZKsync OS testnetu (chain ID 8022833).<sup><a href="#s86">86</a></sup> Izmjereno 29. 10. 2026.: 18 transakcija za 4 posla (narudžba, servis, alarm, račun, plaćanje) stajalo je ukupno 0,000057 testnog ETH-a, odnosno oko 3,2 milijuntih dijelova ETH-a po zapisu.</p></div>
+          <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
+        </div>
+      </section>
       <section class="card s7" id="prividium">
         <h2 class="ttl">Što je ZKsync Prividium</h2>
         <ul class="ul"><li><span>Privatni blockchain koji je ZKsync pokrenuo 27. svibnja 2025. Prvi partner bio je Memento, lanac razvijen s Deutsche Bankom.<sup><a href="#s78">78</a></sup></span></li><li><span>Transakcije, strane i salda ostaju privatni, unutar infrastrukture tvrtke. Na Ethereum idu samo ZK dokazi da je sve ispravno.<sup><a href="#s77">77</a></sup></span></li><li><span>Tvrtka sama određuje tko smije što vidjeti i pozivati, sve do pojedine funkcije pametnog ugovora. Revizor ili regulator može dobiti pristup samo za čitanje.<sup><a href="#s81">81</a></sup><sup><a href="#s80">80</a></sup></span></li><li><span>Pametni ugovori pišu se u Solidityju, s uobičajenim alatima (Hardhat, Foundry, Viem).<sup><a href="#s82">82</a></sup></span></li><li><span>Može ga vrtjeti sama tvrtka ili Matter Labs kao uslugu. Cijena nije objavljena.<sup><a href="#s77">77</a></sup></span></li></ul>
@@ -805,15 +849,10 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <h2 class="ttl">Tko ga koristi</h2>
         <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: privatni L2 za izdavanje i vođenje tokeniziranih fondova. Nastao je iz projekta DAMA u singapurskom programu MAS Project Guardian.<sup><a href="#s78">78</a></sup><sup><a href="#s79">79</a></sup></span></li><li><span>Uvođenje fonda skratilo se s 2–3 mjeseca na 2–3 tjedna.<sup><a href="#s79">79</a></sup></span></li><li><span>ZKsync navodi i druge banke i fondove, ali to su njegove vlastite tvrdnje.<sup><a href="#s77">77</a></sup></span></li><li><span>Industrijsku tvrtku koja koristi Prividium nisam našao. PFC bi bio među prvima izvan financija (procjena).</span></li></ul>
       </section>
-      <section class="card s12" id="ideja">
-        <h2 class="ttl">Kako bi radilo u PFC-u</h2>
-        <p class="cap">Dokumenti ostaju u postojećim sustavima, na lanac idu otisci, status i pravila</p>
-        <div class="flow"><div class="fb"><small>1</small><b>Teren i kupci</b><span>Narudžba, servis, alarm eLBC-a, račun, plaćanje</span></div><div class="fb"><small>2</small><b>PFC-ov softver</b><span>Dokumenti ostaju u AMS-u, AYMO-u i ERP-u, kao i danas</span></div><div class="fb on"><small>3</small><b>Privatni lanac</b><span>Otisak, vrijeme, autor i status posla upisuju se u pametni ugovor</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>Dokaz da je lanac ispravan; podaci ostaju kod PFC-a</span></div></div>
-      </section>
-      <section class="card s7" id="ugovor">
+      <section class="card s12" id="ugovor">
         <h2 class="ttl">Pametni ugovor PFCLedger</h2>
         <p class="cap">Cijeli kod koji ide na testnet; <a href="testnet/PFCLedger.sol" target="_blank">preuzmite .sol</a></p>
-        <pre class="code"><code>// SPDX-License-Identifier: MIT
+        <details class="codebox"><summary>Prikaži kod (82 retka)</summary><pre class="code"><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
 /// @title PFC Ledger (demo)
@@ -895,22 +934,7 @@ contract PFCLedger {
         emit PaymentConfirmed(id, msg.sender);
     }
 }
-</code></pre>
-      </section>
-      <div class="s5 colstack">
-      <section class="card" id="zasto">
-        <h2 class="ttl">Zašto baš PFC</h2>
-        <ul class="ul"><li><span>PFC već ima podatke: AMS vodi 46.013 sredstava i koristi ga i LNG terminal, a instalirano je oko 1000 eLBC uređaja.<sup><a href="#s28">28</a></sup><sup><a href="#s22">22</a></sup></span></li><li><span>Ima vlastiti IT i softver (AYMO, AMS), pa pilot projekt ne ovisi o vanjskoj agenciji.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span>Kupac dobiva zapis koji PFC ne može naknadno neprimjetno promijeniti. To je argument više na natječajima (procjena).</span></li><li><span>Isti lanac kasnije može nositi digitalni karton opreme i certifikate (procjena).</span></li></ul>
-      </section>
-      <section class="card" id="rizici">
-        <h2 class="ttl">Rizici i otvorena pitanja</h2>
-        <ul class="ul"><li><span>Za produkciju treba komercijalni ugovor s Matter Labsom. Lokalni razvoj traži pristup njihovom privatnom Docker registru.<sup><a href="#s80">80</a></sup><sup><a href="#s83">83</a></sup></span></li><li><span>Za sada lanac vodi jedan sekvencer, decentralizacija je tek u planu.<sup><a href="#s77">77</a></sup></span></li><li><span>Kupci su uglavnom državne energetske tvrtke. Pilot projekt ima smisla samo ako barem jedan kupac želi čitati zapise (procjena).</span></li><li><span>Na javni testnet smiju samo otisci i izmišljeni podaci, jer je javan.<sup><a href="#s84">84</a></sup></span></li></ul>
-      </section>
-      </div>
-      <section class="card s12" id="plan-pilota">
-        <h2 class="ttl">Plan pilot projekta</h2>
-        <p class="cap">Trajanje je moja procjena, oko 4–5 mjeseci ukupno</p>
-        <div class="steps"><div class="step"><b>0 · 2 tjedna</b><span>Odabir 1–3 stanice i jednog kupca, popis podataka iz AMS-a, zahtjev Matter Labsu za pristup</span></div><div class="step"><b>1 · 3–4 tjedna</b><span>Lokalni Prividium u Dockeru, ugovor PFCLedger, uloge PFC / kupac / regulator / revizor<sup><a href="#s83">83</a></sup></span></div><div class="step"><b>2 · 2–3 mjeseca</b><span>Pilot projekt na terenu: poslovi odabranih stanica idu na lanac, kupac ih čita i potvrđuje plaćanja</span></div><div class="step"><b>3 · 2 tjedna</b><span>Procjena: koristi, trošak, odluka o produkciji i licenci</span></div></div>
+</code></pre></details>
       </section>
     </div>
 

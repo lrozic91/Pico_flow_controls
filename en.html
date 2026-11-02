@@ -279,7 +279,11 @@ table.reg td,table.reg th{text-align:left;white-space:normal}table.reg td:nth-ch
 .stackbar{display:flex;height:34px;border-radius:9px;overflow:hidden;margin-top:14px}.stackbar i{display:block;height:100%}
 .sbleg{display:grid;gap:7px;margin-top:12px;font-size:13px}.sbleg div{display:grid;grid-template-columns:14px 1fr auto auto;gap:8px;align-items:center}.sbleg i{width:12px;height:12px;border-radius:3px}.sbleg b{text-align:right;min-width:48px}.sbleg span.m{color:var(--muted);text-align:right;min-width:62px}
 .dup{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin-top:14px}.dup .t{flex:1 1 70px;border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}.dup .t b{font-size:19px}.dup .t span{font-size:11.5px;color:var(--muted)}.dup .op{align-self:center;font-weight:700;color:var(--muted)}.dup .t.r{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
-@media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}.duo{grid-template-columns:1fr}}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.tri>div{border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5}.tri b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-d);margin-bottom:6px}
+.terms-h{font-size:13px;font-weight:600;margin:18px 0 8px}.terms{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.terms>div{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;color:var(--muted)}.terms b{display:block;color:var(--fg);font-size:13px;margin-bottom:3px}
+.divider{background:transparent;box-shadow:none;border:0;padding-bottom:0}
+details.codebox{margin-top:12px}details.codebox summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--green-d);padding:8px 0}details.codebox[open] summary{margin-bottom:8px}
+@media (max-width:900px){.org{grid-template-columns:minmax(0,1fr)}.duo{grid-template-columns:1fr}.tri{grid-template-columns:1fr}.terms{grid-template-columns:1fr 1fr}}
 
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:14px}
 .flow .fb{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
@@ -400,12 +404,14 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
       </div>
       <a href="#blockchain" data-page="blockchain"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M7 10v4a3 3 0 0 0 3 3h4"/></svg>Blockchain</a>
       <div class="sub">
+        <a href="#blockchain" data-jump="ukratko">In short</a>
+        <a href="#blockchain" data-jump="ideja">How it works</a>
         <a href="#blockchain" data-jump="prednosti">Benefits</a>
-        <a href="#blockchain" data-jump="usporedba">Today vs chain</a>
         <a href="#blockchain" data-jump="demo">Demo</a>
-        <a href="#blockchain" data-jump="testnet">Testnet</a>
+        <a href="#blockchain" data-jump="usporedba">Today vs chain</a>
         <a href="#blockchain" data-jump="troskovi">Costs</a>
         <a href="#blockchain" data-jump="plan-pilota">Pilot project plan</a>
+        <a href="#blockchain" data-jump="tehnicki">Technical part</a>
       </div>
     </nav>
     <div class="hr"></div>
@@ -710,24 +716,31 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <div class="hero"><div><div class="eyebrow">Blockchain</div><h1>Pilot project: PFC's business on a private chain</h1><p class="lead">Orders, services, alarms, invoices and payments get a record nobody can change afterwards. Each party sees only what it is allowed to, and the data stays with PFC. This is my proposal, not the company's plan.</p></div>
           <div class="art" aria-hidden="true"></div></div>
       </section>
+      <section class="card s12" id="ukratko">
+        <h2 class="ttl">In short</h2>
+        <div class="tri">
+          <div><b>What I propose</b>A shared digital log of jobs with customers. Every job, from order through service to invoice and payment, gets a record that cannot be changed afterwards.</div>
+          <div><b>What PFC gains</b>Less reconciliation and fewer disputes with customers, faster audits and verifiable proof of quality in tenders (estimate).</div>
+          <div><b>How to start</b>A 4–5 month pilot project on 1–3 stations with one customer. Documents stay in AMS and the ERP, as today (estimate).</div>
+        </div>
+        <h3 class="terms-h">Five terms worth knowing</h3>
+        <div class="terms">
+          <div><b>Chain (blockchain)</b>a shared book of records; new entries are added and old ones cannot be changed secretly</div>
+          <div><b>Fingerprint (hash)</b>a short code computed from a document; it proves the document is unchanged without revealing its content</div>
+          <div><b>Smart contract</b>a rule written in code, e.g. no invoice before a confirmed service</div>
+          <div><b>Private chain</b>a chain the company runs itself, deciding who sees what; here ZKsync Prividium</div>
+          <div><b>Testnet</b>a free test network without real money, where I tried out the demo</div>
+        </div>
+      </section>
+      <section class="card s12" id="ideja">
+        <h2 class="ttl">How it would work at PFC</h2>
+        <p class="cap">Documents stay in existing systems; fingerprints, status and rules go on chain</p>
+        <div class="flow"><div class="fb"><small>1</small><b>Field and customers</b><span>Order, service, eLBC alarm, invoice, payment</span></div><div class="fb"><small>2</small><b>PFC software</b><span>Documents stay in AMS, AYMO and the ERP, as today</span></div><div class="fb on"><small>3</small><b>Private chain</b><span>Fingerprint, time, author and job status are written to a smart contract</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>A proof that the chain is valid; the data stays with PFC</span></div></div>
+      </section>
       <section class="card s12" id="prednosti">
         <h2 class="ttl">Why blockchain: today and with a chain</h2>
         <p class="cap">Benefits for PFC and its customers; estimate</p>
         <div class="ben"><div><h3>Shared data for all parties</h3><p class="was"><b>Today</b>reports in AMS, PDFs by e-mail, Excel at the customer; everyone has their own version.</p><p class="is"><b>With a chain</b>PFC, the customer and the auditor read the same record, with the same time and fingerprint.</p></div><div><h3>Proof instead of argument</h3><p class="was"><b>Today</b>disputes over whether a service was done, when an alarm happened and what amount was agreed.</p><p class="is"><b>With a chain</b>time and fingerprint are written once and cannot be changed later; any change shows at once.</p></div><div><h3>Transparent but private</h3><p class="was"><b>Today</b>you either share the whole document or nothing.</p><p class="is"><b>With a chain</b>each role sees exactly its own: the customer its stations, the regulator alarms, the auditor amounts, competitors nothing.<sup><a href="#s81">81</a></sup><sup><a href="#s77">77</a></sup></p></div><div><h3>Faster audit and control</h3><p class="was"><b>Today</b>the auditor checks only a selected share of invoices and reports (a sample), and controlling assembles reports from several systems.</p><p class="is"><b>With a chain</b>checking every record takes seconds; controlling sees each job's status from order to payment.</p></div><div><h3>Rules in code</h3><p class="was"><b>Today</b>rules (“invoice only after service”) exist on paper and depend on people.</p><p class="is"><b>With a chain</b>the smart contract enforces them: no invoice before a confirmed service, and only the customer confirms payment.</p></div><div><h3>Market advantage</h3><p class="was"><b>Today</b>in a tender PFC is compared on price and a list of past projects.</p><p class="is"><b>With a chain</b>with its bid PFC shows each device's history (installation, services, calibrations), which the customer can verify itself. A bank could buy confirmed invoices faster (factoring), so PFC gets its cash sooner (estimate).</p></div></div>
-      </section>
-      <section class="card s12" id="usporedba">
-        <h2 class="ttl">Comparison: how it is today and how it would be on blockchain</h2>
-        <p class="cap">Today's flow is my assumption about a typical service job, not a description of PFC's internal processes</p>
-        <div class="sum"><div><b><s>7</s>1</b><span>manual steps in one job</span></div><div><b><s>4+</s>1</b><span>places holding the same data</span></div><div><b><s>sample</s>100 %</b><span>of records the auditor checks</span></div><div><b><s>days</s>seconds</b><span>to confirm a job's status</span></div></div>
-        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">One job, step by step</button><button type="button" data-v="k">By criteria</button></div></div>
-        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Step</div><div>Today (assumption)</div><div>On blockchain</div></div><div class="row"><div>Order</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Arrives by e-mail or through a tender; PFC retypes it into its system, the customer keeps its own copy.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>Written once; both sides see the same record and order number.</div></div><div class="row"><div>Field service</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Report on paper or tablet, signature, scan, entry into AMS; the customer gets a PDF.</div><div data-l="On blockchain"><span class="bdg m">entry manual</span><span class="bdg a">automatic</span>Entry into AMS as today; fingerprint, time and the technician's signature go on chain at once.</div></div><div class="row"><div>eLBC alarm</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>Logged in the monitoring system; later proven by exporting logs.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The device or system writes the alarm; the time cannot be moved later.</div></div><div class="row"><div>Invoice</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The ERP issues the invoice; someone checks by hand that the service was really done.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The smart contract does not allow an invoice without a confirmed service.</div></div><div class="row"><div>Payment</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The customer pays by bank; PFC matches the statement to the invoice.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The customer confirms payment with its key; the job status is instantly “paid”.</div></div><div class="row"><div>Reconciling with the customer</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>At year end, e-mails and spreadsheets: what was done, invoiced and paid.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>No reconciliation; both sides look at the same chain.</div></div><div class="row"><div>Audit</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The auditor checks only a selected share of documents and asks for evidence.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The auditor checks every record against its fingerprint in seconds.</div></div><div class="row"><div>Dispute</div><div data-l="Today (assumption)"><span class="bdg w">risk</span>Word against word; e-mails and signatures are dug up.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>A record with time and signature is evidence both sides accept.</div></div></div></div>
-        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Criterion</div><div>Today</div><div>On blockchain</div></div><div class="row"><div>Where the data is</div><div data-l="Today (assumption)">AMS, ERP, e-mail, Excel, at the customer</div><div data-l="On blockchain">The same systems, plus one shared record on chain</div></div><div class="row"><div>Can a record be changed</div><div data-l="Today (assumption)">Yes, often without a trace</div><div data-l="On blockchain">No; any change to a document shows at once</div></div><div class="row"><div>Who sees what</div><div data-l="Today (assumption)">The whole document is sent, or nothing</div><div data-l="On blockchain">Rights by role, down to single fields<sup><a href="#s81">81</a></sup></div></div><div class="row"><div>Business rules</div><div data-l="Today (assumption)">On paper, depend on people</div><div data-l="On blockchain">In the smart contract, enforced automatically</div></div><div class="row"><div>Cost</div><div data-l="Today (assumption)">Hidden in work hours: data entry, reconciliation, audit, disputes</div><div data-l="On blockchain">Platform and development; Prividium pricing is not public<sup><a href="#s77">77</a></sup></div></div><div class="row"><div>Risks</div><div data-l="Today (assumption)">Retyping errors, lost documents</div><div data-l="On blockchain">New technology, dependence on the platform vendor, customers must accept it</div></div></div></div>
-      </section>
-      <section class="card s12" id="uvid">
-        <h2 class="ttl">Who sees what</h2>
-        <p class="cap">Transparent for those entitled to see, private for everyone else. Rights are given through Prividium roles.<sup><a href="#s81">81</a></sup></p>
-        <div class="tw" style="margin-top:10px"><table class="vis"><thead><tr><th></th><th>PFC</th><th>Customer (own stations)</th><th>Regulator</th><th>Auditor</th><th>Public</th></tr></thead><tbody><tr><td>Order</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr><tr><td>Service report</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi n">–</span></td></tr><tr><td>eLBC alarm</td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi n">–</span></td></tr><tr><td>Invoice and amount</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr><tr><td>Payment</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr></tbody></table></div>
-        <p class="note">A “fingerprint” is the document's digital fingerprint (hash): that role sees that the document exists, when it was recorded and that it has not been changed, but not its content. “Sees all” includes the content, and “–” means the role does not see that record.</p>
       </section>
       <section class="card s12" id="demo">
         <h2 class="ttl">Demo: one job from order to audit</h2>
@@ -761,13 +774,19 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           </div>
         </div>
       </section>
-      <section class="card s12" id="testnet">
-        <h2 class="ttl">A real contract on the ZKsync testnet</h2>
-        <p class="cap">The contract is live at <a href="https://block-explorer.zksync-era-testnet.zksync.dev/address/0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf" target="_blank" rel="noopener"><code>0xfDd7146B…</code> ↗</a>. Records: <b id="bc-live-n">…</b>.</p>
-        <div class="tn">
-          <div><ol class="how"><li><span>The script <code>testnet/simulate.js</code> creates a new wallet for the testnet only. It holds no real money.</span></li><li><span>You bridge free Sepolia test ETH from a faucet to that address through the ZKsync portal.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>The script deploys PFCLedger to ZKsync Era Testnet (chain ID 312), gives roles to a technician and two customers, and runs 4 jobs: order, service, alarm, invoice, payment.<sup><a href="#s86">86</a></sup></span></li><li><span>The contract address is on the site, and this card reads the records live and links to the block explorer, where anyone can check them.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) is the new Era testnet from October 2026 and replaces the deprecated Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> An ETH transfer on it costs about 0.000002 ETH. The script also runs on the ZKsync OS testnet (chain ID 8022833).<sup><a href="#s86">86</a></sup> Measured on 29 Oct 2026: 18 transactions for 4 jobs (order, service, alarm, invoice, payment) cost 0.000057 test ETH in total, about 3.2 millionths of an ETH per record.</p></div>
-          <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
-        </div>
+      <section class="card s12" id="usporedba">
+        <h2 class="ttl">Comparison: how it is today and how it would be on blockchain</h2>
+        <p class="cap">Today's flow is my assumption about a typical service job, not a description of PFC's internal processes</p>
+        <div class="sum"><div><b><s>7</s>1</b><span>manual steps in one job</span></div><div><b><s>4+</s>1</b><span>places holding the same data</span></div><div><b><s>sample</s>100 %</b><span>of records the auditor checks</span></div><div><b><s>days</s>seconds</b><span>to confirm a job's status</span></div></div>
+        <div class="bc" style="margin-top:14px"><div class="seg" role="group" id="cmp-seg"><button type="button" class="on" data-v="p">One job, step by step</button><button type="button" data-v="k">By criteria</button></div></div>
+        <div id="cmp-p"><div class="cmp"><div class="row hd"><div>Step</div><div>Today (assumption)</div><div>On blockchain</div></div><div class="row"><div>Order</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Arrives by e-mail or through a tender; PFC retypes it into its system, the customer keeps its own copy.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>Written once; both sides see the same record and order number.</div></div><div class="row"><div>Field service</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>Report on paper or tablet, signature, scan, entry into AMS; the customer gets a PDF.</div><div data-l="On blockchain"><span class="bdg m">entry manual</span><span class="bdg a">automatic</span>Entry into AMS as today; fingerprint, time and the technician's signature go on chain at once.</div></div><div class="row"><div>eLBC alarm</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>Logged in the monitoring system; later proven by exporting logs.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The device or system writes the alarm; the time cannot be moved later.</div></div><div class="row"><div>Invoice</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The ERP issues the invoice; someone checks by hand that the service was really done.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The smart contract does not allow an invoice without a confirmed service.</div></div><div class="row"><div>Payment</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The customer pays by bank; PFC matches the statement to the invoice.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The customer confirms payment with its key; the job status is instantly “paid”.</div></div><div class="row"><div>Reconciling with the customer</div><div data-l="Today (assumption)"><span class="bdg m">manual</span><span class="bdg w">risk</span>At year end, e-mails and spreadsheets: what was done, invoiced and paid.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>No reconciliation; both sides look at the same chain.</div></div><div class="row"><div>Audit</div><div data-l="Today (assumption)"><span class="bdg m">manual</span>The auditor checks only a selected share of documents and asks for evidence.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>The auditor checks every record against its fingerprint in seconds.</div></div><div class="row"><div>Dispute</div><div data-l="Today (assumption)"><span class="bdg w">risk</span>Word against word; e-mails and signatures are dug up.</div><div data-l="On blockchain"><span class="bdg a">automatic</span>A record with time and signature is evidence both sides accept.</div></div></div></div>
+        <div id="cmp-k" hidden><div class="cmp"><div class="row hd"><div>Criterion</div><div>Today</div><div>On blockchain</div></div><div class="row"><div>Where the data is</div><div data-l="Today (assumption)">AMS, ERP, e-mail, Excel, at the customer</div><div data-l="On blockchain">The same systems, plus one shared record on chain</div></div><div class="row"><div>Can a record be changed</div><div data-l="Today (assumption)">Yes, often without a trace</div><div data-l="On blockchain">No; any change to a document shows at once</div></div><div class="row"><div>Who sees what</div><div data-l="Today (assumption)">The whole document is sent, or nothing</div><div data-l="On blockchain">Rights by role, down to single fields<sup><a href="#s81">81</a></sup></div></div><div class="row"><div>Business rules</div><div data-l="Today (assumption)">On paper, depend on people</div><div data-l="On blockchain">In the smart contract, enforced automatically</div></div><div class="row"><div>Cost</div><div data-l="Today (assumption)">Hidden in work hours: data entry, reconciliation, audit, disputes</div><div data-l="On blockchain">Platform and development; Prividium pricing is not public<sup><a href="#s77">77</a></sup></div></div><div class="row"><div>Risks</div><div data-l="Today (assumption)">Retyping errors, lost documents</div><div data-l="On blockchain">New technology, dependence on the platform vendor, customers must accept it</div></div></div></div>
+      </section>
+      <section class="card s12" id="uvid">
+        <h2 class="ttl">Who sees what</h2>
+        <p class="cap">Transparent for those entitled to see, private for everyone else. Rights are given through Prividium roles.<sup><a href="#s81">81</a></sup></p>
+        <div class="tw" style="margin-top:10px"><table class="vis"><thead><tr><th></th><th>PFC</th><th>Customer (own stations)</th><th>Regulator</th><th>Auditor</th><th>Public</th></tr></thead><tbody><tr><td>Order</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr><tr><td>Service report</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi n">–</span></td></tr><tr><td>eLBC alarm</td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi h">fingerprint</span></td><td><span class="vi n">–</span></td></tr><tr><td>Invoice and amount</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr><tr><td>Payment</td><td><span class="vi f">full</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td><td><span class="vi f">full</span></td><td><span class="vi n">–</span></td></tr></tbody></table></div>
+        <p class="note">A “fingerprint” is the document's digital fingerprint (hash): that role sees that the document exists, when it was recorded and that it has not been changed, but not its content. “Sees all” includes the content, and “–” means the role does not see that record.</p>
       </section>
       <section class="card s12" id="troskovi">
         <h2 class="ttl">Costs and benefits: calculator</h2>
@@ -797,6 +816,31 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
           </div>
         </form>
       </section>
+      <section class="card s6" id="zasto">
+        <h2 class="ttl">Why PFC</h2>
+        <ul class="ul"><li><span>PFC already has the data: AMS tracks 46,013 assets and the LNG terminal uses it too, and about 1,000 eLBC units are installed.<sup><a href="#s28">28</a></sup><sup><a href="#s22">22</a></sup></span></li><li><span>It has its own IT and software (AYMO, AMS), so the pilot project does not depend on an outside agency.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span>The customer gets a record PFC cannot change afterwards without it showing. That is an extra argument in tenders (estimate).</span></li><li><span>The same chain can later carry equipment records and certificates (estimate).</span></li></ul>
+      </section>
+      <section class="card s6" id="rizici">
+        <h2 class="ttl">Risks and open questions</h2>
+        <ul class="ul"><li><span>Production needs a commercial agreement with Matter Labs. Local development needs access to their private Docker registry.<sup><a href="#s80">80</a></sup><sup><a href="#s83">83</a></sup></span></li><li><span>For now one sequencer (the server that orders transactions) runs the chain; decentralisation is planned.<sup><a href="#s77">77</a></sup></span></li><li><span>Customers are mostly state energy companies. The pilot project only makes sense if at least one customer wants to read the records (estimate).</span></li><li><span>Only fingerprints and made-up data may go on the public testnet, because it is public.<sup><a href="#s84">84</a></sup></span></li></ul>
+      </section>
+      <section class="card s12" id="plan-pilota">
+        <h2 class="ttl">Pilot project plan</h2>
+        <p class="cap">Durations are my estimate, about 4–5 months in total</p>
+        <div class="steps"><div class="step"><b>0 · 2 weeks</b><span>Pick 1–3 stations and one customer, list the AMS data, request access from Matter Labs</span></div><div class="step"><b>1 · 3–4 weeks</b><span>Local Prividium in Docker, PFCLedger contract, roles PFC / customer / regulator / auditor<sup><a href="#s83">83</a></sup></span></div><div class="step"><b>2 · 2–3 months</b><span>Field pilot project: the chosen stations' jobs go on the chain, the customer reads them and confirms payments</span></div><div class="step"><b>3 · 2 weeks</b><span>Review: benefits, cost, decision on production and licence</span></div></div>
+      </section>
+      <section class="card s12 divider" id="tehnicki">
+        <h2 class="ttl">Technical part</h2>
+        <p class="cap">For readers interested in how I built the demo: a real contract on the testnet, the Prividium platform and the smart contract code</p>
+      </section>
+      <section class="card s12" id="testnet">
+        <h2 class="ttl">A real contract on the ZKsync testnet</h2>
+        <p class="cap">The contract is live at <a href="https://block-explorer.zksync-era-testnet.zksync.dev/address/0xfDd7146BCfEFE2c313Da05636B964A3B37aA0EAf" target="_blank" rel="noopener"><code>0xfDd7146B…</code> ↗</a>. Records: <b id="bc-live-n">…</b>.</p>
+        <div class="tn">
+          <div><ol class="how"><li><span>The script <code>testnet/simulate.js</code> creates a new wallet for the testnet only. It holds no real money.</span></li><li><span>You bridge free Sepolia test ETH from a faucet to that address through the ZKsync portal.<sup><a href="#s88">88</a></sup><sup><a href="#s87">87</a></sup></span></li><li><span>The script deploys PFCLedger to ZKsync Era Testnet (chain ID 312), gives roles to a technician and two customers, and runs 4 jobs: order, service, alarm, invoice, payment.<sup><a href="#s86">86</a></sup></span></li><li><span>The contract address is on the site, and this card reads the records live and links to the block explorer, where anyone can check them.</span></li></ol><p class="note">ZKsync Era Testnet (chain ID 312) is the new Era testnet from October 2026 and replaces the deprecated Era Sepolia (chain ID 300).<sup><a href="#s87">87</a></sup> An ETH transfer on it costs about 0.000002 ETH. The script also runs on the ZKsync OS testnet (chain ID 8022833).<sup><a href="#s86">86</a></sup> Measured on 29 Oct 2026: 18 transactions for 4 jobs (order, service, alarm, invoice, payment) cost 0.000057 test ETH in total, about 3.2 millionths of an ETH per record.</p></div>
+          <div><div class="live" id="bc-live"><div class="empty">…</div></div></div>
+        </div>
+      </section>
       <section class="card s7" id="prividium">
         <h2 class="ttl">What ZKsync Prividium is</h2>
         <ul class="ul"><li><span>A private blockchain that ZKsync launched on 27 May 2025. The first partner was Memento, a chain built with Deutsche Bank.<sup><a href="#s78">78</a></sup></span></li><li><span>Transactions, counterparties and balances stay private, inside the company's infrastructure. Only ZK proofs that everything is correct go to Ethereum.<sup><a href="#s77">77</a></sup></span></li><li><span>The company decides who may see and call what, down to individual smart contract functions. An auditor or regulator can get read-only access.<sup><a href="#s81">81</a></sup><sup><a href="#s80">80</a></sup></span></li><li><span>Smart contracts are written in Solidity with the usual tools (Hardhat, Foundry, Viem).<sup><a href="#s82">82</a></sup></span></li><li><span>The company can run it itself or have Matter Labs run it as a service. Pricing is not published.<sup><a href="#s77">77</a></sup></span></li></ul>
@@ -805,15 +849,10 @@ ol.how{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
         <h2 class="ttl">Who uses it</h2>
         <ul class="ul"><li><span><b>Deutsche Bank / Memento</b>: a private L2 for issuing and servicing tokenised funds. It grew out of Project DAMA under Singapore's MAS Project Guardian.<sup><a href="#s78">78</a></sup><sup><a href="#s79">79</a></sup></span></li><li><span>Launching a fund went from 2–3 months to 2–3 weeks.<sup><a href="#s79">79</a></sup></span></li><li><span>ZKsync also lists other banks and funds, but these are its own claims.<sup><a href="#s77">77</a></sup></span></li><li><span>I found no industrial company using Prividium. PFC would be among the first outside finance (estimate).</span></li></ul>
       </section>
-      <section class="card s12" id="ideja">
-        <h2 class="ttl">How it would work at PFC</h2>
-        <p class="cap">Documents stay in existing systems; fingerprints, status and rules go on chain</p>
-        <div class="flow"><div class="fb"><small>1</small><b>Field and customers</b><span>Order, service, eLBC alarm, invoice, payment</span></div><div class="fb"><small>2</small><b>PFC software</b><span>Documents stay in AMS, AYMO and the ERP, as today</span></div><div class="fb on"><small>3</small><b>Private chain</b><span>Fingerprint, time, author and job status are written to a smart contract</span></div><div class="fb"><small>4</small><b>Ethereum</b><span>A proof that the chain is valid; the data stays with PFC</span></div></div>
-      </section>
-      <section class="card s7" id="ugovor">
+      <section class="card s12" id="ugovor">
         <h2 class="ttl">The PFCLedger smart contract</h2>
         <p class="cap">The full code that goes to the testnet; <a href="testnet/PFCLedger.sol" target="_blank">download .sol</a></p>
-        <pre class="code"><code>// SPDX-License-Identifier: MIT
+        <details class="codebox"><summary>Show the code (82 lines)</summary><pre class="code"><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
 /// @title PFC Ledger (demo)
@@ -895,22 +934,7 @@ contract PFCLedger {
         emit PaymentConfirmed(id, msg.sender);
     }
 }
-</code></pre>
-      </section>
-      <div class="s5 colstack">
-      <section class="card" id="zasto">
-        <h2 class="ttl">Why PFC</h2>
-        <ul class="ul"><li><span>PFC already has the data: AMS tracks 46,013 assets and the LNG terminal uses it too, and about 1,000 eLBC units are installed.<sup><a href="#s28">28</a></sup><sup><a href="#s22">22</a></sup></span></li><li><span>It has its own IT and software (AYMO, AMS), so the pilot project does not depend on an outside agency.<sup><a href="#s27">27</a></sup><sup><a href="#s28">28</a></sup></span></li><li><span>The customer gets a record PFC cannot change afterwards without it showing. That is an extra argument in tenders (estimate).</span></li><li><span>The same chain can later carry equipment records and certificates (estimate).</span></li></ul>
-      </section>
-      <section class="card" id="rizici">
-        <h2 class="ttl">Risks and open questions</h2>
-        <ul class="ul"><li><span>Production needs a commercial agreement with Matter Labs. Local development needs access to their private Docker registry.<sup><a href="#s80">80</a></sup><sup><a href="#s83">83</a></sup></span></li><li><span>For now a single sequencer runs the chain; decentralisation is only on the roadmap.<sup><a href="#s77">77</a></sup></span></li><li><span>Customers are mostly state energy companies. The pilot project only makes sense if at least one customer wants to read the records (estimate).</span></li><li><span>Only fingerprints and made-up data may go on the public testnet, because it is public.<sup><a href="#s84">84</a></sup></span></li></ul>
-      </section>
-      </div>
-      <section class="card s12" id="plan-pilota">
-        <h2 class="ttl">Pilot project plan</h2>
-        <p class="cap">Durations are my estimate, about 4–5 months in total</p>
-        <div class="steps"><div class="step"><b>0 · 2 weeks</b><span>Pick 1–3 stations and one customer, list the AMS data, request access from Matter Labs</span></div><div class="step"><b>1 · 3–4 weeks</b><span>Local Prividium in Docker, PFCLedger contract, roles PFC / customer / regulator / auditor<sup><a href="#s83">83</a></sup></span></div><div class="step"><b>2 · 2–3 months</b><span>Field pilot project: the chosen stations' jobs go on the chain, the customer reads them and confirms payments</span></div><div class="step"><b>3 · 2 weeks</b><span>Review: benefits, cost, decision on production and licence</span></div></div>
+</code></pre></details>
       </section>
     </div>
 
